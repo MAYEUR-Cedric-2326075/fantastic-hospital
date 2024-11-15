@@ -71,14 +71,16 @@ Les créatures possèdent des actions qui influencent leur moral et leur état :
 - **Régénérateur** : 🧟‍♂️🧛‍♂️
   *Les régénérateurs peuvent revenir à la vie après leur trépas.*
 
-Elfes 🧝‍♂️
-Nains 🧙‍♂️
-Orques 🐖
-Hommes-bêtes 🦁
-Zombies 🧟‍♂️
-Vampires 🧛‍♂️
-Lycanthropes 🐺
-Reptiliens 🦎
+### Légende des Créatures
+
+- **Elfes** : 🧝‍♂️
+- **Nains** : 🧙‍♂️
+- **Orques** : 🐖
+- **Hommes-bêtes** : 🦁
+- **Zombies** : 🧟‍♂️
+- **Vampires** : 🧛‍♂️
+- **Lycanthropes** : 🐺
+- **Reptiliens** : 🦎
 
 ---
 
