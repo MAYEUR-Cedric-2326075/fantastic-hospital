@@ -136,13 +136,20 @@ Le **Fantasy Hospital** est une entité centrale qui gère plusieurs services m�
 
 ## Simulation et Gestion Temporelle ⏳
 
-La simulation se déroule de manière temporelle. Chaque intervalle modifie aléatoirement l'état de certaines créatures et de certains services médicaux. Le joueur, incarnant un médecin, doit intervenir pour gérer l'hôpital de manière efficace.
+La simulation se déroule en mode **tour par tour**. À chaque tour, l'état des créatures, des services médicaux et des événements aléatoires est mis à jour. Le joueur, incarnant un médecin, doit intervenir à chaque tour pour gérer l'hôpital de manière efficace.
 
-Les actions du médecin incluent :
-- Soigner les créatures.
-- Réviser le budget des services médicaux.
-- Transférer des créatures.
-- Faire face aux aléas comme des épidémies ou des accidents.
+Chaque tour de simulation peut entraîner des changements dans les maladies des créatures, leur moral, leur état de santé, ainsi que dans le fonctionnement des services médicaux. Les joueurs doivent prendre des décisions stratégiques à chaque tour pour assurer la survie et le bien-être des créatures et l'efficacité des services.
+
+### Actions du Médecin par Tour
+
+À chaque tour, le médecin peut effectuer les actions suivantes :
+
+- **Soigner les créatures** : Chaque médecin peut soigner une ou plusieurs créatures, en fonction de la gravité de leurs maladies et de la disponibilité des ressources.
+- **Réviser le budget des services médicaux** : Le médecin peut ajuster le budget alloué aux services médicaux pour s'assurer que les soins sont suffisants et que l'hôpital reste fonctionnel.
+- **Transférer des créatures** : En fonction des besoins, les créatures peuvent être transférées d'un service à un autre (par exemple, transférer une créature malade dans un centre de quarantaine ou dans un service spécialisé).
+- **Faire face aux aléas** : Chaque tour peut apporter des événements imprévus, comme des épidémies, des accidents, ou des crises de moral parmi les créatures. Le médecin devra réagir pour limiter les dégâts.
+
+Les joueurs doivent agir rapidement et avec discernement à chaque tour pour éviter que des créatures ne meurent ou que des épidémies ne se propagent. Les actions doivent être réfléchies, car chaque tour écoulé peut être crucial pour le bon fonctionnement de l'hôpital fantastique.
 
 ---
 
