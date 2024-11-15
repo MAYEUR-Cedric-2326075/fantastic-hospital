@@ -48,10 +48,37 @@ Les créatures possèdent des actions qui influencent leur moral et leur état :
 - **Être soignée** : Soigne une maladie et améliore le moral.
 - **Trépasser** : Meurt lorsqu’une maladie devient trop grave.
 
-Les créatures ont des comportements spécifiques selon leur type, par exemple :
-- Les **elfes** et **vampires** peuvent démoraliser les autres créatures lorsqu'ils trépassent.
-- Les **orques**, **hommes-bêtes**, **lycanthropes** et **vampires** peuvent transmettre des maladies à d'autres créatures.
-- Les **zombies** et **vampires** peuvent se régénérer après leur trépas.
+### Comportements et Catégories des Créatures
+
+- **Vivants** : 🧝‍♂️🧙‍♂️🐖🦁🐺🦎
+  *Les créatures vivantes sont des créatures qui n'ont pas encore trépassé et qui peuvent être soignées.*
+
+- **Morts** : 🧟‍♂️🧛‍♂️
+  *Les créatures mortes-vivantes, sont considérées comme mortes, mais peuvent revenir à la vie après leur trépas.*
+
+- **Habitants du Triage** : 🐖🦁🧟‍♂️🐺
+  *Les habitants du triage sont des créatures qui attendent des soins, souvent considérées comme ayant une priorité plus basse ou en traitement dans des conditions moins urgentes.*
+
+- **VIP** : 🧝‍♂️🧙‍♂️🧛‍♂️🦎
+  *Les créatures VIP sont considérées comme ayant un statut spécial et une priorité de soins plus élevée.*
+
+- **Démoralisateur** : 🧝‍♂️🧛‍♂️
+  *Les démoralisateurs peuvent réduire le moral les autres créatures lorsqu'ils trépassent.*
+
+- **Contaminateur** : 🐖🦁🧛‍♂️🐺
+  *Les contaminateurs peuvent transmettre des maladies à d'autres créatures.*
+
+- **Régénérateur** : 🧟‍♂️🧛‍♂️
+  *Les régénérateurs peuvent revenir à la vie après leur trépas.*
+
+Elfes 🧝‍♂️
+Nains 🧙‍♂️
+Orques 🐖
+Hommes-bêtes 🦁
+Zombies 🧟‍♂️
+Vampires 🧛‍♂️
+Lycanthropes 🐺
+Reptiliens 🦎
 
 ---
 
@@ -59,13 +86,16 @@ Les créatures ont des comportements spécifiques selon leur type, par exemple :
 
 Les créatures peuvent contracter diverses maladies, chacune ayant des caractéristiques spécifiques :
 
-| Nom de la maladie | Abbreviation | Niveau actuel | Niveau max | Létalité |
-|-------------------|--------------|---------------|------------|----------|
-| MDC               | MDC          | Int           | Int        | Boolean  |
-| FOMO              | FOMO         | Int           | Int        | Boolean  |
-| DRS               | DRS          | Int           | Int        | Boolean  |
-| PEC               | PEC          | Int           | Int        | Boolean  |
-| ZPL               | ZPL          | Int           | Int        | Boolean  |
+### Maladies des Créatures
+
+| Nom de la maladie                                    | Abbreviation | Niveau actuel | Niveau max | Létalité |
+|------------------------------------------------------|--------------|---------------|------------|----------|
+| Maladie débilitante chronique                        | MDC          | Int           | Int        | Boolean  |
+| Syndrome fear of missing out                         | FOMO         | Int           | Int        | Boolean  |
+| Dépendance aux réseaux sociaux                       | DRS          | Int           | Int        | Boolean  |
+| Porphyrie érythropoïétique congénitale               | PEC          | Int           | Int        | Boolean  |
+| Zoopathie paraphrénique lycanthropique               | ZPL          | Int           | Int        | Boolean  |
+
 
 ### Actions des Maladies
 - **Augmenter ou diminuer** leur niveau.
