@@ -2,9 +2,9 @@ package com.fantasticHospital;
 
 public class Doctor {
 
-    String name;
-    boolean gender;
-    int age;
+    private String name;
+    private boolean gender;
+    private int age;
 
     public Doctor(String name, boolean gender, int age) {
         this.name = name;

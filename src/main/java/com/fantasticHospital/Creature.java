@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Creature {
 
-    String name;
-    boolean gender;
-    double weight;
-    double height;
-    int age;
-    boolean moraleIndicator;
-    List<String> diseasesList;
+    private String name;
+    private boolean gender;
+    private double weight;
+    private double height;
+    private int age;
+    private boolean moraleIndicator;
+    private List<String> diseasesList;
 
     public Creature(String name, boolean gender, double weight, double height, int age, boolean moraleIndicator, List<String> diseasesList) {
         this.name = name;
