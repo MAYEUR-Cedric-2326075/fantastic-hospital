@@ -1,17 +1,29 @@
 package com.fantasticHospital;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+public class Main {
+
+    public static int choiceTerminal(String[] choices) {
+        //affiche tout les choix du tableau passer en paramètre
+        for (int i = 0; i < choices.length; i++) {
+            System.out.println(i+1 + ") " + choices[i]);
         }
+        //lit la valeur entrée dans le terminal
+        Scanner scanner = new Scanner(System.in);
+        int answer = scanner.nextInt();
+        //vérifie si la valeur entrée par l'utilisateur est un des choix proposer
+        if(answer < 1 || answer > choices.length) {
+            System.out.println("erreur");
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        String[] choices = {"Choix 1", "Choix 2", "Choix 3"};
+        int test = choiceTerminal(choices);
+        System.out.println("le choix utilisateur est : " + test);
+
     }
 }
