@@ -1,4 +1,4 @@
-package com.fantasticHospital;
+package fantasticHospital.Creature;
 
 import java.util.List;
 
@@ -10,16 +10,16 @@ public abstract class Creature {
     private double height;
     private int age;
     private boolean moraleIndicator;
-    private List<String> diseasesList;
+    //private List<CreatureDisaese> diseasesList;
 
-    public Creature(String name, boolean gender, double weight, double height, int age, boolean moraleIndicator, List<String> diseasesList) {
+    public Creature(String name, boolean gender, double weight, double height, int age, boolean moraleIndicator) {
         this.name = name;
         this.gender = gender;
         this.weight = weight;
         this.height = height;
         this.age = age;
         this.moraleIndicator = moraleIndicator;
-        this.diseasesList = diseasesList;
+        //this.diseasesList = diseasesList;
     }
 
     public String getName() {
@@ -69,7 +69,7 @@ public abstract class Creature {
     public void setMoraleIndicator(boolean moraleIndicator) {
         this.moraleIndicator = moraleIndicator;
     }
-
+/*
     public List<String> getDiseasesList() {
         return diseasesList;
     }
@@ -78,22 +78,11 @@ public abstract class Creature {
         this.diseasesList = diseasesList;
     }
 
-    public static void makeWait() { // ce qui diminue le moral
+ */
+    public abstract void waiting();
+    public abstract void getAngry();
+    public abstract void fallIll();
+    public abstract void beTreated();
+    public abstract void die();
 
-    }
-    public static void scream() { // lorsque leur moral est au plus bas
-
-    }
-    public static void getAngry() { // en remplacement d’hurlements qui seraient consécutifs
-
-    }
-    public static void fallIll() { // ce qui ajoute une maladie à la liste de maladies
-
-    }
-    public static void beTreated() { // ce qui traite une maladie et redonne du moral
-
-    }
-    public static void die() { // s’il devient trop malade
-
-    }
 }
