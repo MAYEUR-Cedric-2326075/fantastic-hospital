@@ -1,4 +1,3 @@
-package fantasticHospital.Race.roles;
 
 /**
  * Interface Vip

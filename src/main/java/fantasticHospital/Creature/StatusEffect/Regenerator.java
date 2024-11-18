@@ -1,17 +1,11 @@
-package fantasticHospital.creatures;
+package fantasticHospital.Creature.StatusEffect;
+
+import fantasticHospital.Creature.Creature;
 
 /**
  * Class Regenerator
  */
-public class Regenerator extends Creature {
-
-    public Regenerator() {
-        super();
-        // TODO: Initialize specific characteristics for Regenerator
-    }
-
-    @Override
-    public void contaminate() {
-        // TODO: Implement contamination logic for Regenerator
-    }
+public interface Regenerator {
+    // Define methods specific to Regenerator creatures here
+    void regenerate();
 }

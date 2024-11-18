@@ -1,17 +1,6 @@
-package fantasticHospital.creatures;
-
-/**
- * Class Contaminator
- */
-public class Contaminator extends Creature {
-
-    public Contaminator() {
-        super();
-        // TODO: Initialize specific characteristics for Contaminator
-    }
-
-    @Override
-    public void contaminate() {
-        // TODO: Implement contamination logic for Contaminator
-    }
+package fantasticHospital.Creature.StatusEffect;
+import fantasticHospital.Creature.Creature;
+public interface Contaminator {
+    // Méthode pour contaminer une autre créature
+    void contaminate(Creature creature);
 }
