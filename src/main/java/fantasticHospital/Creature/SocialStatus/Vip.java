@@ -1,21 +1,9 @@
-
+package fantasticHospital.Creature.SocialStatus;
+import fantasticHospital.Creature.Behavior.*;
 /**
  * Interface Vip
  */
-public interface Vip {
+public interface Vip  extends Waiter {
 
-    /**
-     * Accède à des zones exclusives.
-     */
-    void accessExclusiveArea();
-
-    /**
-     * Reçoit un traitement prioritaire.
-     */
-    void receivePriorityService();
-
-    /**
-     * Renforce son moral grâce à son statut.
-     */
-    void boostMoral();
+    //void waiting();
 }

@@ -1,22 +1,9 @@
-package fantasticHospital.roles;
-
+package fantasticHospital.Creature.SocialStatus;
+import fantasticHospital.Creature.Behavior.*;
 /**
- * Interface Poor
+ * Interface Vip
  */
-public interface Poor {
+public interface Poor  extends Waiter {
 
-    /**
-     * Demande une aide supplémentaire.
-     */
-    void requestAid();
-
-    /**
-     * Subit une diminution plus rapide du moral.
-     */
-    void loseMoralQuickly();
-
-    /**
-     * Accède à des zones de quarantaine ou d'aide.
-     */
-    void accessAssistanceArea();
+    //void waiting();
 }
