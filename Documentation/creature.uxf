@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1395</x>
+      <y>160</y>
+      <w>95</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>{interface}
+Rager
+--
++ isInRage() : boolean 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1025</x>
+      <y>175</y>
+      <w>380</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>740.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1415</x>
+      <y>990</y>
+      <w>90</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>{interface}
+Regenerator
+--
++ regenerate() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1395</x>
+      <y>915</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>{interface}
+Demoraliser&lt;T&gt;
+--
+__tauxOfDemoralisation : int = 10__
+--
++ demoralize(objects : Set&lt;T&gt;) : void
++ demoralize(object : T) : void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1405</x>
+      <y>210</y>
+      <w>55</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>{interface}
+Perishable
+--
++ die() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1025</x>
+      <y>220</y>
+      <w>390</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>760.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1395</x>
+      <y>250</y>
+      <w>100</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>{interface}
+Screamer
+--
++ isScreaming() : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>260</y>
+      <w>385</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>750.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1385</x>
+      <y>890</y>
+      <w>160</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>StatusEffect
+--
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1410</x>
+      <y>545</y>
+      <w>75</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>{interface}
+VipWaiter
+--
++ waiting() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1375</x>
+      <y>390</y>
+      <w>130</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>{interface}
+PoorWaiter
+--
++ waiting(isAlone : boolean) : void
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1345</x>
+      <y>140</y>
+      <w>195</w>
+      <h>465</h>
+    </coordinates>
+    <panel_attributes>Behivior
+--
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>810</y>
+      <w>305</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>Race
+Package::Race
+--
+- rateOfMoralitybeginningSream : int
+- rateOfMoralityBeginningRage : int
+- raceName : String
+--
++ Race(raceName : String, 
+rateOfMoralitybeginningSream : int, rateOfMoralityBeginningRage : int)
++ getRateOfMoralitybeginningSream() : int
++ setRateOfMoralitybeginningSream(rateOfMoralitybeginningSream : int) : void
++ getRateOfMoralityBeginningRage() : int
++ setRateOfMoralityBeginningRage(rateOfMoralityBeginningRage : int) : void
++ getRaceName() : String
++ setRaceName(raceName : String) : void
++ toString() : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>800</y>
+      <w>165</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>PoorRace
+Package::Race
+--
+- rateOfReductionWithPeaple : int
+- rateOfReductionWithoutPeaple : int
+--
++ PoorRace(raceName : String, 
+rateOfMoralitybeginningSream : int, 
+rateOfMoralityBeginningRage : int, 
+rateOfReductionWithPeaple : int,	
+rateOfReductionWithoutPeaple : int)
++ getRateOfReductionWithPeaple() : int
++ setRateOfReductionWithPeaple(
+rateOfReductionWithPeaple : int) : void
++ getRateOfReductionWithoutPeaple() : int
++ setRateOfReductionWithoutPeaple(
+rateOfReductionWithoutPeaple : int) : void
++ toString() : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>975</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>VipRace
+Package::Race
+--
+- rateOfReduction : int
+--
++ VipRace(raceName : String, 
+rateOfMoralitybeginningSream : int, 
+rateOfMoralityBeginningRage : int, 
+rateOfReduction : int)
++ getRateOfReduction() : int
++ setRateOfReduction(rateOfReduction : int) 
+: void
++ toString() : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>110</x>
+      <y>775</y>
+      <w>530</w>
+      <h>315</h>
+    </coordinates>
+    <panel_attributes>Race
+--
+bg=orange
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>815</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Beastman
+--
+__- race : PoorRace__
+--
++ Beastman(name : String, 
+gender : boolean, 
+weight : double, 
+height : double, 
+age : int)
++ getRace() : PoorRace
++ waiting(isAlone : boolean) : void
++ isInRage() : boolean
++ isScreaming() : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>1420</y>
+      <w>110</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Dwarf
+--
+__- race : VipRace__
+--
++ Dwarf(name : String, 
+gender : boolean, 
+weight : double, 
+height : double, age : int)
++ waiting() : void
++ getRace() : VipRace
++ isInRage() : boolean
++ isScreaming() : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>925</y>
+      <w>115</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>Elf
+--
+__- race : VipRace__
+--
++ Elf(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getRace() : VipRace
++ waiting() : void
++ isInRage() : boolean
++ isScreaming() : boolean
++ demoralize(
+    creatures : Set&lt;Creature&gt;
+  ) : void
++ demoralize(
+    creature : Creature
+  ) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>670</y>
+      <w>105</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Orc
+--
+__- race : PoorRace__
+--
++ Orc(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getRace() : PoorRace
++ waiting(
+    isAlone : boolean
+  ) : void
++ isInRage() : boolean
++ isScreaming() : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>525</y>
+      <w>100</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Lycanthrope
+--
+__- race : PoorRace__
+--
++ Lycanthrope(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getRace() : PoorRace
++ waiting(
+    isAlone : boolean
+  ) : void
++ isInRage() : boolean
++ isScreaming() : boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>1290</y>
+      <w>110</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Reptilian
+--
+__- race : VipRace__
+--
++ Reptilian(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getRace() : VipRace
++ waiting() : void
++ isInRage() : boolean
++ isScreaming() : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>865</x>
+      <y>45</y>
+      <w>165</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>/Creature/
+--
+- name : String
+- gender : boolean
+- weight : double
+- height : double
+- age : int
+- moralityRate : int
+- Alive : boolean
+--
+/+ getRace() : Race/
++ Creature(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getName() : String
++ setName(name : String) : void
++ getGender() : boolean
++ setGender(gender : boolean) : void
++ getWeight() : double
++ setWeight(weight : double) : void
++ getHeight() : double
++ setHeight(height : double) : void
++ getAge() : int
++ setAge(age : int) : void
++ getMoralityRate() : int
++ setMoralityRate(moralityRate : int) : void
++ isAlive() : boolean
++ setAlive(isAlive : boolean) : void
++ die() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>1100</y>
+      <w>110</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>Vampire
+--
+__- race : VipRace__
+--
++ Vampire(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getRace() : VipRace
++ waiting() : void
++ isInRage() : boolean
++ isScreaming() : boolean
++ regenerate() : void
++ demoralize(
+    creature : Creature
+  ) : void
++ demoralize(
+    creatures : Set&lt;Creature&gt;
+  ) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>350</y>
+      <w>105</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Zombie
+--
+__- race : PoorRace__
+--
++ Zombie(
+    name : String, 
+    gender : boolean, 
+    weight : double, 
+    height : double, 
+    age : int
+  )
++ getRace() : PoorRace
++ waiting(
+    isAlone : boolean
+  ) : void
++ isInRage() : boolean
++ isScreaming() : boolean
++ regenerate() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>865</x>
+      <y>325</y>
+      <w>175</w>
+      <h>1200</h>
+    </coordinates>
+    <panel_attributes>Races
+--
+bg=blue
+group=group-1
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>95</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>95</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>930</y>
+      <w>120</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>220.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>885</y>
+      <w>40</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>425</y>
+      <w>310</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;10.0;90.0;10.0;90.0;880.0;10.0;880.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>590</y>
+      <w>310</w>
+      <h>315</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;10.0;140.0;20.0;140.0;610.0;10.0;610.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>730</y>
+      <w>310</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;10.0;180.0;10.0;180.0;360.0;10.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>860</y>
+      <w>310</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;10.0;230.0;10.0;230.0;130.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>615</x>
+      <y>1020</y>
+      <w>305</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>590.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>615</x>
+      <y>1070</y>
+      <w>305</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>590.0;250.0;450.0;250.0;450.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>565</x>
+      <y>1070</y>
+      <w>355</w>
+      <h>305</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>690.0;590.0;500.0;590.0;490.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>1075</y>
+      <w>410</w>
+      <h>405</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>800.0;790.0;570.0;790.0;560.0;120.0;10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>965</x>
+      <y>300</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>405</y>
+      <w>370</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>720.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1005</x>
+      <y>420</y>
+      <w>390</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>760.0;10.0;760.0;50.0;110.0;50.0;110.0;310.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>560</y>
+      <w>400</w>
+      <h>425</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>780.0;10.0;230.0;10.0;230.0;830.0;10.0;830.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>420</y>
+      <w>430</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>840.0;10.0;840.0;90.0;150.0;100.0;150.0;620.0;10.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1005</x>
+      <y>420</y>
+      <w>465</w>
+      <h>435</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>910.0;10.0;910.0;110.0;200.0;120.0;200.0;850.0;10.0;850.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>580</y>
+      <w>440</w>
+      <h>610</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>860.0;10.0;860.0;110.0;300.0;110.0;300.0;1200.0;10.0;1200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>580</y>
+      <w>465</w>
+      <h>775</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>910.0;10.0;910.0;160.0;360.0;170.0;360.0;1520.0;10.0;1530.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>570</y>
+      <w>505</w>
+      <h>920</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>940.0;10.0;990.0;10.0;990.0;210.0;400.0;220.0;420.0;1820.0;10.0;1820.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>935</y>
+      <w>385</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>750.0;10.0;660.0;10.0;660.0;170.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>950</y>
+      <w>390</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>760.0;10.0;720.0;10.0;720.0;360.0;10.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>815</y>
+      <w>550</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>980.0;390.0;1080.0;390.0;1080.0;10.0;530.0;10.0;530.0;600.0;10.0;600.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>425</y>
+      <w>555</w>
+      <h>575</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>990.0;1130.0;1090.0;1130.0;1090.0;750.0;540.0;750.0;530.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
