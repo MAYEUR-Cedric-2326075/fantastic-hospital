@@ -1,6 +1,9 @@
 package fantasticHospital.Creature.StatusEffect;
-import fantasticHospital.Creature.Creature;
-public interface Demoraliser {
-    public static final int tauxOfDemoralisation = 10;
-    void demoralize(Creature creature);
+
+import java.util.Set;
+
+public interface Demoraliser<T> {
+    int rateOfDemoralisation = 10;
+    void demoralize(Set<T> objects);
+    void demoralize(T object);
 }

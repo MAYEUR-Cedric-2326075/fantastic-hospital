@@ -40,21 +40,21 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
     public void setMoralityRate(int moralityRate) {
         this.moralityRate = moralityRate;
     }
-    public boolean getAlive(){return isAlive;}
-    public void setAlive(boolean isAlive){this.isAlive=isAlive;}
+    public boolean isAlive(){return Alive;}
+    public void setAlive(boolean isAlive){this.Alive =isAlive;}
 
 
 
-    //private abstract Race race;
+    //private abstract Race2 race;
     private String name;
     private boolean gender;
     private double weight;
     private double height;
     private int age;
     private int moralityRate;
-    private boolean isAlive;
+    private boolean Alive;
 
-    //private static Race race;
+    //private static Race2 race;
 
     public Creature(String name, boolean gender, double weight, double height, int age) {
         this.name = name;
@@ -63,12 +63,12 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
         this.height = height;
         this.age = age;
         this.moralityRate = 100;
-        this.isAlive = true;
+        this.Alive = true;
         //this.diseasesList = diseasesList;
     }
     // Méthode abstraite pour obtenir la race (implémentée dans les sous-classes)
     public abstract Race getRace();
-    //public  abstract void setRace(Race race);
+    //public  abstract void setRace(Race2 race);
 
 /*
     @Override
@@ -77,8 +77,7 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
         System.out.println("The creature is raging furiously!");
     }
 */
-    @Override
-    public boolean isInRage(){return moralityRate<Rager.tauxOfMoralityBeginningRage;}
+
 
     @Override
     public void die() {
@@ -86,10 +85,6 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
         System.out.println("The creature has perished...");
     }
 
-    @Override
-    public boolean isScreaming() {
-        return moralityRate < Screamer.tauxOfMoralitybeginningSream && isAlive && moralityRate > Rager.tauxOfMoralityBeginningRage;
-    }
 
 /*
     public List<String> getDiseasesList() {
