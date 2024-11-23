@@ -7,5 +7,5 @@ import fantasticHospital.Creature.Creature;
  */
 public interface Regenerator {
     // Define methods specific to Regenerator creatures here
-    void regenerate();
+    public void regenerate();
 }

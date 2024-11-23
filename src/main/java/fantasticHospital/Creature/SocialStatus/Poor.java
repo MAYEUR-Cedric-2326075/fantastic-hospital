@@ -1,9 +1,10 @@
 package fantasticHospital.Creature.SocialStatus;
-import fantasticHospital.Creature.Behavior.*;
 /**
  * Interface Vip
  */
-public interface Poor  extends Waiter {
+public interface Poor {
+    public static final int tauxOfReductionWithPeaple = 10;
+    public static final int tauxOfReductionWithoutPeaple = 20;
 
-    //void waiting();
+
 }

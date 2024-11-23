@@ -4,5 +4,5 @@ import fantasticHospital.Creature.Creature;
 
 public interface Perishable {
     // Méthode pour trépasser
-    void die();
+    public void die();
 }
