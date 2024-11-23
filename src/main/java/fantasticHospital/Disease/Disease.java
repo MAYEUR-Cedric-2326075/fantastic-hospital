@@ -32,13 +32,4 @@ public class Disease {
         return maxLevel;
     }
 
-    public void createDisease(){
-        Disease MDC = new Disease("Maladie débilitante chronique", "MDC", 5);
-        Disease FOMO = new Disease("fear of missing out", "FOMO", 5);
-        Disease DRS = new Disease("Dépendance aux réseaux sociaux", "DRS", 5);
-        Disease PEC = new Disease("Porphyrie érythropoïétique congénitale", "PEC", 5);
-        Disease ZPL = new Disease("Zoopathie paraphrénique lycanthropique", "ZPL", 5);
-        Disease BG = new Disease("Blight of Gloom", "BG", 5);
-    }
-
 }

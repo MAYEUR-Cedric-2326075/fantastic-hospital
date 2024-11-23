@@ -1,5 +1,7 @@
 package com.fantasticHospital;
 
+import fantasticHospital.Creature.Creature;
+
 import java.util.List;
 
 public class MedicalService {

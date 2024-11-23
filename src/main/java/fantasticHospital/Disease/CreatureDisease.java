@@ -1,11 +1,12 @@
 package fantasticHospital.Disease;
 
-import com.fantasticHospital.Creature;
+
+import fantasticHospital.Creature.Creature;
 
 public class CreatureDisease {
 
     private Disease disease;
-    private com.fantasticHospital.Creature creature;
+    private Creature creature;
     private int currentLevel;
 
     public CreatureDisease(Disease disease, Creature creature, int currentLevel) {
@@ -15,30 +16,38 @@ public class CreatureDisease {
     }
 
     public void addDisease(CreatureDisease disease) {
-        creature.setDiseasesList(creature.getDiseasesList().add(disease));
+        //creature.setDiseasesList(creature.getDiseasesList().add(disease));
     }
 
-    /*
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public Creature getCreature() {
+        return creature;
+    }
+
     public int getCurrentLevel() {
         return currentLevel;
     }
 
-    public void setCurrentLevel(int currentLevel) {
+    private void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
     }
 
     public void decreaseLevel() {
-        setCurrentLevel(getCurrentLevel() -1);
+        if (getCurrentLevel() <= 1){
+            System.out.println("niveau minimum atteint");
+        }else{
+            setCurrentLevel(getCurrentLevel() -1);
+        }
     }
     public void increaseLevel() {
-        setCurrentLevel(getCurrentLevel() +1);
-    }
-    public boolean isLethal() {
-        if (getCurrentLevel() > getMaxLevel()) {
-            return true;
+        if (getCurrentLevel() >= disease.getMaxLevel()){
+            creature.die();
         }else{
-            return false;
+            setCurrentLevel(getCurrentLevel() +1);
         }
-    }*/
+    }
 
 }
