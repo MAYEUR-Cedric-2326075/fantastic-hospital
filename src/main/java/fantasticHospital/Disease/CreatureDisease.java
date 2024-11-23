@@ -15,10 +15,6 @@ public class CreatureDisease {
         this.currentLevel = currentLevel;
     }
 
-    public void addDisease(CreatureDisease disease) {
-        //creature.setDiseasesList(creature.getDiseasesList().add(disease));
-    }
-
     public Disease getDisease() {
         return disease;
     }
@@ -42,6 +38,7 @@ public class CreatureDisease {
             setCurrentLevel(getCurrentLevel() -1);
         }
     }
+
     public void increaseLevel() {
         if (getCurrentLevel() >= disease.getMaxLevel()){
             creature.die();
