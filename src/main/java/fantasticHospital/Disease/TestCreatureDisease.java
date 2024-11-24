@@ -50,6 +50,8 @@ public class TestCreatureDisease {
         beastmanDisease.addDiseaseCurrentLevel(FOMO);
         //  -1 niv de ZPL
         beastmanDisease.decreaseLevel(ZPL);
+        System.out.println(beastmanDisease.getAllDiseaseNames());
+        //beastmanDisease.showDisease();
 
     }
 }

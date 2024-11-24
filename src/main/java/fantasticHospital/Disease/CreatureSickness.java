@@ -2,9 +2,7 @@ package fantasticHospital.Disease;
 
 import fantasticHospital.Creature.Creature;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CreatureSickness {
     private Creature creature;
@@ -66,4 +64,12 @@ public class CreatureSickness {
     public Set<Disease> getDisease(){//Renvoie un set avec les maladies
         return diseaseCurrentLevel.keySet();
     }
+    public List<String> getAllDiseaseNames() {
+        List<String> diseaseNames = new ArrayList<>();
+        for (Disease disease : diseaseCurrentLevel.keySet()) {
+            diseaseNames.add(disease.getName());
+        }
+        return diseaseNames;
+    }
+
 }

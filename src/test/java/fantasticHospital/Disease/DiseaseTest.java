@@ -1,6 +1,6 @@
 package fantasticHospital.Disease;
 
-import fantasticHospital.Creature.Race.Beastman;
+import fantasticHospital.Creature.Races.Beastman;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
