@@ -1,11 +1,12 @@
 package fantasticHospital.Disease;
 
-import fantasticHospital.Creature.Race.Beastman;
+import fantasticHospital.Creature.Races.Beastman;
 
 public class TestCreatureDisease {
 
     public static void main(String[] args) {
         //je cree toutes les maladies
+
         Disease MDC = new Disease("Maladie débilitante chronique", "MDC", 5);
         Disease FOMO = new Disease("fear of missing out", "FOMO", 5);
         Disease DRS = new Disease("Dépendance aux réseaux sociaux", "DRS", 5);
@@ -15,12 +16,40 @@ public class TestCreatureDisease {
 
         //je cree une creature
         Beastman beastman = new Beastman("Tormak", true, 80.5, 2.1, 25);
-
+/*
         //test de CreatureDisease
         CreatureDisease beastmanDisease = new CreatureDisease(FOMO, beastman, 2);
         System.out.println("les maladie de " + beastman.getName() + " : " + beastmanDisease.getDisease().getShortName() + " de niveau " + beastmanDisease.getCurrentLevel());
         beastmanDisease.decreaseLevel();
         System.out.println("les maladie de " + beastman.getName() + " : " + beastmanDisease.getDisease().getShortName() + " de niveau " + beastmanDisease.getCurrentLevel());
+
+
+/*
+        Beastman beastman2 = new Beastman("cedric", true, 80.5, 2.1, 20);
+        beastman2.addDisease(ZPL, 4);
+        beastman2.addDisease(FOMO, 2);
+        beastman2.showDisease();
+        beastman2.getDiseaseList().get(0).decreaseLevel();
+        beastman2.showDisease();
+*/
+
+        /*
+        Beastman beastman3 = new Beastman("nicolas", true, 80.5, 2.1, 2);
+        CreatureSickness test = new CreatureSickness(beastman3);
+        System.out.println(test.getCreature().getName());
+        System.out.println(test.getDiseaseCurrentLevel());
+        test.addDiseaseCurrentLevel(FOMO);
+        test.showDisease();
+        test.addDiseaseCurrentLevel(ZPL, 5);
+        test.showDisease();
+         */
+
+        CreatureSickness beastmanDisease = new CreatureSickness(beastman);
+        //ajout de 2 maladies
+        beastmanDisease.addDiseaseCurrentLevel(ZPL, 5);
+        beastmanDisease.addDiseaseCurrentLevel(FOMO);
+        //  -1 niv de ZPL
+        beastmanDisease.decreaseLevel(ZPL);
 
     }
 }
