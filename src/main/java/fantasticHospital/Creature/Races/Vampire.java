@@ -10,10 +10,10 @@ import java.util.Set;
 public class Vampire extends Creature implements VipWaiter, Regenerator, Demoraliser<Creature> {
 
     // Race spécifique
-    private static VipRace race = new VipRace("Vampire", 50, 40, 30);
+    private static VipRace race = new VipRace("Vampire", 50, 1,2,3,40, 30);
 
-    @Override
-    public VipRace getRace() {
+
+    public static VipRace getRace() {
         return race;
     }
 
@@ -24,13 +24,13 @@ public class Vampire extends Creature implements VipWaiter, Regenerator, Demoral
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
     // Vérifier si le Beastman est en train de crier
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

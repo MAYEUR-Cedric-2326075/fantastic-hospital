@@ -7,10 +7,9 @@ import fantasticHospital.Creature.Race.PoorRace;
 public class Orc extends Creature implements PoorWaiter {
 
     // Race spécifique
-    private static final PoorRace race = new PoorRace("Orc", 40, 30, 8, 20);
+    private static final PoorRace race = new PoorRace("Orc", 40, 30,1,2,3, 8, 20);
 
-    @Override
-    public PoorRace getRace() {
+    public static PoorRace getRace() {
         return race;
     }
     @Override
@@ -23,12 +22,12 @@ public class Orc extends Creature implements PoorWaiter {
     public boolean isInRage() {
         return this.getMoralityRate() < race.getRateOfMoralityBeginningRage() &&
                 this.isAlive() &&
-                this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+                this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

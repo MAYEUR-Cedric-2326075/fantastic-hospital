@@ -7,8 +7,9 @@ public class PoorRace extends Race {
 
     // Constructeur
     public PoorRace(String raceName, int rateOfMoralitybeginningSream, int rateOfMoralityBeginningRage,
+                    int youngAge,int adultAge,int oldAge,
                     int rateOfReductionWithPeaple, int rateOfReductionWithoutPeaple) {
-        super(raceName, rateOfMoralitybeginningSream, rateOfMoralityBeginningRage);
+        super(raceName, rateOfMoralitybeginningSream, rateOfMoralityBeginningRage,youngAge,adultAge,oldAge);
         this.rateOfReductionWithPeaple = rateOfReductionWithPeaple;
         this.rateOfReductionWithoutPeaple = rateOfReductionWithoutPeaple;
     }
@@ -35,7 +36,7 @@ public class PoorRace extends Race {
     public String toString() {
         return "PoorRace{" +
                 "raceName='" + getRaceName() + '\'' +
-                ", rateOfMoralitybeginningSream=" + getRateOfMoralitybeginningSream() +
+                ", rateOfMoralitybeginningSream=" + getRateOfMoralityBeginningScream() +
                 ", rateOfMoralityBeginningRage=" + getRateOfMoralityBeginningRage() +
                 ", rateOfReductionWithPeaple=" + rateOfReductionWithPeaple +
                 ", rateOfReductionWithoutPeaple=" + rateOfReductionWithoutPeaple +

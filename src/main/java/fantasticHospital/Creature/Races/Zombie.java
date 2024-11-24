@@ -8,10 +8,9 @@ import fantasticHospital.Creature.Race.PoorRace;
 public class Zombie extends Creature implements PoorWaiter, Regenerator {
 
     // Race spécifique
-    private static PoorRace race = new PoorRace("Zombie", 40, 20, 10, 20);
+    private static PoorRace race = new PoorRace("Zombie", 40, 20,1,2,3 ,10, 20);
 
-    @Override
-    public PoorRace getRace() {
+    public static PoorRace getRace() {
         return race;
     }
 
@@ -26,13 +25,13 @@ public class Zombie extends Creature implements PoorWaiter, Regenerator {
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
 
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

@@ -9,28 +9,28 @@ import fantasticHospital.Creature.Race.VipRace;
 public class Dwarf extends Creature implements VipWaiter {
 
     // Race spécifique
-    private static final VipRace race = new VipRace("Dwarf", 70, 60, 20);
+    private static final VipRace race = new VipRace("Dwarf", 70,1,2,3 ,60, 20);
 
 
     @Override
     public void waiting() {
         this.setMoralityRate(getMoralityRate() - getRace().getRateOfReduction());
     }
-    @Override
-    public VipRace getRace() {
+
+    public static VipRace getRace() {
         return race;
     }
 
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
 
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

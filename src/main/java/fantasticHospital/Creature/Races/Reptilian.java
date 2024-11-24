@@ -7,10 +7,9 @@ import fantasticHospital.Creature.Race.VipRace;
 public class Reptilian extends Creature implements VipWaiter {
 
     // Race spécifique
-    private static  VipRace race = new VipRace("Reptilian", 25, 15, 30);
+    private static  VipRace race = new VipRace("Reptilian", 25,1,2,3, 15, 30);
 
-    @Override
-    public VipRace getRace() {
+    public static VipRace getRace() {
         return race;
     }
 
@@ -21,13 +20,13 @@ public class Reptilian extends Creature implements VipWaiter {
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
     // Vérifier si le Beastman est en train de crier
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

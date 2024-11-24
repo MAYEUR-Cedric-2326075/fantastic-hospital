@@ -67,8 +67,6 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
         //this.diseasesList = diseasesList;
     }
     // Méthode abstraite pour obtenir la race (implémentée dans les sous-classes)
-    public abstract Race getRace();
-    //public  abstract void setRace(Race2 race);
 
 /*
     @Override
