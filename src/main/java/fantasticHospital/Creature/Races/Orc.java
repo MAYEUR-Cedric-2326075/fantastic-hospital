@@ -1,10 +1,10 @@
 package fantasticHospital.Creature.Races;
 
-import fantasticHospital.Creature.Creature;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
 import fantasticHospital.Creature.Race.PoorRace;
 
-public class Orc extends Creature implements PoorWaiter {
+public class Orc extends CreatureSexualised implements PoorWaiter {
 
     // Race spécifique
     private static final PoorRace race = new PoorRace("Orc", 40, 30,1,2,3, 8, 20);

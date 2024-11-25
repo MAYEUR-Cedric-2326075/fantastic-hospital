@@ -1,13 +1,14 @@
 package fantasticHospital.Creature.Races;
 
 import fantasticHospital.Creature.StatusEffect.*;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Behavior.VipWaiter;
 import fantasticHospital.Creature.Race.VipRace;
 
 import java.util.Set;
 
-public class Vampire extends Creature implements VipWaiter, Regenerator, Demoraliser<Creature> {
+public class Vampire extends CreatureSexualised implements VipWaiter, Regenerator, Demoraliser<Creature> {
 
     // Race spécifique
     private static VipRace race = new VipRace("Vampire", 50, 1,2,3,40, 30);

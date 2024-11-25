@@ -1,11 +1,11 @@
 package fantasticHospital.Creature.Races;
 
 import fantasticHospital.Creature.Behavior.Aging;
-import fantasticHospital.Creature.Creature;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
 import fantasticHospital.Creature.Race.PoorRace;
 
-public class Beastman extends Creature implements PoorWaiter,Aging /*, Contaminator*/ {
+public class Beastman extends CreatureSexualised implements PoorWaiter,Aging /*, Contaminator*/ {
 
     // Race spécifique
     private static PoorRace race=

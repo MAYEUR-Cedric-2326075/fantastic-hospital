@@ -31,6 +31,9 @@ public class LycanthropeRanking{
         }
         return -1;
     }
+    public void removeLycanthrope(Lycanthrope lycanthrope) {
+        ranking.remove(lycanthrope);
+    }
 
     public List<Lycanthrope> getRanking() {
         return new ArrayList<>(ranking);

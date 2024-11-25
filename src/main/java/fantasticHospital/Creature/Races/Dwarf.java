@@ -1,12 +1,12 @@
 package fantasticHospital.Creature.Races;
 
 import fantasticHospital.Creature.Behavior.VipWaiter;
-import fantasticHospital.Creature.Creature;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
 import fantasticHospital.Creature.Race.PoorRace;
 import fantasticHospital.Creature.Race.VipRace;
 
-public class Dwarf extends Creature implements VipWaiter {
+public class Dwarf extends CreatureSexualised implements VipWaiter {
 
     // Race spécifique
     private static final VipRace race = new VipRace("Dwarf", 70,1,2,3 ,60, 20);

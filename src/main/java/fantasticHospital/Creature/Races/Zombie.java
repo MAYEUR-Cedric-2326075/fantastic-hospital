@@ -1,11 +1,11 @@
 package fantasticHospital.Creature.Races;
 
-import fantasticHospital.Creature.Creature;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
 import fantasticHospital.Creature.StatusEffect.Regenerator;
 import fantasticHospital.Creature.Race.PoorRace;
 
-public class Zombie extends Creature implements PoorWaiter, Regenerator {
+public class Zombie extends CreatureSexualised implements PoorWaiter, Regenerator {
 
     // Race spécifique
     private static PoorRace race = new PoorRace("Zombie", 40, 20,1,2,3 ,10, 20);
