@@ -5,5 +5,11 @@ public class LycanthropeSorter implements Comparator<Lycanthrope>{
     public int compare(Lycanthrope l1, Lycanthrope l2) {
         return Integer.compare(l2.getDominationExercised(), l1.getDominationExercised());
     }
-    //public int getRank(Lycanthrope lycanthrope){}
+    /*
+    public int compare(Lycanthrope l1, Lycanthrope l2) {
+        return Integer.compare(l2.getStrength(), l1.getStrength());
+    }
+    */
+
+
 }

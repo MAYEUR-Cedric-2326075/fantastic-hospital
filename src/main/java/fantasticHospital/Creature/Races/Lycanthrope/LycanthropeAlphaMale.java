@@ -8,13 +8,18 @@ import java.util.Set;
 
 public class LycanthropeAlphaMale extends LycanthropeFemale implements Reproduiser<LycanthropeFemale, LycanthropeMale>{
     // Constructeur
-    public LycanthropeAlphaMale(String name, double weight, double height, int age, int strength, int dominationExercised,
-                                  int impetuosity) {
-        super(name, weight,height, age, strength, dominationExercised,impetuosity);
+    public LycanthropeAlphaMale(LycanthropeFemale lycanthropeFemale) {
+        super(
+                lycanthropeFemale.getName(),
+                lycanthropeFemale.getWeight(),
+                lycanthropeFemale.getHeight(),
+                lycanthropeFemale.getAge(),
+                lycanthropeFemale.getStrength(),
+                lycanthropeFemale.getDominationExercised(),
+                lycanthropeFemale.getImpetuosity()
+        );
     }
-    /**
-     * Creates a single offspring using the provided name.
-     */
+
     @Override
     public LycanthropeFemale reproduise(LycanthropeMale father, String name) {
         if (!this.isFertiled() || !father.isFertiled()) {
@@ -22,7 +27,8 @@ public class LycanthropeAlphaMale extends LycanthropeFemale implements Reproduis
         }
 
         // Create the child with placeholder values
-        LycanthropeFemale child = new LycanthropeFemale(name, 0, 0, 0, 0, 0, 0);
+        LycanthropeFemale child = new LycanthropeFemale(name, 0, 0, 0,
+                0, 0, 0,generateRandomBoolean());
 
         // Use inheritTraits to update the child's traits based on both parents
         inheritTraits(child, father);

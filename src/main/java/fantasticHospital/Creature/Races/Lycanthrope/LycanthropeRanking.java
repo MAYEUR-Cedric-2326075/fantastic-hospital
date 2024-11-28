@@ -14,13 +14,15 @@ public class LycanthropeRanking{
     public void addLycanthrope(Lycanthrope lycanthrope) {
         ranking.add(lycanthrope);
     }
-
-    public void updateScore(Lycanthrope lycanthrope, int newDominationExercised) {
-        if (ranking.contains(lycanthrope))
-            ranking.remove(lycanthrope);
-        lycanthrope.setDominationExercised(newDominationExercised);
-        ranking.add(lycanthrope);
+    public boolean isInRanking(Lycanthrope lycanthrope) {
+        for(Lycanthrope l : ranking){
+            if(l.equals(lycanthrope.getIdentification()))
+                return true;
+        }
+        return false;
     }
+
+
 
     public int getRank(Lycanthrope lycanthrope) {
         int rank = 1;

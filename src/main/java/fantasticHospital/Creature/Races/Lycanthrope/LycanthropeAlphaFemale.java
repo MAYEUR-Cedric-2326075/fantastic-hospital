@@ -8,10 +8,18 @@ import java.util.Set;
 
 public class LycanthropeAlphaFemale extends LycanthropeFemale implements Reproduiser<LycanthropeFemale, LycanthropeMale>{
     // Constructeur
-    public LycanthropeAlphaFemale(String name, double weight, double height, int age, int strength, int dominationExercised,
-                                  int impetuosity) {
-        super(name, weight,height, age, strength, dominationExercised,impetuosity);
+    public LycanthropeAlphaFemale(LycanthropeFemale lycanthropeFemale) {
+        super(
+                lycanthropeFemale.getName(),
+                lycanthropeFemale.getWeight(),
+                lycanthropeFemale.getHeight(),
+                lycanthropeFemale.getAge(),
+                lycanthropeFemale.getStrength(),
+                lycanthropeFemale.getDominationExercised(),
+                lycanthropeFemale.getImpetuosity()
+        );
     }
+
     //private float getLuck(){return  1;}
 
     @Override

@@ -8,14 +8,37 @@ import fantasticHospital.Tools.Randomizer;
 
 public abstract class  Lycanthrope extends Creature implements PoorWaiter, Aging, Randomizer {
 
-    // Classe de gestion du classement
     private static LycanthropeRanking ranking = new LycanthropeRanking();
-
-    // Race spécifique aux Lycanthropes
     private static PoorFertileRace race = new PoorFertileRace(
-            "Lycanthrope", 20, 15, 20, 40, 60, 10, 20, 30
+            "Lycanthrope", 20, 15, 20,
+            40, 60, 10, 20, 30
     );
+    public void joinThePack(){
+        if(!PACK.isInPack(identification))
+            PACK.addLycanthrope(this);
+    }
+    public void quitThePack(){
+        if(PACK.isInPack(identification))
+            PACK.removeLycanthrope(this);
 
+    }
+    // Référence au Pack unique
+    public static final Pack PACK = new Pack();
+    private  int strength;
+    private  int dominationExercised;
+    private  int impetuosity;
+
+    private  final String identification;
+    protected String getIdentification(){return identification;}
+    private String gererateIdentification(){
+        String id=generateRandomName(15);
+        while(PACK.isInPack(id))
+            id=generateRandomName(15);
+        return id;
+    }
+    // Race spécifique aux Lycanthropes
+
+    //public abstract boolean isAlpha();
     protected void inheritTraits(Lycanthrope child, Lycanthrope secondParent) {
         // Introduce randomness in inheritance using generateRandomFloat
         double randomnessWeight = generateRandomFloat(-0.5f, 1.5f);
@@ -38,20 +61,39 @@ public abstract class  Lycanthrope extends Creature implements PoorWaiter, Aging
         child.setImpetuosity(Math.max(childImpetuosity, 1)); // Ensure impetuosity is positive
         child.setAge(0); // Newborn age
     }
+    protected void setDominationExercisedInternal(int dominationExercised) {
+        this.dominationExercised = dominationExercised;
+    }
+
+    protected Lycanthrope(String name, double weight, double height, int age
+            ,int strength,int dominationExercised
+            ,int impetuosity){
+        super(name, weight, height, age);
+        this.dominationExercised = dominationExercised;
+        this.impetuosity = impetuosity;
+        this.strength = strength;
+        this.identification=gererateIdentification();
+    }
 
 
+    public Lycanthrope(String name, double weight, double height,
+                       int age ,int strength,int dominationExercised
+            ,int impetuosity,boolean loneWolf) {
+        this(name,weight,height,age,strength,dominationExercised,impetuosity);
+        Lycanthrope.ranking.addLycanthrope(this);
+        if(!loneWolf)
+            PACK.addLycanthrope(this);
 
-
-    private  int strength;
-    private  int dominationExercised;
-    private  int impetuosity;
-
-
+    }
     // Calcul du rang du Lycanthrope
     public int getRank() {
         return ranking.getRank(this);
     }
-
+    /*
+    public int getRankInPack() {
+        return PACK.getRanking().indexOf(this) + 1; // Rang basé sur le Pack
+    }
+*/
     public  int getLevel(){
         if(getAgeCategory()==AgeCategory.JEUNE)
             return strength+dominationExercised+getRank()+1;
@@ -63,9 +105,7 @@ public abstract class  Lycanthrope extends Creature implements PoorWaiter, Aging
         return strength+dominationExercised+getRank();
 
     }
-    public int getImpetuosity() {
-        return impetuosity;
-    }
+    public int getImpetuosity() {return impetuosity;}
     public abstract boolean isMale();
     public abstract boolean isFemale();
     public void setImpetuosity(int impetuosity) {
@@ -80,10 +120,13 @@ public abstract class  Lycanthrope extends Creature implements PoorWaiter, Aging
     public int getDominationExercised() {
         return dominationExercised;
     }
+    //@Override
     public void setDominationExercised(int dominationExercised) {
-        this.dominationExercised = dominationExercised;
-        ranking.updateScore(this, dominationExercised);
+       this.dominationExercised=dominationExercised;
     }
+    public abstract boolean isAlpha();
+
+
     int getDomanationFactor(Lycanthrope other) {return this.getDominationExercised()-other.getDominationExercised();}
     public static PoorFertileRace getRace() {return race;}
     @Override
@@ -124,32 +167,22 @@ public abstract class  Lycanthrope extends Creature implements PoorWaiter, Aging
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }
 
-    // Constructeur
-    public Lycanthrope(String name, double weight, double height, int age) {
-        super(name, weight, height, age);
-        Lycanthrope.ranking.addLycanthrope(this);
 
-    }
     @Override
     public void setAlive(boolean alive) {
         if(!alive&&isAlive()){
             super.setAlive(alive);
             Lycanthrope.ranking.removeLycanthrope(this);
+            //PACK.removeLycanthrope(this);
         }
         else{
             if(alive&&!isAlive()){
                 super.setAlive(false);
-                Lycanthrope.ranking.addLycanthrope(this);;
+                Lycanthrope.ranking.addLycanthrope(this);
+                //PACK.addLycanthrope(this);
             }
         }
 
     }
 
-    /*
-    @Override
-    public void contaminate(Creature creature) {
-        // Comportement spécifique de contamination des Lycanthropes
-        System.out.println(this.getName() + " contaminates " + creature.getName() + " with lycanthropy.");
-    }
-    */
 }
