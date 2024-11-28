@@ -1,6 +1,9 @@
-package fantasticHospital.Disease;
+package fantasticHospital;
 
 import fantasticHospital.Creature.Races.Beastman;
+import fantasticHospital.Disease.CreatureSickness;
+import fantasticHospital.Disease.CreatureSicknessContaminator;
+import fantasticHospital.Disease.Disease;
 
 public class TestCreatureDisease {
 
@@ -44,14 +47,20 @@ public class TestCreatureDisease {
         test.showDisease();
          */
 
-        CreatureSickness beastmanDisease = new CreatureSickness(beastman);
+        CreatureSicknessContaminator beastmanDisease = new CreatureSicknessContaminator(beastman);
+        CreatureSicknessContaminator beastmanDisease2 = new CreatureSicknessContaminator(beastman);
         //ajout de 2 maladies
         beastmanDisease.addDiseaseCurrentLevel(ZPL, 5);
         beastmanDisease.addDiseaseCurrentLevel(FOMO);
         //  -1 niv de ZPL
+
         beastmanDisease.decreaseLevel(ZPL);
         System.out.println(beastmanDisease.getAllDiseaseNames());
+        beastmanDisease.heal(ZPL);
+        System.out.println("test : " + beastmanDisease.getAllDiseaseNames());
         //beastmanDisease.showDisease();
 
+        beastmanDisease.contaminate(beastmanDisease2);
+        System.out.println(beastmanDisease2.getAllDiseaseNames());
     }
 }

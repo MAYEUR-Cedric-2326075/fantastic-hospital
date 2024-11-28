@@ -6,6 +6,7 @@ public class Disease {
     private String shortName;
     private final int maxLevel;
 
+
     public Disease(String name, String shortName, int maxLevel) {
         this.name = name;
         this.shortName = shortName;
@@ -23,5 +24,4 @@ public class Disease {
     public int getMaxLevel() {
         return maxLevel;
     }
-
 }

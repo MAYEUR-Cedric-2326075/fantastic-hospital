@@ -1,20 +1,46 @@
 package fantasticHospital.Disease;
 
 import fantasticHospital.Creature.Creature;
-
+import fantasticHospital.Creature.Races.*;
 import java.util.*;
 
 public class CreatureSickness {
     private Creature creature;
     Map<Disease, Integer> diseaseCurrentLevel = new HashMap<>();
+    private static final List<Disease> diseases = new ArrayList<>();
 
-    public CreatureSickness(Creature creature) {
+    static {
+        diseases.add(new Disease("Maladie débilitante chronique", "MDC", 5));
+        diseases.add(new Disease("fear of missing out", "FOMO", 5));
+        diseases.add(new Disease("Dépendance aux réseaux sociaux", "DRS", 5));
+        diseases.add(new Disease("Porphyrie érythropoïétique congénitale", "PEC", 5));
+        diseases.add(new Disease("Zoopathie paraphrénique lycanthropique", "ZPL", 5));
+        diseases.add(new Disease("Blight of Gloom", "BG", 5));
+    }
+
+    protected CreatureSickness(Creature creature) {
         this.creature = creature;
-        this.diseaseCurrentLevel = diseaseCurrentLevel;
+    }
+
+    public CreatureSickness(Elf creature) {
+        this.creature = creature;
+    }
+    public CreatureSickness(Dwarf creature) {
+        this.creature = creature;
+    }
+    public CreatureSickness(Reptilian creature) {
+        this.creature = creature;
+    }
+    public CreatureSickness(Zombie creature) {
+        this.creature = creature;
     }
 
     public Creature getCreature() {
         return creature;
+    }
+
+    public void setDiseaseCurrentLevel(Map<Disease, Integer> diseaseCurrentLevel) {
+        this.diseaseCurrentLevel = diseaseCurrentLevel;
     }
 
     public Map<Disease, Integer> getDiseaseCurrentLevel() {
@@ -71,5 +97,20 @@ public class CreatureSickness {
         }
         return diseaseNames;
     }
+
+    public void heal(){
+        diseaseCurrentLevel.clear();
+    }
+    public void heal(Disease disease){
+        diseaseCurrentLevel.remove(disease);
+    }
+
+    public static Disease randomDisease() {
+        Random random = new Random();
+        int index = random.nextInt(diseases.size()); // Génère un index aléatoire
+        return diseases.get(index); // Retourne la maladie correspondante
+    }
+
+    //iteratuer pour point en +
 
 }
