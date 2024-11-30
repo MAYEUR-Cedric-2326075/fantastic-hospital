@@ -1,63 +1,49 @@
-package com.fantasticHospital;
+package fantasticHospital.Hospital.MedicalService;
 
-import fantasticHospital.Creature.Creature;
+import fantasticHospital.Disease.CreatureSickness;
+import fantasticHospital.Disease.CreatureSicknessContaminator;
+import fantasticHospital.Tools.Randomizer;
+import java.util.HashSet;
+import java.util.ArrayList;
 
-import java.util.List;
-
-public class MedicalService {
+public class MedicalService implements Randomizer {
 
     private String name;
-    private int area;
-    private int maxCreature;
-    private int nbPresentCreature;
-    private List<Creature> presentCreature;
-    private enum budget { inexistant, médiocre, insuffisant, faible };
+    private int budget;
+    private HashSet<CreatureSickness> patients = new HashSet<>();
 
-    public MedicalService(String name, int area, int maxCreature, int nbPresentCreature, List<Creature> presentCreature) {
+    public MedicalService(String name){
         this.name = name;
-        this.area = area;
-        this.maxCreature = maxCreature;
-        this.nbPresentCreature = nbPresentCreature;
-        this.presentCreature = presentCreature;
+        this.budget = 100000;
+    }
+    public MedicalService(){
+        this.name = "NoName";
+        this.budget = 100000;
+    }
+    public MedicalService(String name,int budget){
+        this.name = name;
+        this.budget = budget;
+    }
+    public boolean isEmpty(){
+        return patients.isEmpty();
     }
 
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public boolean isCrypt(){return false;}
+    public boolean isQuarantine(){return false;}
+    public void setName(String name) {this.name=name;}
+    public int getBudget() {return budget;}
+    public void setBudget(int budget) {this.budget = budget;}
+    public HashSet<CreatureSickness> getPatients() {return patients;}
+    public void addPatient(CreatureSickness creatureSickness){patients.add(creatureSickness);}
+    public void removeatient(CreatureSickness creatureSickness){patients.remove(creatureSickness);}
+    public void reeviewBudget(int budget){this.budget =getBudget()-budget;}
+    public CreatureSickness getRandomPatient() {
+        if (patients.isEmpty())
+            return null;
+        return patients.stream().findFirst().orElse(null);
     }
 
-    public int getArea() {
-        return area;
-    }
-
-    public void setArea(int area) {
-        this.area = area;
-    }
-
-    public int getMaxCreature() {
-        return maxCreature;
-    }
-
-    public void setMaxCreature(int maxCreature) {
-        this.maxCreature = maxCreature;
-    }
-
-    public int getNbPresentCreature() {
-        return nbPresentCreature;
-    }
-
-    public void setNbPresentCreature(int nbPresentCreature) {
-        this.nbPresentCreature = nbPresentCreature;
-    }
-
-    public List<Creature> getPresentCreature() {
-        return presentCreature;
-    }
-
-    public void setPresentCreature(List<Creature> presentCreature) {
-        this.presentCreature = presentCreature;
-    }
 }
