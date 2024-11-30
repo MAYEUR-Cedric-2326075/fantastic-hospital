@@ -2,6 +2,7 @@ package fantasticHospital.Disease;
 
 public class Disease {
 
+    //cette classe contient les maladies
     private String name;
     private String shortName;
     private final int maxLevel;

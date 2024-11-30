@@ -63,5 +63,6 @@ public class TestCreatureDisease {
         beastmanDisease.contaminate(beastmanDisease2);
         System.out.println("Maladie de Beastman2 : " + beastmanDisease2.getAllDiseaseNames());
 
+        System.out.println(beastmanDisease.getCurrentLevel(FOMO));
     }
 }

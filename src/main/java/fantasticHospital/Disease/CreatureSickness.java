@@ -6,9 +6,9 @@ import java.util.*;
 
 public class CreatureSickness {
     private Creature creature;
-    Map<Disease, Integer> diseaseCurrentLevel = new HashMap<>();
-    private static final List<Disease> diseases = new ArrayList<>();
-
+    Map<Disease, Integer> diseaseCurrentLevel = new HashMap<>();//contien les information sur les maladies qui touche les créatures
+    private static final List<Disease> diseases = new ArrayList<>(); //contient toutes les maladies
+    //ajoute toutes les maladies a "diseases"
     static {
         diseases.add(new Disease("Maladie débilitante chronique", "MDC", 5));
         diseases.add(new Disease("fear of missing out", "FOMO", 5));
@@ -18,10 +18,10 @@ public class CreatureSickness {
         diseases.add(new Disease("Blight of Gloom", "BG", 5));
     }
 
+    //constructeurs
     protected CreatureSickness(Creature creature) {
         this.creature = creature;
     }
-
     public CreatureSickness(Elf creature) {
         this.creature = creature;
     }
@@ -35,33 +35,32 @@ public class CreatureSickness {
         this.creature = creature;
     }
 
+    //getter et setter
     public Creature getCreature() {
         return creature;
     }
-
-    public void setDiseaseCurrentLevel(Map<Disease, Integer> diseaseCurrentLevel) {
-        this.diseaseCurrentLevel = diseaseCurrentLevel;
-    }
-
     public Map<Disease, Integer> getDiseaseCurrentLevel() {
         return diseaseCurrentLevel;
     }
 
-    public void addDiseaseCurrentLevel(Disease disease, int currentLevel) {
-        diseaseCurrentLevel.put(disease, currentLevel);
-    }
-    public void addDiseaseCurrentLevel(Disease disease) {
-        diseaseCurrentLevel.put(disease, 1);
-    }
-
+    //methodes
+    //rencoie le niveau de la maladie placer en paramètre
     public int getCurrentLevel(Disease disease) {
         return diseaseCurrentLevel.get(disease);
     }
-
+    //modifie le level d'une maladie
     private void setCurrentLevel(Disease disease, int currentLevel) {
         diseaseCurrentLevel.put(disease, currentLevel);
     }
-
+    //ajoute une maladie avec un level custom
+    public void addDiseaseCurrentLevel(Disease disease, int currentLevel) {
+        diseaseCurrentLevel.put(disease, currentLevel);
+    }
+    //ajoute une maladie avec un level = 1
+    public void addDiseaseCurrentLevel(Disease disease) {
+        diseaseCurrentLevel.put(disease, 1);
+    }
+    //baisse le level de la maladie de 1
     public void decreaseLevel(Disease disease) {
         if (getCurrentLevel(disease) <= 1){
             System.out.println("niveau minimum atteint");
@@ -69,7 +68,7 @@ public class CreatureSickness {
             setCurrentLevel(disease, getCurrentLevel(disease) -1);
         }
     }
-
+    //augmente le level de la maladie de 1
     public void increaseLevel(Disease disease) {
         if (getCurrentLevel(disease) >= disease.getMaxLevel()){
             creature.die();
@@ -77,8 +76,8 @@ public class CreatureSickness {
             setCurrentLevel(disease, getCurrentLevel(disease) +1);
         }
     }
-
-    public void showDisease() {//usage similaire a un toString
+    //usage similaire a un toString qui affiche les maladies d'une créatureMalade
+    public void showDisease() {
         System.out.println("Nom : " + creature.getName());
         Iterator<Map.Entry<Disease, Integer>> iterator = diseaseCurrentLevel.entrySet().iterator();
         while(iterator.hasNext()) {
@@ -86,10 +85,11 @@ public class CreatureSickness {
             System.out.println("Maladie : " + element.getKey().getShortName() + ", Niveau : " + element.getValue());
         }
     }
-
-    public Set<Disease> getDisease(){//Renvoie un set avec les maladies
+    //Renvoie un set avec les maladies d'une CréatureMalade
+    public Set<Disease> getDisease(){
         return diseaseCurrentLevel.keySet();
     }
+    //Renvoie une liste avec les nom de toute les maladies d'une CréatureMalade
     public List<String> getAllDiseaseNames() {
         List<String> diseaseNames = new ArrayList<>();
         Iterator<Map.Entry<Disease, Integer>> iterator = diseaseCurrentLevel.entrySet().iterator();
@@ -99,14 +99,15 @@ public class CreatureSickness {
         }
         return diseaseNames;
     }
-
+    //soigne toute les maladies
     public void heal(){
         diseaseCurrentLevel.clear();
     }
+    //soigne la maladie passer en paramètre
     public void heal(Disease disease){
         diseaseCurrentLevel.remove(disease);
     }
-
+    //génère une maladie au hasard parmi la liste "diseases"
     public static Disease randomDisease() {
         Random random = new Random();
         int index = random.nextInt(diseases.size()); // Génère un index aléatoire
