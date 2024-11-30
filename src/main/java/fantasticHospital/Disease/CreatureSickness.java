@@ -80,10 +80,10 @@ public class CreatureSickness {
 
     public void showDisease() {//usage similaire a un toString
         System.out.println("Nom : " + creature.getName());
-        for (Map.Entry<Disease, Integer> entry : diseaseCurrentLevel.entrySet()) {
-            String key = entry.getKey().getShortName();
-            Integer value = entry.getValue();
-            System.out.println("Maladie : " + key + ", Niveau : " + value);
+        Iterator<Map.Entry<Disease, Integer>> iterator = diseaseCurrentLevel.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<Disease, Integer> element = iterator.next();
+            System.out.println("Maladie : " + element.getKey().getShortName() + ", Niveau : " + element.getValue());
         }
     }
 
@@ -92,8 +92,10 @@ public class CreatureSickness {
     }
     public List<String> getAllDiseaseNames() {
         List<String> diseaseNames = new ArrayList<>();
-        for (Disease disease : diseaseCurrentLevel.keySet()) {
-            diseaseNames.add(disease.getName());
+        Iterator<Map.Entry<Disease, Integer>> iterator = diseaseCurrentLevel.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<Disease, Integer> element = iterator.next();
+            diseaseNames.add(element.getKey().getName());
         }
         return diseaseNames;
     }
@@ -110,7 +112,5 @@ public class CreatureSickness {
         int index = random.nextInt(diseases.size()); // Génère un index aléatoire
         return diseases.get(index); // Retourne la maladie correspondante
     }
-
-    //iteratuer pour point en +
 
 }
