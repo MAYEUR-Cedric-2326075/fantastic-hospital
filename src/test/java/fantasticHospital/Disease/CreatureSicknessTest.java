@@ -5,9 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,21 +12,19 @@ class CreatureSicknessTest {
 
     private Disease DRS;
     private Beastman beastman;
-    private CreatureSickness beastmanDisease;
+    private CreatureSicknessContaminator beastmanDisease;
     @BeforeEach
     void setUp() {
         DRS = new Disease("Dépendance aux réseaux sociaux", "DRS", 5);
         beastman = new Beastman("Tormak", true, 80.5, 2.1, 25);
-        beastmanDisease = new CreatureSickness(beastman);
+        beastmanDisease = new CreatureSicknessContaminator(beastman);
     }
-
 
     @Test
     void getDiseaseName() {
         beastmanDisease.addDiseaseCurrentLevel(DRS, 2);
         assertEquals("[Dépendance aux réseaux sociaux]", beastmanDisease.getAllDiseaseNames().toString());
     }
-
 
     @Test
     void getCreatureName() {
@@ -48,7 +43,6 @@ class CreatureSicknessTest {
         beastmanDisease.decreaseLevel(DRS);
         assertEquals(1, beastmanDisease.getCurrentLevel(DRS));
     }
-
     @Test
     void increaseLevel() {
         beastmanDisease.addDiseaseCurrentLevel(DRS, 2);
@@ -71,7 +65,7 @@ class CreatureSicknessTest {
 
     @Test
     void healDisease() {
-        CreatureSickness beastmanDisease2 = new CreatureSickness(beastman);
+        CreatureSicknessContaminator beastmanDisease2 = new CreatureSicknessContaminator(beastman);
         Disease TEST = new Disease("maladie des tests unitaires", "TEST", 5);
 
         beastmanDisease.addDiseaseCurrentLevel(DRS, 2);
@@ -89,4 +83,5 @@ class CreatureSicknessTest {
         beastmanDisease.heal();
         assertEquals(new ArrayList<>(),beastmanDisease.getAllDiseaseNames());
     }
+
 }

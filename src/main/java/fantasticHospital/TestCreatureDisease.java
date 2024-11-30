@@ -1,6 +1,6 @@
 package fantasticHospital;
 
-import fantasticHospital.Creature.Races.Beastman;
+import fantasticHospital.Creature.Races.*;
 import fantasticHospital.Disease.CreatureSickness;
 import fantasticHospital.Disease.CreatureSicknessContaminator;
 import fantasticHospital.Disease.Disease;
@@ -63,6 +63,6 @@ public class TestCreatureDisease {
         beastmanDisease.contaminate(beastmanDisease2);
         System.out.println("Maladie de Beastman2 : " + beastmanDisease2.getAllDiseaseNames());
 
-        System.out.println(beastmanDisease.getCurrentLevel(FOMO));
+
     }
 }
