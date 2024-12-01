@@ -1,15 +1,8 @@
 package fantasticHospital.Creature.Races.Lycanthrope;
-import java.util.Comparator;
-public class LycanthropeSorter implements Comparator<Lycanthrope>{
+import java.util.Comparator;//LycanthropeFemale
+public class LycanthropeSorter implements Comparator<LycanthropeFemale>{
     @Override
-    public int compare(Lycanthrope l1, Lycanthrope l2) {
-        return Integer.compare(l2.getDominationExercised(), l1.getDominationExercised());
+    public int compare(LycanthropeFemale l1, LycanthropeFemale l2) {
+        return Integer.compare(l2.getBeauty(), l1.getBeauty());
     }
-    /*
-    public int compare(Lycanthrope l1, Lycanthrope l2) {
-        return Integer.compare(l2.getStrength(), l1.getStrength());
-    }
-    */
-
-
 }

@@ -1,36 +1,48 @@
-
 package fantasticHospital.Creature.Races.Lycanthrope;
+
+import java.util.HashSet;
+
 public class LycanthropeTest {
+
+    // Test pour valider le classement des Lycanthropes et l'ajout des membres
     public static void testLycanthropesRanking() {
-        LycanthropeMale male1 = new LycanthropeMale("Male1", 70.0, 175.0, 4,
-                80, 30, 30);
-        LycanthropeMale male2 = new LycanthropeMale("Male2", 75.0, 180.0,
-                5, 90, 25, 35);
-        System.out.println("Rank after creation must be 1 male1 =" + male1.getRank());
-        System.out.println("Rank after creation must be 2 male2 =" + male2.getRank());
-        male2.setDominationExercised(40);
-        System.out.println("Rank after modification must be 1 male2 =" + male2.getRank());
-        System.out.println("Rank after modification must be 2 male1 =" + male1.getRank());
+
     }
 
+    // Test pour valider la gestion des Alphas et des défis
     public static void testLycanthropesAlpha() {
-        // Création des Lycanthropes normaux
-        LycanthropeMale male1 = new LycanthropeMale("Male1", 70.0,
-                175.0, 4, 80, 20, 30,false);
-        LycanthropeMale male2 = new LycanthropeMale("Male2", 75.0, 180.0,
-                5, 90, 25, 35,false);
-        LycanthropeFemale female1 = new LycanthropeFemale("Female1", 65.0, 165.0,
-                3, 70, 15, 25,false);
-        LycanthropeFemale female2 = new LycanthropeFemale("Female2", 68.0, 170.0,
-                4, 85, 18, 28,false);
+        System.out.println("=== Test: Lycanthropes Alpha Management ===");
 
-        Lycanthrope.PACK.display();
-        Lycanthrope.PACK.getAlphaDFemale();
+
+
+        // Créer des Lycanthropes mâles
+        LycanthropeMale male1 = new LycanthropeMale("Fenrir", 90, 180, 30, 100
+                , 1);
+        LycanthropeMale male3= new LycanthropeMale("Skoll", 85, 175, 28, 600
+                , 101);
+        LycanthropeMale male2 = new LycanthropeMale("Machine", 85, 175, 28, 200
+                , 101);
+
+        // Créer des Lycanthropes femelles
+        LycanthropeFemale female2 = new LycanthropeFemale("Luna", 65, 165, 22
+                , 75, 8, 35,520);
+        LycanthropeFemale female1 = new LycanthropeFemale("Hati", 70, 170, 25
+                , 80, 10, 30,100);
+
+        LycanthropeFemale female3 = new LycanthropeFemale("Mada", 65, 165, 22
+                , 75, 8, 35,50);
+        Lycanthrope.PACK.moveMembers(2,male1);
+        Lycanthrope.PACK.moveMembers(6,male2);
+        //System.out.println("=== Test: Lycanthropes Alpha Management ==="+Lycanthrope.PACK.toString());
+        Lycanthrope.PACK.challenge(male2,male1);
+        Lycanthrope.PACK.challengeAlpha(male3);
+        System.out.println("=== Test: Lycanthropes Alpha Management ==="+Lycanthrope.PACK.toString());
 
 
     }
 
     public static void main(String[] args) {
+        testLycanthropesRanking();
         testLycanthropesAlpha();
     }
 }
