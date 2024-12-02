@@ -1,5 +1,8 @@
 package fantasticHospital.Hospital.MedicalService;
 
+import fantasticHospital.Creature.Creature;
+import fantasticHospital.Creature.Race.PoorRace;
+import fantasticHospital.Creature.Race.VipRace;
 import fantasticHospital.Creature.Races.*;
 import fantasticHospital.Disease.CreatureSickness;
 import fantasticHospital.Disease.CreatureSicknessContaminator;
@@ -48,13 +51,29 @@ public class MedicalService implements Randomizer {
         return patients.stream().findFirst().orElse(null);
     }
     //public HashSet getPatients(){}
-    public void wainting(){
+    public void waiting(){
         for (CreatureSickness creatureSickness : patients) {
             if(creatureSickness.getCreature().getRace().isVip()){
-                (Elf)creatureSickness.getCreature().waiting(isEmpty());
+                if(creatureSickness.getCreature().getRace().isVip()){
+                    switch (creatureSickness.getCreature().getRace().getRaceName()){
+                        case "Elf":
+                            //Elf elf=(Elf)getCreatures();
+                    }
+
+
+                }
             }
         }
     }
+    private HashSet getCreatures(){
+        HashSet creatures = new HashSet();
+        for (CreatureSickness creatureSickness : patients) {
+            creatures.add(creatureSickness.getCreature());
+        }
+        return creatures;
+    }
+    @Override
+    public String toString(){return "String de servide";}
 
 
 }
