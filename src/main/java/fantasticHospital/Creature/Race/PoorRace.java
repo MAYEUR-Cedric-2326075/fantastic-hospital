@@ -29,6 +29,7 @@ public class PoorRace extends Race {
     public void setRateOfReductionWithoutPeaple(int rateOfReductionWithoutPeaple) {
         this.rateOfReductionWithoutPeaple = rateOfReductionWithoutPeaple;
     }
+    public boolean isVip(){return false;}
 
     // Méthode toString pour faciliter l'affichage
     @Override

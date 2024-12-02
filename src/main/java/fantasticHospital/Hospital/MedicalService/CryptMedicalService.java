@@ -14,6 +14,7 @@ class CryptMedicalService extends MedicalService {
         super(name, budget);
     }
 
+
     @Override
     public boolean isCrypt() {
         return true;

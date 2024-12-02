@@ -9,7 +9,7 @@ import fantasticHospital.Creature.StatusEffect.Demoraliser;
 import fantasticHospital.Disease.CreatureSicknessContaminator;
 import fantasticHospital.Disease.Disease;
 import fantasticHospital.Disease.CreatureSickness;
-import com.fantasticHospital.MedicalService;
+import fantasticHospital.Hospital.MedicalService.*;
 import com.fantasticHospital.Doctor;
 
 import java.util.*;
@@ -20,7 +20,7 @@ public class Hospital {
     private int maxMedicalServices;
     private int maxPatients;
     private int maxDeaths;
-    private List<MedicalService> medicalServices;
+    private HashSet<MedicalService> medicalServices;
     private List<Doctor> doctors;
     private int maxActionPoints;
     private int currentActionPoints;
@@ -31,7 +31,7 @@ public class Hospital {
         this.maxMedicalServices = maxMedicalServices;
         this.maxPatients = maxPatients;
         this.maxDeaths = maxDeaths;
-        this.medicalServices = new ArrayList<>();
+        this.medicalServices = new HashSet<>();
         this.doctors = new ArrayList<>();
     }
 
@@ -59,7 +59,7 @@ public class Hospital {
     public void setMaxMedicalServices(int maxMedicalServices) {
         this.maxMedicalServices = maxMedicalServices;
     }
-    public List<MedicalService> getMedicalServices() {
+    public HashSet<MedicalService> getMedicalServices() {
         return medicalServices;
     }
     public List<Doctor> getDoctors() {
@@ -112,13 +112,13 @@ public class Hospital {
             return;
         }
 
-        for (com.fantasticHospital.MedicalService service : medicalServices) {
+        for (MedicalService service : medicalServices) {
             System.out.println("Service médical : " + service.getName());
 
-            if (service.getPresentCreature().isEmpty()) {
+            if (service.isEmpty()) {
                 System.out.println("  Il n'y a pas de créatures.");
             } else {
-                for (Creature creature : service.getPresentCreature()) {
+                for (Creature creature : service.getPatients().toArray()) {
                     ++totalCreatures;
                     System.out.println("  " + creature.getName() + " (" + creature.getRace() + ")");
 
@@ -160,7 +160,7 @@ public class Hospital {
     // Modification du moral des créatures
     public void updateMorality(MedicalService service) {
 
-        for (Creature creature : service.getPresentCreature()) {
+        for (Creature creature : service.getPatients().toArray()) {
 
             if (!creature.isAlive()) {
 
@@ -195,7 +195,7 @@ public class Hospital {
                     int rateOfReduction = vipRace.getRateOfReduction();
                     creature.setMoralityRate(creature.getMoralityRate() - rateOfReduction);
 
-                } else if (creature.getRace().isPoor()) {
+                } else{
                     PoorRace poorRace = (PoorRace) creature.getRace();
                     int rateOfReduction;
 
@@ -222,7 +222,6 @@ public class Hospital {
         }
         service.getPresentCreature().removeAll(deadCreatures);
     }
-
 
     //Générer une créature aléatoire
     private Creature generateRandomCreature() {

@@ -18,6 +18,7 @@ public class VipRace extends Race {
     public void setRateOfReduction(int rateOfReduction) {
         this.rateOfReduction = rateOfReduction;
     }
+    public boolean isVip(){return false;}
 
     // Méthode toString pour faciliter l'affichage
     @Override

@@ -1,6 +1,6 @@
 package fantasticHospital.Creature.Race;
 
-public class Race {
+public abstract class Race {
     // Attributs privés
     private int rateOfMoralitybeginningSream;
     private int rateOfMoralityBeginningRage;
@@ -34,6 +34,7 @@ public class Race {
     public String getRaceName() {
         return raceName;
     }
+    public abstract boolean isVip();
 
     public void setRaceName(String raceName) {
         this.raceName = raceName;

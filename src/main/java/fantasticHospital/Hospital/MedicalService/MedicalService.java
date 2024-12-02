@@ -1,5 +1,6 @@
 package fantasticHospital.Hospital.MedicalService;
 
+import fantasticHospital.Creature.Races.*;
 import fantasticHospital.Disease.CreatureSickness;
 import fantasticHospital.Disease.CreatureSicknessContaminator;
 import fantasticHospital.Tools.Randomizer;
@@ -20,6 +21,7 @@ public class MedicalService implements Randomizer {
         this.name = "NoName";
         this.budget = 100000;
     }
+    public int size(){return this.patients.size();}
     public MedicalService(String name,int budget){
         this.name = name;
         this.budget = budget;
@@ -45,5 +47,14 @@ public class MedicalService implements Randomizer {
             return null;
         return patients.stream().findFirst().orElse(null);
     }
+    //public HashSet getPatients(){}
+    public void wainting(){
+        for (CreatureSickness creatureSickness : patients) {
+            if(creatureSickness.getCreature().getRace().isVip()){
+                (Elf)creatureSickness.getCreature().waiting(isEmpty());
+            }
+        }
+    }
+
 
 }
