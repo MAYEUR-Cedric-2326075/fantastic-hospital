@@ -43,8 +43,8 @@ public class MedicalService implements Randomizer {
     public void setBudget(int budget) {this.budget = budget;}
     public HashSet<CreatureSickness> getPatients() {return patients;}
     public void addPatient(CreatureSickness creatureSickness){patients.add(creatureSickness);}
-    public void removeatient(CreatureSickness creatureSickness){patients.remove(creatureSickness);}
-    public void reeviewBudget(int budget){this.budget =getBudget()-budget;}
+    public void removePatient(CreatureSickness creatureSickness){patients.remove(creatureSickness);}
+    public void reviewBudget(int budget){this.budget =getBudget()-budget;}
     public CreatureSickness getRandomPatient() {
         if (patients.isEmpty())
             return null;
@@ -65,8 +65,8 @@ public class MedicalService implements Randomizer {
             }
         }
     }
-    private HashSet getCreatures(){
-        HashSet creatures = new HashSet();
+    public HashSet<Creature> getCreatures() {
+        HashSet<Creature> creatures = new HashSet<>();
         for (CreatureSickness creatureSickness : patients) {
             creatures.add(creatureSickness.getCreature());
         }
