@@ -3,6 +3,9 @@ package fantasticHospital.Hospital.MedicalService.TypeOfMedicalService;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Disease.Races.Contaminater.VampireSiknessContaminator;
+
+import java.util.HashSet;
+
 public abstract class CryptMedicalService<T extends CreatureSickness> extends MedicalService<T> {
 //public abstract class CryptMedicalService extends MedicalService<CreatureSickness> {
 
@@ -64,5 +67,15 @@ public abstract class CryptMedicalService<T extends CreatureSickness> extends Me
         return super.toString()
                 + ", Température actuelle: " + currentTemperature + "°C"
                 + ", Niveau de ventilation: " + ventilationLevel + "%";
+    }
+    public HashSet<T> removeLivings(){
+        HashSet<T> livings = new HashSet<T>();
+        for (T creatureSickness:getPatients()) {
+            if (!creatureSickness.getCreature().isAlive()) {
+                getPatients().add( creatureSickness);
+                getPatients().remove(creatureSickness);
+            }
+        }
+        return livings;
     }
 }

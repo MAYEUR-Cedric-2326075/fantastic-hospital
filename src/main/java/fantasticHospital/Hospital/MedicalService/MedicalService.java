@@ -13,7 +13,7 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
     private  static int startingBudjet=100000;
     private final static String defaultName="unnamedMedicalService";
     private HashSet<Patient> patients = new HashSet<>();
-    protected HashSet<Creature> getCreaturesPresentNow() {
+    public HashSet<Creature> getCreaturesPresentNow() {
         HashSet<Creature> creatures = new HashSet<>();
         for (Patient patient : patients) {
             creatures.add(patient.getCreature());
@@ -26,6 +26,13 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
     public HashSet<Patient> getPatients(){return patients;}
     public boolean addPatient(Patient creatureSickness){
         return (getNumberOfPatientNow()< getNumberOfPatientMax())&&patients.add(creatureSickness);
+    }
+    public boolean addPatient(HashSet<Patient> creatureSickness){
+        for (Patient patient : creatureSickness) {
+            if(!addPatient(patient))
+                return false;
+        }
+        return true;
     }
     public boolean removePatient(Patient creatureSickness){
         return !isEmpty()&&patients.remove(creatureSickness);
@@ -61,6 +68,16 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
 
     @Override
     public String toString(){return "String de servide";}
+    public HashSet<Patient> removeDeads(){
+        HashSet<Patient> dead = new HashSet<Patient>();
+        for (Patient creatureSickness:patients) {
+            if (creatureSickness.getCreature().isAlive()) {
+                dead.add(creatureSickness);
+                patients.remove(creatureSickness);
+            }
+        }
+        return dead;
+    }
 
 
 

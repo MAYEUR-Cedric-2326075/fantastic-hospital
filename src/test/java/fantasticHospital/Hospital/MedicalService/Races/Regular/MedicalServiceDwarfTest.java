@@ -2,8 +2,11 @@ package fantasticHospital.Hospital.MedicalService.Races.Regular;
 
 import fantasticHospital.Creature.Races.Dwarf;
 import fantasticHospital.Disease.Races.Regular.DwarfSickness;
+import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -88,4 +91,5 @@ class MedicalServiceDwarfTest {
         String serviceInfo = medicalServiceDwarf.toString();
         assertNotNull(serviceInfo, "The toString method should return a non-null string.");
     }
+
 }

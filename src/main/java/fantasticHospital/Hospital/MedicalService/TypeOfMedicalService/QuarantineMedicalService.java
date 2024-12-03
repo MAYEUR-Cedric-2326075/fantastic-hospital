@@ -4,6 +4,8 @@ import fantasticHospital.Disease.TypeOfPatient.CreatureSicknessContaminator;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 
+import java.util.HashSet;
+
 // Spécialisation : Quarantine
 public abstract class QuarantineMedicalService<T extends CreatureSicknessContaminator> extends MedicalService<T> {
 //public abstract class QuarantineMedicalService extends MedicalService<CreatureSickness> {
@@ -59,5 +61,15 @@ public abstract class QuarantineMedicalService<T extends CreatureSicknessContami
     public String toString() {
         return super.toString()
                 + ", Taux d'isolation: " + (getRateOfIsolation() * 100) + "%";
+    }
+    public HashSet<T> moveHealfy(){
+        HashSet<T> healfy = new HashSet<>();
+        for (T creatureSickness:getPatients()) {
+            if (creatureSickness.isHealthy()) {
+                getPatients().add( creatureSickness);
+                getPatients().remove(creatureSickness);
+            }
+        }
+        return healfy;
     }
 }
