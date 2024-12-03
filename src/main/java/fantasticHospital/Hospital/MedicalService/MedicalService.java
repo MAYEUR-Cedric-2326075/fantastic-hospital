@@ -51,7 +51,7 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
     public int getBudget() {return budget;}
     public void setBudget(int budget) {this.budget = budget;}
 
-    protected boolean isFull(){return getNumberOfPatientNow()== getNumberOfPatientMax();}
+    public boolean isFull(){return getNumberOfPatientNow()== getNumberOfPatientMax();}
 
     public void reviewBudget(int budget){this.budget =getBudget()-budget;}
     protected Patient getRandomPatient() {return patients.stream().findFirst().orElse(null);}
