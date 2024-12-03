@@ -469,8 +469,9 @@ public class Hospital {
         medicalServices.add(medicalServiceVampire);
         medicalServices.add(medicalServiceLycanthrope);
         medicalServices.add(medicalServiceReptilian);
-        medicalServiceDwarf.addPatient(new DwarfSickness(new Dwarf("Gloin", true, 80.0, 1.4, 140)));
-        medicalServiceDwarf.addPatient(new DwarfSickness(new Dwarf("Gloin2", true, 85.0, 1.4, 140)));
+        //exemple pour test
+        //medicalServiceDwarf.addPatient(new DwarfSickness(new Dwarf("Gloin", true, 80.0, 1.4, 140)));
+        //medicalServiceDwarf.addPatient(new DwarfSickness(new Dwarf("Gloin2", true, 85.0, 1.4, 140)));
         return medicalServices;
     }
 
