@@ -104,4 +104,12 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
     public abstract void die();
      */
 
+    @Override
+    public String toString() {
+        return "Creature{name='" + name + "', gender=" + (gender ? "Male" : "Female") + ", weight=" + weight +
+                ", height=" + height + ", age=" + age + ", moralityRate=" + moralityRate +
+                ", alive=" + Alive + "}";
+    }
+
+
 }

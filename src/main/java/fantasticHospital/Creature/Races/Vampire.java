@@ -64,4 +64,9 @@ public class Vampire extends Creature implements VipWaiter, Regenerator, Demoral
         System.out.println(this.getName() + " infects " + creature.getName() + " with its dark curse.");
     }
     */
+
+    @Override
+    public String toString() {
+        return super.toString() + ", race=" + getRace().getRaceName();
+    }
 }

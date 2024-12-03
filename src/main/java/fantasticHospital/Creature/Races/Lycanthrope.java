@@ -48,4 +48,9 @@ public class Lycanthrope extends Creature implements PoorWaiter {
         System.out.println(this.getName() + " contaminates " + creature.getName() + " with lycanthropy.");
     }
     */
+
+    @Override
+    public String toString() {
+        return super.toString() + ", race=" + getRace().getRaceName();
+    }
 }

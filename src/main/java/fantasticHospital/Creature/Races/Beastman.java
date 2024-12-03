@@ -40,4 +40,8 @@ public class Beastman extends Creature implements PoorWaiter/*, Contaminator*/ {
         super(name, gender, weight, height, age);
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", race=" + getRace().getRaceName();
+    }
 }

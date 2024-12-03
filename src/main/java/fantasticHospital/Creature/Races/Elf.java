@@ -51,4 +51,9 @@ public class Elf extends Creature implements VipWaiter, Demoraliser<Creature> {
     public Elf(String name, boolean gender, double weight, double height, int age) {
         super(name, gender, weight, height, age);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", race=" + getRace().getRaceName();
+    }
 }

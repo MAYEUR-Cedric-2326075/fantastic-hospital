@@ -36,4 +36,9 @@ public class Reptilian extends Creature implements VipWaiter {
     public Reptilian(String name, boolean gender, double weight, double height, int age) {
         super(name, gender, weight, height, age);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", race=" + getRace().getRaceName();
+    }
 }

@@ -1,6 +1,7 @@
 package fantasticHospital;
 
-import fantasticHospital.Creature.Races.*;
+import fantasticHospital.Creature.Creature;
+import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Hospital.MedicalService.Hospital;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 
@@ -43,18 +44,22 @@ public class Main {
             int choice = choiceTerminal(choices);
             switch (choice) {
                 case 1:
-                    System.out.println("Affiche service medical");
+                    //afficher tout les services medicaux
                     showMedicalServices(hospital);
                     System.out.println();
                     break;
                 case 2:
-                    System.out.println("Choisir service medical");
                     //affiche en detail 1 service medical
                     System.out.println("Entrer le service medical choisi : ");
-                    Scanner scanner = new Scanner(System.in);
+                    Scanner scanner = new Scanner(System.in); //le joueur choisi le service
                     int answer = scanner.nextInt();
-
+                    MedicalService choiceService = hospital.getMedicalServices().get(answer-1);
                     //afficher le service choisi
+                    System.out.println("nom : " + choiceService.getName());//nom du service choisi
+                    //affiche tout les patient du service choisi
+                    for (Object creature : choiceService.getPatients()) {
+                        System.out.println(creature.toString());
+                    }
 
                     //demande au joueur ce qu'il veux faire dans ce service
                     String[] choices2 = {"soigner une créature", "réviser le budget", ""};
@@ -91,7 +96,7 @@ public class Main {
     public static void showMedicalServices(Hospital hospital) {
         //affiche les services medical
         for (int i = 0; i < hospital.getMedicalServices().size(); i++) {
-            System.out.println(i+1 + ") " + hospital.getMedicalServices().get(i).getName());
+            System.out.println(i+1 + ") " + hospital.getMedicalServices().get(i).getName() + " | nb de patient = " + hospital.getMedicalServices().get(i).getNumberOfPatientNow());
         }
     }
 

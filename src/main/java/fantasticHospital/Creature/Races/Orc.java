@@ -36,4 +36,9 @@ public class Orc extends Creature implements PoorWaiter {
     public Orc(String name, boolean gender, double weight, double height, int age) {
         super(name, gender, weight, height, age);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", race=" + getRace().getRaceName();
+    }
 }

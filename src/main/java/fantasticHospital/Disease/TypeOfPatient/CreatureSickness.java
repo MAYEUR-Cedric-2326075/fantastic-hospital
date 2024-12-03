@@ -141,6 +141,12 @@ public abstract class CreatureSickness implements Randomizer {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "Creature{name='" + getCreature().getName() + "', gender=" + (getCreature().getGender() ? "Male" : "Female") + ", weight=" + getCreature().getWeight() +
+                ", height=" + getCreature().getHeight() + ", age=" + getCreature().getAge() + ", moralityRate=" + getCreature().getMoralityRate() + "}";
+    }
+
     //public abstract void waiting();
 
 }
