@@ -1,15 +1,15 @@
 package fantasticHospital;
 
 import fantasticHospital.Creature.Races.*;
-import fantasticHospital.Disease.CreatureSickness;
-import fantasticHospital.Disease.CreatureSicknessContaminator;
+import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
+import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Disease.Disease;
 
 public class TestCreatureDisease {
 
     public static void main(String[] args) {
         //je cree toutes les maladies
-
+/*
         Disease MDC = new Disease("Maladie débilitante chronique", "MDC", 5);
         Disease FOMO = new Disease("fear of missing out", "FOMO", 5);
         Disease DRS = new Disease("Dépendance aux réseaux sociaux", "DRS", 5);
@@ -46,7 +46,7 @@ public class TestCreatureDisease {
         test.addDiseaseCurrentLevel(ZPL, 5);
         test.showDisease();
          */
-
+/*
         CreatureSicknessContaminator beastmanDisease = new CreatureSicknessContaminator(beastman);
         CreatureSicknessContaminator beastmanDisease2 = new CreatureSicknessContaminator(beastman);
         //ajout de 2 maladies
@@ -62,7 +62,7 @@ public class TestCreatureDisease {
 
         beastmanDisease.contaminate(beastmanDisease2);
         System.out.println("Maladie de Beastman2 : " + beastmanDisease2.getAllDiseaseNames());
-
+*/
 
     }
 }

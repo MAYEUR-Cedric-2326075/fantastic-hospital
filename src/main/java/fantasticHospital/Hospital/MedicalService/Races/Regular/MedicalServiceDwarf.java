@@ -2,9 +2,8 @@ package fantasticHospital.Hospital.MedicalService.Races.Regular;
 import fantasticHospital.Disease.Races.Contaminater.VampireSiknessContaminator;
 import fantasticHospital.Disease.Races.Regular.DwarfSickness;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
-        import fantasticHospital.Disease.Races.*;
 
-public abstract class MedicalServiceDwarf extends MedicalService<DwarfSickness> {
+public class MedicalServiceDwarf extends MedicalService<DwarfSickness> {
 
     public MedicalServiceDwarf(String name){
         super(name);

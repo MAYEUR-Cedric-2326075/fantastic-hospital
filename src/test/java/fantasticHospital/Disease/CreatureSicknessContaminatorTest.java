@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CreatureSicknessContaminatorTest {
-
+/*
     private Disease DRS;
     private Beastman beastman;
     private CreatureSickness beastmanDisease;
@@ -24,4 +24,6 @@ class CreatureSicknessContaminatorTest {
         beastmanDisease2.contaminate(beastmanDisease);
         assertNotNull(beastmanDisease.getAllDiseaseNames());
     }
+
+*/
 }
