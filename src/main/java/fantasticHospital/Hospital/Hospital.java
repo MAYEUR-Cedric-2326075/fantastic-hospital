@@ -220,7 +220,7 @@ public class Hospital {
 
             }
         }
-        service.getCreatures().removeAll(deadCreatures);
+        deadCreatures.forEach(service.getCreatures()::remove);
     }
 
     //Générer une créature aléatoire
@@ -267,7 +267,8 @@ public class Hospital {
             Creature newCreature = generateRandomCreature();
 
             if (!medicalServices.isEmpty()) {
-                MedicalService randomService = medicalServices.get(rand.nextInt(medicalServices.size()));
+                List<MedicalService> serviceList = new ArrayList<>(medicalServices);
+                MedicalService randomService = serviceList.get(rand.nextInt(serviceList.size()));
                 Set<Creature> creatures = randomService.getCreatures();
                 creatures.add(newCreature);
             }
@@ -326,14 +327,15 @@ public class Hospital {
 
 
     public void manageDiseaseProgression(CreatureSickness sickness) {
-        Disease disease = sickness.getDisease().get(0);
+        List<Disease> diseases = new ArrayList<>(sickness.getDisease());
+        Disease disease = diseases.getFirst();
         int currentLevel = sickness.getCurrentLevel(disease);
         if (currentLevel < disease.getMaxLevel()) {
             sickness.increaseLevel(disease);
         } else {
             // La créature meurt
             deadCreatures.add(sickness.getCreature());
-            System.out.println(sickness.getCreature().getName() + " est morte de la maladie.");
+            System.out.println(sickness.getCreature().getName() + " est mort de la maladie.");
         }
     }
 
@@ -342,7 +344,32 @@ public class Hospital {
     public void addDiseaseToCreature(Creature creature, Disease disease) {
         CreatureSickness sickness = getCreatureSickness(creature, creatureSicknesses);
         if (sickness == null) {
-            sickness = new CreatureSickness(creature);
+            switch (creature.getRace().getRaceName()) {
+                case "Elf":
+                    sickness = new CreatureSickness((Elf) creature);
+                    break;
+                case "Dwarf":
+                    sickness = new CreatureSickness((Dwarf) creature);
+                    break;
+                case "Reptilian":
+                    sickness = new CreatureSickness((Reptilian) creature);
+                    break;
+                case "Zombie":
+                    sickness = new CreatureSickness((Zombie) creature);
+                    break;
+                case "Beastman":
+                    sickness = new CreatureSicknessContaminator((Beastman) creature);
+                    break;
+                case "Lycanthrope":
+                    sickness = new CreatureSicknessContaminator((Lycanthrope) creature);
+                    break;
+                case "Orc":
+                    sickness = new CreatureSicknessContaminator((Orc) creature);
+                    break;
+                case "Vampire":
+                    sickness = new CreatureSicknessContaminator((Vampire) creature);
+                    break;
+            }
             creatureSicknesses.add(sickness);
         }
         sickness.addDiseaseCurrentLevel(disease);
@@ -364,7 +391,7 @@ public class Hospital {
         CreatureSickness sickness = getCreatureSickness(creature, creatureSicknesses);
         if (sickness != null) {
             sickness.heal();
-            System.out.println(creature.getName() + " a été guérie.");
+            System.out.println(creature.getName() + " a été guéri.");
         }
     }
 
@@ -405,7 +432,7 @@ public class Hospital {
 
 
     public void displayServiceInfo(MedicalService service) {
-        System.out.println("Nom du service : "+service.getName()+"\nCapacité : "+service.size()+"/"+service.getMaxCreature());
+        System.out.println("Nom du service : "+service.getName()+"\nCapacité : "+service.size()+"/"+service.getMaxCapacity());
         System.out.println("9. Retour au menu");
     }
 
