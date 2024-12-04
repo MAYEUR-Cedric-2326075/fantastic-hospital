@@ -1,7 +1,7 @@
 package fantasticHospital;
 
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
-import fantasticHospital.Hospital.MedicalService.MedicalService.Hospital;
+import fantasticHospital.Hospital.Hospital;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 
 import java.util.Random;
