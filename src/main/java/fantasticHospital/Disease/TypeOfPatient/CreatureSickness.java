@@ -106,7 +106,7 @@ public abstract class CreatureSickness implements Randomizer {
         return diseaseNames;
     }
     //soigne toute les maladies
-    public void cured(){
+    public void cured() {
         diseaseCurrentLevel.clear();
     }
     //soigne la maladie passer en paramètre
