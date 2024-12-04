@@ -52,14 +52,20 @@ public class Main {
         int turn = 0;
         int totalDeaths = 0;
         int currentActionPoints = 50;
+        int nbCreature = 1;
 
         // la partie est en cours
         while (totalDeaths < 10) {
             ++turn;
-            //création de 1 créature malade
-            CreatureSickness creatureX = hospital.generateRandomCreature();
-            creatureX.addDiseaseCurrentLevel(randomDisease());
-            hospital.addToMedicalServices(creatureX);
+            if (turn % 3 == 0) {
+                nbCreature++;
+            }
+            for (int i = 0; i < nbCreature; i++) {
+                //création de 1 créature malade
+                CreatureSickness creatureX = hospital.generateRandomCreature();
+                creatureX.addDiseaseCurrentLevel(randomDisease());
+                hospital.addToMedicalServices(creatureX);
+            }
 
             //début d'un tour
             clearScreen();
