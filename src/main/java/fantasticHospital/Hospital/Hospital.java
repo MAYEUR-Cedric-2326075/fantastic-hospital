@@ -43,6 +43,9 @@ public class Hospital implements Randomizer {
     private MedicalServiceQuarantineBeastman medicalServiceBeastman = new MedicalServiceQuarantineBeastman("Service medical Beastman");
     private MedicalServiceZombieCryp medicalServiceZombie = new MedicalServiceZombieCryp("Service medical Zombie");
     private MedicalServiceVampireQuarantine medicalServiceVampire = new MedicalServiceVampireQuarantine("Service medical Vampire");
+    private MedicalServiceZombieCryp cryptSZombie = new MedicalServiceZombieCryp("Crypt  Zombie");
+    private MedicalServiceVampireQuarantine cryptVampire = new MedicalServiceVampireQuarantine("Crypt Vampire");
+
     private MedicalServiceLycanthropeQuarantine medicalServiceLycanthrope = new MedicalServiceLycanthropeQuarantine("Service medical Lycanthrope");
     private MedicalServiceReptilian medicalServiceReptilian = new MedicalServiceReptilian("Service medical Reptilian");
     public Hospital(String name, int maxPatients, int maxDeaths) {
@@ -398,6 +401,23 @@ public class Hospital implements Randomizer {
                 System.out.println("Race non reconnue");
                 break;
         }
+    }
+    /*
+    static List<C>  moveDead(MedicalService medicalService){
+        return  medicalService.removeAndReturnDeceasedPatients();
+    }
+*/
+    boolean moveDeadZombieToVampire() {
+        HashSet<ZombieSickness> dead = medicalServiceZombie.removeDeads();
+        if(!dead.isEmpty())
+            cryptSZombie.addPatient(dead);
+        return false;
+    }
+    boolean moveDeadZombieToZombie() {
+        HashSet<ZombieSickness> dead = medicalServiceZombie.removeDeads();
+        if(!dead.isEmpty())
+            cryptSZombie.addPatient(dead);
+        return false;
     }
 
 }

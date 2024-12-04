@@ -51,6 +51,15 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
         }
         return true;
     }
+    public boolean addPatient(HashSet<Patient> creatureSicknessSet) {
+        for (Patient patient : creatureSicknessSet) {
+            if (!addPatient(patient)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean cured(Doctor doctor, Patient patient){
         if(!isEmpty())
             return doctor.heal(patient);
@@ -102,6 +111,19 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
         }
         return dead;
     }
+    public List<Patient> removeAndReturnDeceasedPatients() {
+        List<Patient> deceasedPatients = new ArrayList<>();
+        patients.removeIf(patient -> {
+            if (!patient.getCreature().isAlive()) {
+                deceasedPatients.add(patient);
+                return true;
+            }
+            return false;
+        });
+        return deceasedPatients;
+    }
+
+
 
     // Méthode pour obtenir la catégorie du budget
     public String getBudgetCategory() {
