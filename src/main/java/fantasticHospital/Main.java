@@ -14,6 +14,10 @@ public class Main {
 
     static String ANSI_RED = "\u001B[31m";
     static String ANSI_RESET = "\u001B[0m";
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
     public static int choiceTerminal(String[] choices) {
         //affiche tout les choix du tableau passer en paramètre
@@ -59,6 +63,7 @@ public class Main {
             hospital.addToMedicalServices(creatureX);
 
             //début d'un tour
+            clearScreen();
             System.out.println("\u001B[32m\n--- Tour " + turn + " ---" + ANSI_RESET);
             //afficher nb de point action
             System.out.println("nb de point : " + currentActionPoints);
@@ -76,14 +81,13 @@ public class Main {
     public static void actionMenu(Hospital hospital) {
         boolean currentRound= true;
         while (currentRound){
-            System.out.println(ANSI_RED +"** Menu d'hopital **" + ANSI_RESET);
+            System.out.println(ANSI_RED +"\n** Menu d'hopital **" + ANSI_RESET);
             String[] choices = {"Afficher les services medicaux", "Choisir un service medical", "Fin du tour"};
             int choice = choiceTerminal(choices);
             switch (choice) {
                 case 1:
                     //afficher tout les services medicaux
                     showMedicalServices(hospital);
-                    System.out.println();
                     break;
                 case 2:
                     //affiche en detail 1 service medical
@@ -130,7 +134,7 @@ public class Main {
                     }
 
                     //demande au joueur ce qu'il veux faire dans ce service
-                    System.out.println("\u001B[34m** Menu d'action joueur**" + ANSI_RESET);
+                    System.out.println("\u001B[34m\n** Menu d'action joueur**" + ANSI_RESET);
                     String[] choices2 = {"soigner une créature", "réviser le budget", "Ne rien faire"};
                     int choice2 = choiceTerminal(choices2);
                     switch (choice2) {
