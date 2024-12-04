@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>80</y>
+      <w>410</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Disease
+--
+name : String
+shortName : String
+maxLevel : int
+--
++ Disease(name : String, shortName : String, maxLevel : int)
++ getName() : String
++ getShortName() : String
++ getMaxLevel() : int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>70</y>
+      <w>470</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes>CreatureSickness
+--
+creature : Creature
+diseaseCurrentLevel : Map&lt;Disease, Integer&gt;
+{static} diseases : List&lt;Disease&gt;
+--
++ CreatureSickness(creature : Creature)
++ CreatureSickness(creature : Elf)
++ CreatureSickness(creature : Dwarf)
++ CreatureSickness(creature : Reptilian)
++ CreatureSickness(creature : Zombie)
++ getCreature() : Creature
++ getDiseaseCurrentLevel() : Map&lt;Disease, Integer&gt;
++ getCurrentLevel(disease : Disease) : int
+- setCurrentLevel(disease : Disease, currentLevel : int) : void
++ addDiseaseCurrentLevel(disease : Disease, currentLevel : int) : void
++ addDiseaseCurrentLevel(disease : Disease) : void
++ decreaseLevel(disease : Disease) : void
++ increaseLevel(disease : Disease) : void
++ showDisease() : void
++ getDisease() : Set&lt;Disease&gt;
++ getAllDiseaseNames() : List&lt;String&gt;
++ heal() : void
++ heal(disease : Disease) : void
+{static} + randomDisease() : Disease
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>130</x>
+      <y>320</y>
+      <w>380</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>CreatureSicknessContaminator
+--
+&lt;&lt;extends&gt;&gt; CreatureSickness
+--
++ CreatureSicknessContaminator(creature : Beastman)
++ CreatureSicknessContaminator(creature : Orc)
++ CreatureSicknessContaminator(creature : Lycanthrope)
++ CreatureSicknessContaminator(creature : Vampire)
++ contaminate(creatureSickness : CreatureSickness) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
