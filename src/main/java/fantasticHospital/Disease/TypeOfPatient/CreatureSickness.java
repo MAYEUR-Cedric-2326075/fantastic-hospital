@@ -21,6 +21,21 @@ public abstract class CreatureSickness implements Randomizer {
         diseases.add(new Disease("Blight of Gloom", "BG", 5));
     }
 
+     public String getDiseaseCurrentLevelString() {
+        StringBuilder chaine = new StringBuilder();
+        // Parcourir les entrées de la map
+        for (Map.Entry<Disease, Integer> entry : getDiseaseCurrentLevel().entrySet()) {
+            Disease disease = entry.getKey();
+            Integer level = entry.getValue();
+            // Ajouter les informations de la maladie et son niveau à la chaîne
+            chaine.append("Maladie : ").append(disease.getName())
+                    .append(", Niveau : ").append(level)
+                    .append("\n");
+        }
+        // Retourner la chaîne construite
+        return chaine.toString();
+    }
+
     //constructeurs
     protected CreatureSickness(Creature creature) {
         this.creature = creature;
@@ -150,7 +165,8 @@ public abstract class CreatureSickness implements Randomizer {
     @Override
     public String toString() {
         return "Creature{name='" + getCreature().getName()  + ", weight=" + getCreature().getWeight() +
-                ", height=" + getCreature().getHeight() + ", age=" + getCreature().getAge() + ", moralityRate=" + getCreature().getMoralityRate() + "}";
+                ", height=" + getCreature().getHeight() + ", age=" + getCreature().getAge() + ", moralityRate=" + getCreature().getMoralityRate() + "}" +
+                "Maladies : " + getDiseaseCurrentLevelString();
     }
 
     //public abstract void waiting();
