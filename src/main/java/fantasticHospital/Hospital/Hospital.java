@@ -333,42 +333,4 @@ public class Hospital {
         }
     }
 
-
- /*   // Boucle principale de simulation
-    public void mainLoop(List<CreatureSickness> creatureSicknesses) {
-        Random rand = new Random();
-        int turn = 0;
-        int totalDeaths = 0;
-
-        while (totalDeaths < getMaxDeaths()) {
-            ++turn;
-            System.out.println("\n--- Tour " + turn + " ---");
-
-            // 1. Contamination des créatures et évolution des maladies
-            for (MedicalService service : medicalServices) {
-                for (Creature creature : service.getPresentCreature()) {
-                    CreatureSickness sickness = getCreatureSickness(creature, creatureSicknesses);
-                    if (sickness == null) continue;
-
-                    if (rand.nextInt(100) < 30) { // 30% chance contamination
-                        Disease newDisease = generateRandomDisease();
-                        sickness.addDiseaseCurrentLevel(newDisease);
-                        System.out.println(creature.getName() + " a été contaminé par : " + newDisease.getName());
-                    }
-
-                    for (Disease disease : sickness.getDisease()) {
-                        sickness.increaseLevel(disease);
-                    }
-                }
-            }
-*/
-
-/*    // Génération aléatoire de maladies
-    private Disease generateRandomDisease() {
-        String name = "Maladie_" + new Random().nextInt(100);
-        String shortName = "M" + new Random().nextInt(10);
-        int maxLevel = 5 + new Random().nextInt(5); // Niveau max entre 5 et 10
-        return new Disease(name, shortName, maxLevel);
-    }
-    */
 }
