@@ -78,128 +78,132 @@ public class Main {
     }
 
     public static void actionMenu(Hospital hospital) {
-        boolean currentRound= true;
-        while (currentRound){
-            System.out.println("\u001B[35m\n** Menu d'hopital **" + ANSI_RESET);
-            String[] choices = {"Afficher les services medicaux", "Choisir un service medical", "Déplacer mort à la crypte", "Fin du tour"};
-            int choice = choiceTerminal(choices);
-            switch (choice) {
-                case 1:
-                    //afficher tout les services medicaux
-                    showMedicalServices(hospital);
-                    break;
-                case 2:
-                    //affiche en detail 1 service medical
-                    System.out.println("Entrer le service medical choisi : ");
-                    Scanner scanner = new Scanner(System.in); //le joueur choisi le service
-                    int answer = scanner.nextInt();
+        try {
+            boolean currentRound = true;
+            while (currentRound) {
+                System.out.println("\u001B[35m\n** Menu d'hopital **" + ANSI_RESET);
+                String[] choices = {"Afficher les services medicaux", "Choisir un service medical", "Déplacer mort à la crypte", "Fin du tour"};
+                int choice = choiceTerminal(choices);
+                switch (choice) {
+                    case 1:
+                        //afficher tout les services medicaux
+                        showMedicalServices(hospital);
+                        break;
+                    case 2:
+                        //affiche en detail 1 service medical
+                        System.out.println("Entrer le service medical choisi : ");
+                        Scanner scanner = new Scanner(System.in); //le joueur choisi le service
+                        int answer = scanner.nextInt();
 
-                    MedicalService choiceService = null;
-                    switch (answer) {
-                        case 1:
-                            choiceService = hospital.getMedicalServiceElf();
-                            break;
-                        case 2:
-                            choiceService = hospital.getMedicalServiceDwarf();
-                            break;
-                        case 3:
-                            choiceService = hospital.getMedicalServiceOrc();
-                            break;
-                        case 4:
-                            choiceService = hospital.getMedicalServiceBeastman();
-                            break;
-                        case 5:
-                            choiceService = hospital.getMedicalServiceZombie();
-                            break;
-                        case 6:
-                            choiceService = hospital.getMedicalServiceVampire();
-                            break;
-                        case 7:
-                            choiceService = hospital.getMedicalServiceLycanthrope();
-                            break;
-                        case 8:
-                            choiceService = hospital.getMedicalServiceReptilian();
-                            break;
-                        default:
-                            System.out.println("Service medical non existant");
-                            break;
-                    }
-                    //afficher le service choisi
-                    System.out.println("Nom du service : " + choiceService.getName());//nom du service choisi
-                    System.out.println("Budget du service : " + choiceService.getBudgetCategory());
-                    //affiche tout les patient du service choisi
-                    for (Object creature : choiceService.getPatients()) {
-                        System.out.println(creature.toString());
-                    }
-
-                    //demande au joueur ce qu'il veux faire dans ce service
-                    System.out.println("\u001B[34m\n** Menu d'action joueur **" + ANSI_RESET);
-                    String[] choices2 = {"soigner une créature", "réviser le budget", "Ne rien faire"};
-                    int choice2 = choiceTerminal(choices2);
-                    switch (choice2) {
-                        case 1:
-                            //soigner une créature
-                            System.out.println("Entrer la créature a soigner : ");
-                            for (int i=0; i<choiceService.getPatients().size();i++) {
-                                System.out.println(i + ")" + choiceService.getPatients().get(i));
-                            }
-                            int creatureToHeal = scanner.nextInt();
-                            //tente de soigner la créature
-                            if (choiceService.isEmpty()){
+                        MedicalService choiceService = null;
+                        switch (answer) {
+                            case 1:
+                                choiceService = hospital.getMedicalServiceElf();
                                 break;
-                            }
-                            if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
-                                System.out.println("La créature à été soigner");
-                            }else {
-                                System.out.println("La créature n'a pas pu être soigner");
-                            }
-                            break;
-                        case 2:
-                            //réviser budget
-                            System.out.println("Entrer le nouveau budget en chiffre : ");
-                            answer = scanner.nextInt();
-                            choiceService.setBudget(answer);
-                            break;
-                        case 3:
-                            //ne rien faire
-                            break;
-                        default:
-                            System.out.println("Ce choix n'est pas valide !, choisir autre chose\n");
-                            break;
-                    }
-                    break;
-                case 3:
-                    String[] choices3 = {"Déplacer les zombies mort a la crypte", "Déplacer les vampires mort à la crypte", "Ne rien faire"};
-                    int choice3 = choiceTerminal(choices3);
-                    switch (choice3) {
-                        case 1:
-                            //deplacer zombies
-                            if (hospital.moveDeadZombieToCrypt()){
-                                System.out.println("Tout les zombies ont été déplacer dans la crypte");
-                            }else {
-                                System.out.println("Aucun zombie à déplacer dans la crypte");
-                            }
-                            break;
-                        case 2:
-                            //deplacer vampires
-                            if (hospital.moveDeadVampireToCrypt()){
-                                System.out.println("Tout les vampires ont été déplacer dans la crypte");
-                            }else {
-                                System.out.println("Aucun vampire à déplacer dans la crypte");
-                            }
-                            break;
-                        case 3:
-                            //ne rien faire
-                            break;
-                    }
-                    break;
-                case 4:
-                    currentRound=false;
-                    break;
-                default:
-                    System.out.println("Ce choix n'est pas valide !, choisir autre chose\n");
-                    break;
+                            case 2:
+                                choiceService = hospital.getMedicalServiceDwarf();
+                                break;
+                            case 3:
+                                choiceService = hospital.getMedicalServiceOrc();
+                                break;
+                            case 4:
+                                choiceService = hospital.getMedicalServiceBeastman();
+                                break;
+                            case 5:
+                                choiceService = hospital.getMedicalServiceZombie();
+                                break;
+                            case 6:
+                                choiceService = hospital.getMedicalServiceVampire();
+                                break;
+                            case 7:
+                                choiceService = hospital.getMedicalServiceLycanthrope();
+                                break;
+                            case 8:
+                                choiceService = hospital.getMedicalServiceReptilian();
+                                break;
+                            default:
+                                throw new IllegalArgumentException("Service medical non existant");
+                        }
+                        //afficher le service choisi
+                        System.out.println("Nom du service : " + choiceService.getName());//nom du service choisi
+                        System.out.println("Budget du service : " + choiceService.getBudgetCategory());
+                        //affiche tout les patient du service choisi
+                        for (Object creature : choiceService.getPatients()) {
+                            System.out.println(creature.toString());
+                        }
+
+                        //demande au joueur ce qu'il veux faire dans ce service
+                        System.out.println("\u001B[34m\n** Menu d'action joueur **" + ANSI_RESET);
+                        String[] choices2 = {"soigner une créature", "réviser le budget", "Ne rien faire"};
+                        int choice2 = choiceTerminal(choices2);
+                        switch (choice2) {
+                            case 1:
+                                //soigner une créature
+                                System.out.println("Entrer la créature a soigner : ");
+                                for (int i = 0; i < choiceService.getPatients().size(); i++) {
+                                    System.out.println(i + ")" + choiceService.getPatients().get(i));
+                                }
+                                int creatureToHeal = scanner.nextInt();
+                                //tente de soigner la créature
+                                if (choiceService.isEmpty()) {
+                                    break;
+                                }
+                                if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
+                                    System.out.println("La créature à été soigner");
+                                } else {
+                                    System.out.println("La créature n'a pas pu être soigner");
+                                }
+                                break;
+                            case 2:
+                                //réviser budget
+                                System.out.println("Entrer le nouveau budget en chiffre : ");
+                                answer = scanner.nextInt();
+                                choiceService.setBudget(answer);
+                                break;
+                            case 3:
+                                //ne rien faire
+                                break;
+                            default:
+                                System.out.println("Ce choix n'est pas valide !, choisir autre chose\n");
+                                break;
+                        }
+                        break;
+                    case 3:
+                        String[] choices3 = {"Déplacer les zombies mort a la crypte", "Déplacer les vampires mort à la crypte", "Ne rien faire"};
+                        int choice3 = choiceTerminal(choices3);
+                        switch (choice3) {
+                            case 1:
+                                //deplacer zombies
+                                if (hospital.moveDeadZombieToCrypt()) {
+                                    System.out.println("Tout les zombies ont été déplacer dans la crypte");
+                                } else {
+                                    System.out.println("Aucun zombie à déplacer dans la crypte");
+                                }
+                                break;
+                            case 2:
+                                //deplacer vampires
+                                if (hospital.moveDeadVampireToCrypt()) {
+                                    System.out.println("Tout les vampires ont été déplacer dans la crypte");
+                                } else {
+                                    System.out.println("Aucun vampire à déplacer dans la crypte");
+                                }
+                                break;
+                            case 3:
+                                //ne rien faire
+                                break;
+                        }
+                        break;
+                    case 4:
+                        currentRound = false;
+                        break;
+                    default:
+                        System.out.println("Ce choix n'est pas valide !, choisir autre chose\n");
+                        break;
+                }
             }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
