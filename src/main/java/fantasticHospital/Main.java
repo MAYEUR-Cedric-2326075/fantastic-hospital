@@ -1,13 +1,25 @@
 package fantasticHospital;
 
 import fantasticHospital.Creature.Creature;
+import fantasticHospital.Creature.Races.*;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Hospital.MedicalService.Hospital;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
+import fantasticHospital.Hospital.MedicalService.Races.Cryp.MedicalServiceZombieCryp;
+import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceLycanthropeQuarantine;
+import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceOrcQuarantine;
+import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceQuarantineBeastman;
+import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceVampireQuarantine;
+import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceDwarf;
+import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceElf;
+import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceReptilian;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import static fantasticHospital.Disease.TypeOfPatient.CreatureSickness.randomDisease;
 
 
 public class Main {
@@ -66,7 +78,9 @@ public class Main {
                     int choice2 = choiceTerminal(choices);
                     switch (choice2) {
                         case 1:
-                            //soigner une créaature
+                            //soigner une créature
+                            System.out.println("Entrer la créature a soigner : ");
+
                             break;
                         case 2:
                             //réviser budget
@@ -100,9 +114,16 @@ public class Main {
         }
     }
 
+
+
     public static void mainLoop() {
         //début de partie
         Hospital hospital = new Hospital("hospital1", 8, 100, 100);
+
+        //générer 2 créature malade
+        CreatureSickness creature1 = hospital.generateRandomCreature();
+        creature1.addDiseaseCurrentLevel(randomDisease());
+        hospital.addToMedicalServices(creature1);
 
         Random rand = new Random();
         int turn = 0;
@@ -113,8 +134,11 @@ public class Main {
         while (totalDeaths < 10) {
             ++turn;
             //création de 2 créature avec 1 ou 2 maladie
-            System.out.println("\n--- Tour " + turn + " ---");
+            CreatureSickness creatureX = hospital.generateRandomCreature();
+            creatureX.addDiseaseCurrentLevel(randomDisease());
+            hospital.addToMedicalServices(creatureX);
 
+            System.out.println("\n--- Tour " + turn + " ---");
 
             //afficher menue action
             System.out.println("nb de point : " + currentActionPoints);

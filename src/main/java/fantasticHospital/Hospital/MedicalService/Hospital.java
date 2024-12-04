@@ -2,7 +2,14 @@ package fantasticHospital.Hospital.MedicalService;
 
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Races.*;
+import fantasticHospital.Disease.Races.Contaminater.BeastmanSicknessContaminator;
+import fantasticHospital.Disease.Races.Contaminater.LycanthropeSicknessContaminator;
+import fantasticHospital.Disease.Races.Contaminater.OrcSicknessContaminator;
+import fantasticHospital.Disease.Races.Contaminater.VampireSiknessContaminator;
 import fantasticHospital.Disease.Races.Regular.DwarfSickness;
+import fantasticHospital.Disease.Races.Regular.ElfSickness;
+import fantasticHospital.Disease.Races.Regular.ReptilianSickness;
+import fantasticHospital.Disease.Races.Regular.ZombieSickness;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import com.fantasticHospital.Doctor;
 import fantasticHospital.Hospital.MedicalService.Races.Cryp.MedicalServiceZombieCryp;
@@ -15,6 +22,8 @@ import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceElf
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceReptilian;
 
 import java.util.*;
+
+import static fantasticHospital.Disease.TypeOfPatient.CreatureSickness.randomDisease;
 
 public class Hospital {
 
@@ -226,10 +235,10 @@ public class Hospital {
     }*/
 
     //Générer une créature aléatoire
-    private Creature generateRandomCreature() {
+    public CreatureSickness generateRandomCreature() {
         Random rand = new Random();
 
-        String name = "Creature_" + rand.nextInt(100);
+        String name = "Creature_" + rand.nextInt(1000);
         boolean gender = rand.nextBoolean();
         double weight = 50 + rand.nextDouble() * 50;
         double height = 1.5 + rand.nextDouble() * 0.5;
@@ -239,73 +248,31 @@ public class Hospital {
         int raceChoice = rand.nextInt(8); // 8 races
         switch (raceChoice) {
             case 0:
-                return new Beastman(name, gender, weight, height, age);
+
+                return new BeastmanSicknessContaminator(new Beastman(name, gender, weight, height, age));
             case 1:
-                return new Dwarf(name, gender, weight, height, age);
+                return new DwarfSickness(new Dwarf(name, gender, weight, height, age));
             case 2:
-                return new Elf(name, gender, weight, height, age);
+                return new ElfSickness(new Elf(name, gender, weight, height, age));
             case 3:
-                return new Lycanthrope(name, gender, weight, height, age);
+                return new LycanthropeSicknessContaminator(new Lycanthrope(name, gender, weight, height, age));
             case 4:
-                return new Orc(name, gender, weight, height, age);
+                return new OrcSicknessContaminator(new Orc(name, gender, weight, height, age));
             case 5:
-                return new Reptilian(name, gender, weight, height, age);
+                return new ReptilianSickness(new Reptilian(name, gender, weight, height, age));
             case 6:
-                return new Vampire(name, gender, weight, height, age);
+                return new VampireSiknessContaminator(new Vampire(name, gender, weight, height, age));
             case 7:
-                return new Zombie(name, gender, weight, height, age);
+                return new ZombieSickness(new Zombie(name, gender, weight, height, age));
             default:
                 throw new IllegalStateException("Mauvaise race : " + raceChoice);
         }
     }
 
-/*
+
     // Ajout de nouvelles créatures
-    public void addNewCreature() {
-        Random rand = new Random(); // Déclarez l'objet Random
-        int newCreatures = rand.nextInt(3); // Génère entre 0 et 2 nouvelles créatures
-        for (int i = 0; i < newCreatures; ++i) {
-            // Génère une nouvelle créature
-            Creature newCreature = generateRandomCreature();
 
-            // Sélectionne un service médical aléatoire s'il y en a
-            if (!medicalServices.isEmpty()) {
-                MedicalService randomService = medicalServices.get(rand.nextInt(medicalServices.size()));
-                randomService.getPresentCreature().add(newCreature); // Ajoute la créature au service
-            }
-
-            switch (newCreature.getRace().getRaceName()) {
-                case "Elf":
-                    creatureSicknesses.add(new CreatureSickness((Elf) newCreature));
-                    break;
-                case "Dwarf":
-                    creatureSicknesses.add(new CreatureSickness((Dwarf) newCreature));
-                    break;
-                case "Reptilian":
-                    creatureSicknesses.add(new CreatureSickness((Reptilian) newCreature));
-                    break;
-                case "Zombie":
-                    creatureSicknesses.add(new CreatureSickness((Zombie) newCreature));
-                    break;
-                case "Beastman":
-                    creatureSicknesses.add(new CreatureSicknessContaminator((Beastman) newCreature));
-                    break;
-                case "Lycanthrope":
-                    creatureSicknesses.add(new CreatureSicknessContaminator((Lycanthrope) newCreature));
-                    break;
-                case "Orc":
-                    creatureSicknesses.add(new CreatureSicknessContaminator((Orc) newCreature));
-                    break;
-                case "Vampire":
-                    creatureSicknesses.add(new CreatureSicknessContaminator((Vampire) newCreature));
-                    break;
-                default:
-                    System.out.println("Race non reconnue : " + newCreature.getRace());
-                    break;
-            }
-        }
-    }
-
+/*
 
     // Ajouter une créature à un service médical
     public void addCreatureToService(Creature creature, MedicalService service) {
@@ -444,12 +411,6 @@ public class Hospital {
     }
 
 
-    // Exécuter une action choisie par le joueur
-    public void executePlayerAction(String actionChoice) {
-        // Implémentation de l'exécution des actions en fonction de l'entrée de l'utilisateur.
-        // Par exemple : Ajouter une créature, ajouter une créature à un service, etc.
-    }
-
     private static List<MedicalService> generateMedicalServicies(){
         List<MedicalService> medicalServices = new ArrayList<>();
 
@@ -475,41 +436,38 @@ public class Hospital {
         return medicalServices;
     }
 
-
-/*    public void playerAction() {
-        for (MedicalService service : medicalServices) {
-            currentActionPoints = maxActionPoints;
-
-
-            while(currentActionPoints != 0) {
-                Scanner choice = new Scanner(System.in);
-                System.out.println("définition du jeu par exemple appuyez sur 1 pour x ou 2 pour y");
-                String finalChoice = choice.nextLine();
-                switch (finalChoice) {
-                    case "1":
-                        //a;
-                        break;
-                    case "2":
-                        //a;
-                        break;
-                    case "3":
-                        //a;
-                        break;
-                    case "4":
-                        //a;
-                        break;
-                    case "5":
-                        //a
-                        break;
-                }
-            }
-            for (Doctor doctor : service.getDoctors()) {
-                doctor.passTurn();
-                //---à finir, actions que le joueur peut faire
-            }
+    public void addToMedicalServices(CreatureSickness creatureSickness) {
+        switch (creatureSickness.getCreature().getRace().getRaceName()) {
+            case "Elf":
+                medicalServices.get(0).addPatient((ElfSickness)creatureSickness);
+                break;
+            case "Dwarf":
+                medicalServices.get(1).addPatient((DwarfSickness)creatureSickness);
+                break;
+            case "Reptilian":
+                medicalServices.get(2).addPatient((ReptilianSickness)creatureSickness);
+                break;
+            case "Zombie":
+                medicalServices.get(3).addPatient((ZombieSickness)creatureSickness);
+                break;
+            case "Beastman":
+                medicalServices.get(4).addPatient((BeastmanSicknessContaminator)creatureSickness);
+                break;
+            case "Lycanthrope":
+                medicalServices.get(5).addPatient((LycanthropeSicknessContaminator)creatureSickness);
+                break;
+            case "Orc":
+                medicalServices.get(6).addPatient((OrcSicknessContaminator)creatureSickness);
+                break;
+            case "Vampire":
+                medicalServices.get(7).addPatient((VampireSiknessContaminator)creatureSickness);
+                break;
+            default:
+                System.out.println("Race non reconnue");
+                break;
         }
     }
-*/
+
 
  /*   // Boucle principale de simulation
     public void mainLoop(List<CreatureSickness> creatureSicknesses) {
