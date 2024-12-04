@@ -195,12 +195,13 @@ public class Hospital {
     }
 
 
-    private boolean cured(CreatureSickness creatureSickness) {
+    public boolean cured(CreatureSickness creatureSickness) {
         if(isOneDoctorAvailable()){
             getFirstAvailableDoctor().heal(creatureSickness);
         }
         return false;
     }
+
     private Doctor getFirstAvailableDoctor() {
         for (Map.Entry<Doctor, Boolean> entry : doctorsAvailability.entrySet()) {
             if (entry.getValue()) {
