@@ -17,6 +17,7 @@ public  class MedicalServiceVampireCrypt extends CryptMedicalService<VampireSikn
     @Override
     public void waiting(){
         for(VampireSiknessContaminator vampireSiknessContaminator:getPatients()){
+
             vampireSiknessContaminator.waiting();
         }
     }

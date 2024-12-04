@@ -54,6 +54,7 @@ public class Hospital implements Randomizer {
         this.maxDeaths = maxDeaths;
         this.doctorsAvailability = new HashMap<Doctor, Boolean>();
         this.generateAndAddRandomDoctors(generateRandomNumber(1,3));
+        //System.out.println(doctorsAvailability.size());
     }
 
     public MedicalServiceReptilian getMedicalServiceReptilian() {
@@ -123,7 +124,7 @@ public class Hospital implements Randomizer {
 
     public boolean addDoctor(Doctor doctor) {
         if(!doctorsAvailability.containsKey(doctor)) {
-            doctorsAvailability.put(doctor, false);
+            doctorsAvailability.put(doctor, true);
             return false;
         }
         return true;
@@ -217,8 +218,9 @@ public class Hospital implements Randomizer {
 
 
     public boolean cured(CreatureSickness creatureSickness) {
-        if(isOneDoctorAvailable()){
+        if(getFirstAvailableDoctor()!=null&&isOneDoctorAvailable()){
             getFirstAvailableDoctor().heal(creatureSickness);
+            return true;
         }
         return false;
     }

@@ -25,6 +25,11 @@ public interface Randomizer {
     default float generateRandomFloat(float min, float max) {
         return (float) (Math.random() * (max - min)) + min;
     }
-
+    default boolean generateRandomBooleanWithProbability(double probability) {
+        if (probability < 0 || probability > 1) {
+            throw new IllegalArgumentException("La probabilité doit être entre 0 et 1.");
+        }
+        return Math.random() < probability;
+    }
 
 }
