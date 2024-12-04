@@ -52,20 +52,14 @@ public class Main {
         int turn = 0;
         int totalDeaths = 0;
         int currentActionPoints = 50;
-        int nbCreature = 1;
 
         // la partie est en cours
         while (totalDeaths < 10) {
             ++turn;
-            if (turn % 3 == 0) {
-                nbCreature++;
-            }
-            for (int i = 0; i < nbCreature; i++) {
-                //création de 1 créature malade
-                CreatureSickness creatureX = hospital.generateRandomCreature();
-                creatureX.addDiseaseCurrentLevel(randomDisease());
-                hospital.addToMedicalServices(creatureX);
-            }
+            //création de 1 créature malade
+            CreatureSickness creatureX = hospital.generateRandomCreature();
+            creatureX.addDiseaseCurrentLevel(randomDisease());
+            hospital.addToMedicalServices(creatureX);
 
             //début d'un tour
             clearScreen();
@@ -151,15 +145,13 @@ public class Main {
                             }
                             int creatureToHeal = scanner.nextInt();
                             //tente de soigner la créature
-                            try {
-                                if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
-                                    System.out.println("La créature à été soigner");
-                                }else {
-                                    System.out.println("La créature n'a pas pu être soigner");
-                                }
-                                }
-                            catch(Exception e) {
-                                System.out.println(e.getMessage());
+                            if (choiceService.isEmpty()){
+                                break;
+                            }
+                            if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
+                                System.out.println("La créature à été soigner");
+                            }else {
+                                System.out.println("La créature n'a pas pu être soigner");
                             }
                             break;
                         case 2:
