@@ -1,6 +1,8 @@
 package fantasticHospital.Disease;
 
 import fantasticHospital.Creature.Races.Beastman;
+import fantasticHospital.Disease.Races.Contaminater.BeastmanSicknessContaminator;
+import fantasticHospital.Disease.TypeOfPatient.CreatureSicknessContaminator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CreatureSicknessTest {
-/*
+
     private Disease DRS;
     private Beastman beastman;
     private CreatureSicknessContaminator beastmanDisease;
@@ -17,7 +19,7 @@ class CreatureSicknessTest {
     void setUp() {
         DRS = new Disease("Dépendance aux réseaux sociaux", "DRS", 5);
         beastman = new Beastman("Tormak", true, 80.5, 2.1, 25);
-        beastmanDisease = new CreatureSicknessContaminator(beastman);
+        beastmanDisease = new BeastmanSicknessContaminator(beastman);
     }
 
     @Test
@@ -65,14 +67,14 @@ class CreatureSicknessTest {
 
     @Test
     void healDisease() {
-        CreatureSicknessContaminator beastmanDisease2 = new CreatureSicknessContaminator(beastman);
+        CreatureSicknessContaminator beastmanDisease2 = new BeastmanSicknessContaminator(beastman);
         Disease TEST = new Disease("maladie des tests unitaires", "TEST", 5);
 
         beastmanDisease.addDiseaseCurrentLevel(DRS, 2);
         beastmanDisease2.addDiseaseCurrentLevel(TEST, 2);
         beastmanDisease.addDiseaseCurrentLevel(TEST, 2);
 
-        beastmanDisease.heal(DRS);
+        beastmanDisease.cured(DRS);
         assertEquals(beastmanDisease.getAllDiseaseNames(),beastmanDisease.getAllDiseaseNames());
     }
     @Test
@@ -80,8 +82,8 @@ class CreatureSicknessTest {
         beastmanDisease.addDiseaseCurrentLevel(DRS, 2);
         Disease TEST = new Disease("maladie des tests unitaires", "TEST", 5);
         beastmanDisease.addDiseaseCurrentLevel(TEST, 2);
-        beastmanDisease.heal();
+        beastmanDisease.cured();
         assertEquals(new ArrayList<>(),beastmanDisease.getAllDiseaseNames());
     }
-*/
+
 }

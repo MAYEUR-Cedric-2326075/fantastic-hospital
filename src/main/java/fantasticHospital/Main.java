@@ -169,7 +169,7 @@ public class Main {
                     }
                     break;
                 case 3:
-                    String[] choices3 = {"Déplacer les zombie mort a la crypte", "Déplacer les vampires à la crypte", "Ne rien faire"};
+                    String[] choices3 = {"Déplacer les zombies mort a la crypte", "Déplacer les vampires mort à la crypte", "Ne rien faire"};
                     int choice3 = choiceTerminal(choices3);
                     switch (choice3) {
                         case 1:

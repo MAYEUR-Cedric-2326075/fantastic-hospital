@@ -58,7 +58,7 @@ class DwarfSicknessTest {
         Disease disease = new Disease("Test Disease", "TD", 5);
         dwarfSickness.addDiseaseCurrentLevel(disease);
 
-        dwarfSickness.heal(disease);
+        dwarfSickness.cured(disease);
         assertFalse(dwarfSickness.getDisease().contains(disease), "The disease should be removed after healing.");
     }
 
@@ -71,7 +71,7 @@ class DwarfSicknessTest {
         dwarfSickness.addDiseaseCurrentLevel(disease1);
         dwarfSickness.addDiseaseCurrentLevel(disease2);
 
-        dwarfSickness.heal();
+        dwarfSickness.cured();
         assertTrue(dwarfSickness.isHealthy(), "The creature should be healthy after healing all diseases.");
     }
 
