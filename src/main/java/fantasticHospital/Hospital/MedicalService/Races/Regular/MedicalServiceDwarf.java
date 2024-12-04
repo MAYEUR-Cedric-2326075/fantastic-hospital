@@ -1,5 +1,4 @@
 package fantasticHospital.Hospital.MedicalService.Races.Regular;
-import fantasticHospital.Disease.Races.Contaminater.VampireSiknessContaminator;
 import fantasticHospital.Disease.Races.Regular.DwarfSickness;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 

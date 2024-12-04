@@ -1,5 +1,4 @@
 package fantasticHospital.Hospital.MedicalService.Races.Regular;
-import fantasticHospital.Disease.Races.Regular.DwarfSickness;
 import fantasticHospital.Disease.Races.Regular.ElfSickness;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 

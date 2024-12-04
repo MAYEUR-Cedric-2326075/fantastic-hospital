@@ -1,21 +1,9 @@
 package fantasticHospital;
 
-import fantasticHospital.Creature.Creature;
-import fantasticHospital.Creature.Races.*;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
-import fantasticHospital.Hospital.MedicalService.Hospital;
+import fantasticHospital.Hospital.MedicalService.MedicalService.Hospital;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
-import fantasticHospital.Hospital.MedicalService.Races.Cryp.MedicalServiceZombieCryp;
-import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceLycanthropeQuarantine;
-import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceOrcQuarantine;
-import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceQuarantineBeastman;
-import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceVampireQuarantine;
-import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceDwarf;
-import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceElf;
-import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceReptilian;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 

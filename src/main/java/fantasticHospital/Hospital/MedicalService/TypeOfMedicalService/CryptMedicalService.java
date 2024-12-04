@@ -2,7 +2,6 @@ package fantasticHospital.Hospital.MedicalService.TypeOfMedicalService;
 
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
-import fantasticHospital.Disease.Races.Contaminater.VampireSiknessContaminator;
 
 import java.util.HashSet;
 

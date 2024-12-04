@@ -3,6 +3,7 @@ package fantasticHospital.Hospital.MedicalService;
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Hospital.MedicalService.Employe.Doctor;
+import fantasticHospital.Hospital.MedicalService.MedicalService.Employe.Doctor;
 import fantasticHospital.Tools.Randomizer;
 import java.util.HashSet;
 

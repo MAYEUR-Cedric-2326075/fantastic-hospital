@@ -1,6 +1,7 @@
 package fantasticHospital.Hospital.MedicalService.Races.Quarantine;
 import fantasticHospital.Disease.Races.Contaminater.OrcSicknessContaminator;
 import fantasticHospital.Hospital.MedicalService.TypeOfMedicalService.*;
+import fantasticHospital.Hospital.MedicalService.TypeOfMedicalService.QuarantineMedicalService;
 
 public class MedicalServiceOrcQuarantine extends QuarantineMedicalService<OrcSicknessContaminator> {
 

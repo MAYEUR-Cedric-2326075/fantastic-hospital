@@ -1,4 +1,4 @@
-package fantasticHospital.Hospital.MedicalService;
+package fantasticHospital.Hospital;
 
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Races.*;
@@ -11,7 +11,8 @@ import fantasticHospital.Disease.Races.Regular.ElfSickness;
 import fantasticHospital.Disease.Races.Regular.ReptilianSickness;
 import fantasticHospital.Disease.Races.Regular.ZombieSickness;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
-import fantasticHospital.Hospital.MedicalService.Employe.*;
+import fantasticHospital.Hospital.MedicalService.Employe.Doctor;
+import fantasticHospital.Hospital.MedicalService.MedicalService;
 import fantasticHospital.Hospital.MedicalService.Races.Cryp.MedicalServiceZombieCryp;
 import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceLycanthropeQuarantine;
 import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceOrcQuarantine;
@@ -22,9 +23,8 @@ import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceElf
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceReptilian;
 
 
-import java.util.*;
 
-import static fantasticHospital.Disease.TypeOfPatient.CreatureSickness.randomDisease;
+import java.util.*;
 
 public class Hospital {
 

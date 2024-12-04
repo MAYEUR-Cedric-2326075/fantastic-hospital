@@ -1,6 +1,6 @@
 package fantasticHospital.Hospital.MedicalService.Races.Cryp;
 import fantasticHospital.Disease.Races.Contaminater.VampireSiknessContaminator;
-import fantasticHospital.Hospital.MedicalService.TypeOfMedicalService.*;
+import fantasticHospital.Hospital.MedicalService.MedicalService.TypeOfMedicalService.*;
 
 public  class MedicalServiceVampireCrypt extends CryptMedicalService<VampireSiknessContaminator> {
 
