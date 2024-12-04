@@ -88,19 +88,23 @@ public class Main {
                     }
 
                     //demande au joueur ce qu'il veux faire dans ce service
-                    String[] choices2 = {"soigner une créature", "réviser le budget", ""};
+                    String[] choices2 = {"soigner une créature", "réviser le budget", "Ne rien faire"};
                     int choice2 = choiceTerminal(choices);
                     switch (choice2) {
                         case 1:
                             //soigner une créature
                             System.out.println("Entrer la créature a soigner : ");
+                            System.out.println("Entrer la créature a soigner : ");
+                            System.out.println("Entrer la créature a soigner : ");
 
                             break;
                         case 2:
                             //réviser budget
+                            System.out.println("Entrer le nouveau budget : ");
+                            choiceService.setBudget("");
                             break;
                         case 3:
-
+                            //ne rien faire
                             break;
                         default:
                             System.out.println("Ce choix n'est pas valide !, choisir autre chose\n");
