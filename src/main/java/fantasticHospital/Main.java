@@ -4,7 +4,6 @@ import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Hospital.Hospital;
 import fantasticHospital.Hospital.MedicalService.MedicalService;
 
-import java.util.Random;
 import java.util.Scanner;
 
 import static fantasticHospital.Disease.TypeOfPatient.CreatureSickness.randomDisease;
@@ -29,12 +28,46 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //String[] choices = {"Choix 1", "Choix 2", "Choix 3"};
-        //int test = choiceTerminal(choices);
-        //System.out.println("le choix utilisateur est : " + test);
 
         mainLoop();
 
+    }
+
+    public static void mainLoop() {
+        //début de partie
+        Hospital hospital = new Hospital("hospital1", 100, 100);// création d'un hopital
+        //générer 1 créature malade en début de partie
+        CreatureSickness creature1 = hospital.generateRandomCreature();
+        creature1.addDiseaseCurrentLevel(randomDisease());
+        hospital.addToMedicalServices(creature1);
+
+        int turn = 0;
+        int totalDeaths = 0;
+        int currentActionPoints = 50;
+
+        // la partie est en cours
+        while (totalDeaths < 10) {
+            ++turn;
+            //création de 1 créature malade
+            CreatureSickness creatureX = hospital.generateRandomCreature();
+            creatureX.addDiseaseCurrentLevel(randomDisease());
+            hospital.addToMedicalServices(creatureX);
+
+            System.out.println("\n--- Tour " + turn + " ---");
+
+            //afficher menue action
+            System.out.println("nb de point : " + currentActionPoints);
+            //Affiche le menu pour jouer en proposant les action du joueur
+            actionMenu(hospital);
+
+            //Fin du tour
+            hospital.waiting();
+            //Contamination des créatures + évolution des maladies + nouvelle creature
+
+        }
+
+        // fin de partie
+        displayFinalScore(turn);
     }
 
     public static void actionMenu(Hospital hospital) {
@@ -81,7 +114,8 @@ public class Main {
                             break;
                     }
                     //afficher le service choisi
-                    System.out.println("nom : " + choiceService.getName());//nom du service choisi
+                    System.out.println("Nom du service : " + choiceService.getName());//nom du service choisi
+                    System.out.println("Budget du service : " + choiceService.getBudgetCategory());
                     //affiche tout les patient du service choisi
                     for (Object creature : choiceService.getPatients()) {
                         System.out.println(creature.toString());
@@ -94,14 +128,23 @@ public class Main {
                         case 1:
                             //soigner une créature
                             System.out.println("Entrer la créature a soigner : ");
-                            System.out.println("Entrer la créature a soigner : ");
-                            System.out.println("Entrer la créature a soigner : ");
-
+                            /*
+                            for (int i=0; i<choiceService.getPatients().size();i++) {
+                                System.out.println(i + ")" + choiceService.getPatients().get(i));
+                            }
+                            int creatureToHeal = scanner.nextInt();
+                            if (hospital.cured(creatureToHeal)) { //bool on a résussi a soigner la créature
+                                System.out.println("La créature à été soigner");
+                            }else {
+                                System.out.println("La créature n'a pas pu être soigner");
+                            }*/
+                            // a faire
                             break;
                         case 2:
                             //réviser budget
                             System.out.println("Entrer le nouveau budget : ");
-                            choiceService.setBudget("");
+                            answer = scanner.nextInt();
+                            choiceService.setBudget(answer);
                             break;
                         case 3:
                             //ne rien faire
@@ -135,46 +178,5 @@ public class Main {
             System.out.println("6) " + hospital.getMedicalServiceVampire().getName() + " | nb de patient = " + hospital.getMedicalServiceVampire().getNumberOfPatientNow());
             System.out.println("7) " + hospital.getMedicalServiceLycanthrope().getName() + " | nb de patient = " + hospital.getMedicalServiceLycanthrope().getNumberOfPatientNow());
             System.out.println("8) " + hospital.getMedicalServiceReptilian().getName() + " | nb de patient = " + hospital.getMedicalServiceReptilian().getNumberOfPatientNow());
-    }
-
-
-
-    public static void mainLoop() {
-        //début de partie
-        Hospital hospital = new Hospital("hospital1", 100, 100);
-
-        //générer 2 créature malade
-        CreatureSickness creature1 = hospital.generateRandomCreature();
-        creature1.addDiseaseCurrentLevel(randomDisease());
-        hospital.addToMedicalServices(creature1);
-
-        Random rand = new Random();
-        int turn = 0;
-        int totalDeaths = 0;
-        int currentActionPoints = 50;
-
-        // la partie est en cours
-        while (totalDeaths < 10) {
-            ++turn;
-            //création de 2 créature avec 1 ou 2 maladie
-            CreatureSickness creatureX = hospital.generateRandomCreature();
-            creatureX.addDiseaseCurrentLevel(randomDisease());
-            hospital.addToMedicalServices(creatureX);
-
-            System.out.println("\n--- Tour " + turn + " ---");
-
-            //afficher menue action
-            System.out.println("nb de point : " + currentActionPoints);
-            //Affiche le menu pour jouer en proposant les action du joueur
-            actionMenu(hospital);
-
-            //Fin du tour
-            hospital.waiting();
-            //Contamination des créatures + évolution des maladies + nouvelle creature
-
-        }
-
-        // fin de partie
-        displayFinalScore(turn);
     }
 }
