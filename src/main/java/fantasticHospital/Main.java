@@ -129,7 +129,7 @@ public class Main {
                         System.out.println("Budget du service : " + choiceService.getBudgetCategory());
                         //affiche tout les patient du service choisi
                         for (Object creature : choiceService.getPatients()) {
-                            System.out.println(creature.toString());
+                            System.out.println(creature.toString()1);
                         }
 
                         //demande au joueur ce qu'il veux faire dans ce service
