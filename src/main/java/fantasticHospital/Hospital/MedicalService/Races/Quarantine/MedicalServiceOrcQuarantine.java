@@ -19,6 +19,8 @@ public class MedicalServiceOrcQuarantine extends QuarantineMedicalService<OrcSic
     public void waiting(){
         for(OrcSicknessContaminator patient:getPatients()){
             patient.waiting(getNumberOfPatientNow()>1);
+            if(!patient.isHealthy()&&getNumberOfPatientNow()>1)
+                patient.contaminate(getRandomPatient());
         }
     }
 }

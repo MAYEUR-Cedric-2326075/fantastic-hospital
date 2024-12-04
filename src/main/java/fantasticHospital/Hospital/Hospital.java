@@ -411,7 +411,7 @@ public class Hospital implements Randomizer {
 */
     public boolean moveDeadZombieToCrypt() {
         HashSet<ZombieSickness> dead = medicalServiceZombie.removeDeads();
-        if(!dead.isEmpty())
+        if(!dead.isEmpty()&&medicalServiceZombie.nbOfDead()>0)
             cryptSZombie.addPatient(dead);
         return false;
     }

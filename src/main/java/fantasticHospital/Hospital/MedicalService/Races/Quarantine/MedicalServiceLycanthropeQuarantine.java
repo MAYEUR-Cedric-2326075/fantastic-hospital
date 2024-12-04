@@ -18,6 +18,8 @@ public class MedicalServiceLycanthropeQuarantine extends QuarantineMedicalServic
     public void waiting(){
         for(LycanthropeSicknessContaminator patient:getPatients()){
             patient.waiting(getNumberOfPatientNow()>1);
+            if(!patient.isHealthy()&&getNumberOfPatientNow()>1)
+                patient.contaminate(getRandomPatient());
         }
     }
 }
