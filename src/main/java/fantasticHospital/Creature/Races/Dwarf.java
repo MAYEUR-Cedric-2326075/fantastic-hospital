@@ -3,13 +3,14 @@ package fantasticHospital.Creature.Races;
 import fantasticHospital.Creature.Behavior.VipWaiter;
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Race.PoorRace;
 import fantasticHospital.Creature.Race.VipRace;
 
-public class Dwarf extends Creature implements VipWaiter {
+public class Dwarf extends CreatureSexualised implements VipWaiter {
 
     // Race spécifique
-    private static final VipRace race = new VipRace("Dwarf", 70, 60, 20);
+    private static final VipRace race = new VipRace("Dwarf", 70, 25,60,100, 20,42);
 
 
     @Override
@@ -24,13 +25,13 @@ public class Dwarf extends Creature implements VipWaiter {
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
 
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

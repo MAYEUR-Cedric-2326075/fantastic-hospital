@@ -1,5 +1,6 @@
 package fantasticHospital.Creature.Races;
 
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.StatusEffect.*;
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Behavior.VipWaiter;
@@ -7,10 +8,10 @@ import fantasticHospital.Creature.Race.VipRace;
 
 import java.util.Set;
 
-public class Vampire extends Creature implements VipWaiter, Regenerator, Demoraliser<Creature> {
+public class Vampire extends CreatureSexualised implements VipWaiter, Regenerator, Demoraliser<Creature> {
 
     // Race spécifique
-    private static VipRace race = new VipRace("Vampire", 50, 40, 30);
+    private static VipRace race = new VipRace("Vampire", 50, 40, 2000,100000000,40,20);
 
     @Override
     public VipRace getRace() {
@@ -24,13 +25,13 @@ public class Vampire extends Creature implements VipWaiter, Regenerator, Demoral
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
     // Vérifier si le Beastman est en train de crier
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

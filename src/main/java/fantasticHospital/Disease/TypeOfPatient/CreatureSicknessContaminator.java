@@ -1,7 +1,7 @@
 package fantasticHospital.Disease.TypeOfPatient;
 
 import fantasticHospital.Creature.Races.Beastman;
-import fantasticHospital.Creature.Races.Lycanthrope;
+import fantasticHospital.Creature.Races.Lycanthrope.Lycanthrope;
 import fantasticHospital.Creature.Races.Orc;
 import fantasticHospital.Creature.Races.Vampire;
 import fantasticHospital.Disease.Behavior.Contaminator;

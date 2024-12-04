@@ -1,8 +1,7 @@
 package fantasticHospital.Disease.Races.Contaminater;
 
 import fantasticHospital.Creature.Behavior.PoorWaiter;
-import fantasticHospital.Creature.Races.Lycanthrope;
-import fantasticHospital.Creature.Races.Vampire;
+import fantasticHospital.Creature.Races.Lycanthrope.Lycanthrope;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSicknessContaminator;
 
 public class LycanthropeSicknessContaminator extends CreatureSicknessContaminator implements PoorWaiter {

@@ -10,12 +10,6 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
     public void setName(String name) {
         this.name = name;
     }
-    public boolean getGender() {
-        return gender;
-    }
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
     public double getWeight() {
         return weight;
     }
@@ -47,7 +41,7 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
 
     //private abstract Race2 race;
     private String name;
-    private boolean gender;
+    //private boolean gender;
     private double weight;
     private double height;
     private int age;
@@ -56,9 +50,9 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
 
     //private static Race2 race;
 
-    public Creature(String name, boolean gender, double weight, double height, int age) {
+    public Creature(String name, double weight, double height, int age) {
         this.name = name;
-        this.gender = gender;
+        //this.gender = gender;
         this.weight = weight;
         this.height = height;
         this.age = age;
@@ -106,10 +100,16 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
 
     @Override
     public String toString() {
-        return "Creature{name='" + name + "', gender=" + (gender ? "Male" : "Female") + ", weight=" + weight +
-                ", height=" + height + ", age=" + age + ", moralityRate=" + moralityRate +
-                ", alive=" + Alive + "}";
+        return "Creature {" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                " kg, height=" + height +
+                " m, age=" + age +
+                " years, moralityRate=" + moralityRate +
+                ", alive=" + Alive +
+                '}';
     }
+
 
 
 }

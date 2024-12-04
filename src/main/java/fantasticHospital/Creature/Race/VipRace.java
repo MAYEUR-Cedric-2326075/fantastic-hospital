@@ -5,8 +5,10 @@ public class VipRace extends Race {
     private int rateOfReduction;
 
     // Constructeur
-    public VipRace(String raceName, int rateOfMoralitybeginningSream, int rateOfMoralityBeginningRage, int rateOfReduction) {
-        super(raceName, rateOfMoralitybeginningSream, rateOfMoralityBeginningRage);
+    public VipRace(String raceName, int rateOfMoralitybeginningSream,
+                   int youngAge,int adultAge,int oldAge,
+                   int rateOfMoralityBeginningRage, int rateOfReduction) {
+        super(raceName, rateOfMoralitybeginningSream, rateOfMoralityBeginningRage,youngAge,adultAge,oldAge);
         this.rateOfReduction = rateOfReduction;
     }
 
@@ -18,14 +20,13 @@ public class VipRace extends Race {
     public void setRateOfReduction(int rateOfReduction) {
         this.rateOfReduction = rateOfReduction;
     }
-    public boolean isVip(){return false;}
 
     // Méthode toString pour faciliter l'affichage
     @Override
     public String toString() {
         return "VipRace{" +
                 "raceName='" + getRaceName() + '\'' +
-                ", rateOfMoralitybeginningSream=" + getRateOfMoralitybeginningSream() +
+                ", rateOfMoralitybeginningSream=" + getRateOfMoralityBeginningScream() +
                 ", rateOfMoralityBeginningRage=" + getRateOfMoralityBeginningRage() +
                 ", rateOfReduction=" + rateOfReduction +
                 '}';

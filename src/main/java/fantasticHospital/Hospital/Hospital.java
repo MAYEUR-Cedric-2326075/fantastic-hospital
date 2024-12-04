@@ -2,6 +2,8 @@ package fantasticHospital.Hospital;
 
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Races.*;
+import fantasticHospital.Creature.Races.Lycanthrope.LycanthropeFemale;
+import fantasticHospital.Creature.Races.Lycanthrope.LycanthropeMale;
 import fantasticHospital.Disease.Races.Contaminater.BeastmanSicknessContaminator;
 import fantasticHospital.Disease.Races.Contaminater.LycanthropeSicknessContaminator;
 import fantasticHospital.Disease.Races.Contaminater.OrcSicknessContaminator;
@@ -261,7 +263,11 @@ public class Hospital implements Randomizer {
             case 2:
                 return new ElfSickness(new Elf(name, gender, weight, height, age));
             case 3:
-                return new LycanthropeSicknessContaminator(new Lycanthrope(name, gender, weight, height, age));
+                return new LycanthropeSicknessContaminator(
+                        generateRandomBoolean()
+                                ? new LycanthropeMale(name, weight, height, age, generateRandomNumber(0, 100), generateRandomNumber(0, 100))
+                                : new LycanthropeFemale(name, weight, height, age, generateRandomNumber(0, 100),generateRandomNumber(0, 100) ,generateRandomNumber(0, 100),generateRandomNumber(0, 100))
+                );
             case 4:
                 return new OrcSicknessContaminator(new Orc(name, gender, weight, height, age));
             case 5:
@@ -273,7 +279,11 @@ public class Hospital implements Randomizer {
             default:
                 throw new IllegalStateException("Mauvaise race : " + raceChoice);
         }
-    }
+    }/*
+    (String name, double weight, double height,
+    int age ,int strength,int dominationExercised,int impetuosity,int beauty){
+
+    */
 
 
     public boolean isDoctorAvailable(Doctor doctor) {

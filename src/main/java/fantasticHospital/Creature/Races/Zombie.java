@@ -2,13 +2,14 @@ package fantasticHospital.Creature.Races;
 
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.StatusEffect.Regenerator;
 import fantasticHospital.Creature.Race.PoorRace;
 
-public class Zombie extends Creature implements PoorWaiter, Regenerator {
+public class Zombie extends CreatureSexualised implements PoorWaiter, Regenerator {
 
     // Race spécifique
-    private static PoorRace race = new PoorRace("Zombie", 40, 20, 10, 20);
+    private static PoorRace race = new PoorRace("Zombie", 40, 20, 1, 20,400,1,1);
 
     @Override
     public PoorRace getRace() {
@@ -26,13 +27,13 @@ public class Zombie extends Creature implements PoorWaiter, Regenerator {
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
 
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningRage()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }

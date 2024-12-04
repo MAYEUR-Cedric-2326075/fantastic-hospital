@@ -1,7 +1,6 @@
 package fantasticHospital.Disease.Races.Contaminater;
 
 import fantasticHospital.Creature.Behavior.PoorWaiter;
-import fantasticHospital.Creature.Races.Lycanthrope;
 import fantasticHospital.Creature.Races.Orc;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSicknessContaminator;
 

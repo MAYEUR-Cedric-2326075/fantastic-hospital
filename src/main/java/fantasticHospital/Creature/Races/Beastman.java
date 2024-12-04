@@ -2,13 +2,21 @@ package fantasticHospital.Creature.Races;
 
 import fantasticHospital.Creature.Creature;
 import fantasticHospital.Creature.Behavior.PoorWaiter;
+import fantasticHospital.Creature.CreatureSexualised;
 import fantasticHospital.Creature.Race.PoorRace;
 
-public class Beastman extends Creature implements PoorWaiter/*, Contaminator*/ {
+public class Beastman extends CreatureSexualised implements PoorWaiter/*, Contaminator*/ {
 
     // Race spécifique
-    private static PoorRace race=new PoorRace("Beastman",50,40,5,15);
-
+    private static PoorRace race=new PoorRace(
+            "Beastman",50,40,5,15,50,15,30);
+/*
+String raceName,
+                    int rateOfMoralitybeginningSream,
+                    int rateOfMoralityBeginningRage,
+                    int youngAge,int adultAge,int oldAge,
+                    int rateOfReductionWithPeaple, int rateOfReductionWithoutPeaple
+ */
 
     @Override
     public PoorRace getRace() {
@@ -25,13 +33,13 @@ public class Beastman extends Creature implements PoorWaiter/*, Contaminator*/ {
     @Override
     public boolean isInRage(){return this.getMoralityRate()<race.getRateOfMoralityBeginningRage()&&
             this.isAlive()&&
-            this.getMoralityRate() < race.getRateOfMoralitybeginningSream();
+            this.getMoralityRate() < race.getRateOfMoralityBeginningScream();
     }
 
     // Vérifier si le Beastman est en train de crier
     @Override
     public boolean isScreaming() {
-        return this.getMoralityRate() < race.getRateOfMoralitybeginningSream()
+        return this.getMoralityRate() < race.getRateOfMoralityBeginningScream()
                 && this.isAlive()
                 && this.getMoralityRate() > race.getRateOfMoralityBeginningRage();
     }
