@@ -134,6 +134,7 @@ public class Main {
             actionMenu(hospital);
 
             //Fin du tour
+            //hospital.waiting();
             //Contamination des créatures + évolution des maladies + nouvelle creature
 
         }
