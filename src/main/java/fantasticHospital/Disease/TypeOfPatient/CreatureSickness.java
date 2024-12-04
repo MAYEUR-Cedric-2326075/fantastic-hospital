@@ -106,13 +106,17 @@ public abstract class CreatureSickness implements Randomizer {
         return diseaseNames;
     }
     //soigne toute les maladies
-    public void heal(){
+    public void cured(){
         diseaseCurrentLevel.clear();
     }
     //soigne la maladie passer en paramètre
-    public void heal(Disease disease){
+    public void cured(Disease disease){
         diseaseCurrentLevel.remove(disease);
     }
+
+
+
+
     //génère une maladie au hasard parmi la liste "diseases"
     public static Disease randomDisease() {
         Random random = new Random();

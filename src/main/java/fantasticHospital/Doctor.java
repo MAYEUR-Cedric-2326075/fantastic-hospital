@@ -1,10 +1,18 @@
-package com.fantasticHospital;
+package fantasticHospital.Hospital.MedicalService.Employe;
 
-public class Doctor {
+import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
+import fantasticHospital.Hospital.Behavior.healer;
+
+public class Doctor implements healer<CreatureSickness> {
 
     private String name;
     private boolean gender;
     private int age;
+    @Override
+    public String toString() {
+        return "Doctor{name='" + name + "', gender=" + (gender ? "Male" : "Female") + ", age=" + age + "}";
+    }
+
 
     public Doctor(String name, boolean gender, int age) {
         this.name = name;
@@ -15,8 +23,7 @@ public class Doctor {
     public boolean getGender() {
         return gender;
     }
-
-    public void setGender(boolean gender) {
+    protected void setGender(boolean gender) {
         this.gender = gender;
     }
 

@@ -34,6 +34,11 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
         }
         return true;
     }
+    public boolean cured(Doctor doctor, Patient patient){
+        if(!isEmpty())
+            return doctor.heal(patient);
+        return false;
+    }
     public boolean removePatient(Patient creatureSickness){
         return !isEmpty()&&patients.remove(creatureSickness);
     }

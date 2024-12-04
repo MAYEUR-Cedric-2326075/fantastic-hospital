@@ -11,7 +11,7 @@ import fantasticHospital.Disease.Races.Regular.ElfSickness;
 import fantasticHospital.Disease.Races.Regular.ReptilianSickness;
 import fantasticHospital.Disease.Races.Regular.ZombieSickness;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
-import com.fantasticHospital.Doctor;
+import fantasticHospital.Hospital.MedicalService.Employe.*;
 import fantasticHospital.Hospital.MedicalService.Races.Cryp.MedicalServiceZombieCryp;
 import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceLycanthropeQuarantine;
 import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalServiceOrcQuarantine;
@@ -20,6 +20,7 @@ import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalService
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceDwarf;
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceElf;
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceReptilian;
+
 
 import java.util.*;
 
@@ -32,7 +33,7 @@ public class Hospital {
     private int maxPatients;
     private int maxDeaths;
     private List<MedicalService> medicalServices;
-    private List<Doctor> doctors;
+    private HashMap<Doctor, Boolean> doctorsAvailability;
     private int maxActionPoints;
     private int currentActionPoints;
     private List<Creature> deadCreatures = new ArrayList<>();
@@ -43,9 +44,15 @@ public class Hospital {
         this.maxPatients = maxPatients;
         this.maxDeaths = maxDeaths;
         this.medicalServices = generateMedicalServicies();
-        this.doctors = new ArrayList<>();
+        this.doctorsAvailability = new HashMap<Doctor, Boolean>();
     }
-
+    public boolean addDoctor(Doctor doctor) {
+        if(!doctorsAvailability.containsKey(doctor)) {
+            doctorsAvailability.put(doctor, false);
+            return false;
+        }
+        return true;
+    }
     public String getName() {
         return name;
     }
@@ -73,10 +80,11 @@ public class Hospital {
     public List<MedicalService> getMedicalServices() {
         return medicalServices;
     }
+    /*
     public List<Doctor> getDoctors() {
         return doctors;
     }
-
+*/
 
     private CreatureSickness getCreatureSickness(Creature creature, List<CreatureSickness> creatureSicknesses) {
         for (CreatureSickness sickness : creatureSicknesses) {
@@ -112,48 +120,12 @@ public class Hospital {
      *
      **/
 
-
-/*
-    // Affichage des créatures et de leurs maladies
-    public void displayCreatures(List<CreatureSickness> creatureSicknesses) {
-        int totalCreatures = 0;
-
-        if (medicalServices.isEmpty()) {
-            System.out.println("Il n'y a pas de services médicaux.");
-            return;
+    public void waiting() {
+        for (MedicalService<?> service : medicalServices) {
+            service.waiting();
         }
 
-        for (MedicalService service : medicalServices) {
-            System.out.println("Service médical : " + service.getName());
-
-            if (service.isEmpty()) {
-                System.out.println("  Il n'y a pas de créatures.");
-            } else {
-                for (Creature creature : service.getPatients().toArray()) {
-                    ++totalCreatures;
-                    System.out.println("  " + creature.getName() + " (" + creature.getRace() + ")");
-
-                    CreatureSickness sickness = getCreatureSickness(creature, creatureSicknesses);
-                    if (sickness == null || sickness.getDisease().isEmpty()) {
-                        System.out.println("    Pas de maladie.");
-                    } else {
-                        for (Disease disease : sickness.getDisease()) {
-                            int level = sickness.getCurrentLevel(disease);
-                            System.out.println("    Maladie : " + disease.getName() + " (" + disease.getShortName() + ")"
-                                    + " - Phase : " + level + " / " + disease.getMaxLevel());
-                        }
-                    }
-                }
-            }
-        }
-
-        System.out.println("Nombre total de créatures dans l'hôpital : " + totalCreatures);
-        if (totalCreatures > maxPatients) {
-            System.out.println("L'hôpital a atteint sa capacité maximale de créatures.");
-        } else {
-            System.out.println("L'hôpital peut encore accueillir " + (maxPatients - totalCreatures) + " créatures.");
-        }
-    }*/
+    }
 
 
     // Afficher les services médicaux
@@ -167,72 +139,8 @@ public class Hospital {
         }
     }
 
-/*
-    // Modification du moral des créatures
-    public void updateMorality(MedicalService service) {
 
-        for (Creature creature : service.getPatients().toArray()) {
 
-            if (!creature.isAlive()) {
-
-                // Si la créature est morte et c'est un Elf ou un Vampire, abaisser le moral des autres créatures
-                if (creature.getRace().getRaceName().equals("Elf") || creature.getRace().getRaceName().equals("Vampire")) {
-
-                    // Abaisser le moral de toutes les créatures vivantes dans le service
-                    for (Creature otherCreature : service.getPresentCreature()) {
-
-                        if (otherCreature.isAlive()) {
-
-                            if (otherCreature.getRace().getRaceName().equals("Elf")) {
-                                Elf otherElf = (Elf) otherCreature;
-                                Set<Creature> creatureSet = new HashSet<>(service.getPresentCreature());
-                                otherElf.demoralize(creatureSet);
-
-                            } else if (otherCreature.getRace().getRaceName().equals("Vampire")) {
-                                Vampire otherVampire = (Vampire) otherCreature;
-                                Set<Creature> creatureSet = new HashSet<>(service.getPresentCreature());
-                                otherVampire.demoralize(creatureSet);
-                            }
-                        }
-                    }
-                }
-                deadCreatures.add(creature);
-            }
-            else {
-                //perte de patience des vip
-                if (creature.getRace().isVip()) {
-
-                    VipRace vipRace = (VipRace) creature.getRace();
-                    int rateOfReduction = vipRace.getRateOfReduction();
-                    creature.setMoralityRate(creature.getMoralityRate() - rateOfReduction);
-
-                } else{
-                    PoorRace poorRace = (PoorRace) creature.getRace();
-                    int rateOfReduction;
-
-                    // Si la créature est avec d'autres membres de sa race
-                    boolean isWithOtherPoor = false;
-                    for (Creature otherCreature : service.getPresentCreature()) {
-                        if (otherCreature != creature && otherCreature.getRace().getRaceName().equals(creature.getRace().getRaceName())) {
-                            isWithOtherPoor = true;
-                            break;
-                        }
-                    }
-
-                    // Choisir le taux de réduction en fonction de la présence d'autres membres de la race
-                    if (isWithOtherPoor) {
-                        rateOfReduction = poorRace.getRateOfReductionWithPeaple();
-                    } else {
-                        rateOfReduction = poorRace.getRateOfReductionWithoutPeaple();
-                    }
-
-                    creature.setMoralityRate(creature.getMoralityRate() - rateOfReduction);
-                }
-
-            }
-        }
-        service.getPresentCreature().removeAll(deadCreatures);
-    }*/
 
     //Générer une créature aléatoire
     public CreatureSickness generateRandomCreature() {
@@ -270,72 +178,29 @@ public class Hospital {
     }
 
 
-    // Ajout de nouvelles créatures
-
-/*
-
-    // Ajouter une créature à un service médical
-    public void addCreatureToService(Creature creature, MedicalService service) {
-        if (!medicalServices.contains(service)) {
-            System.out.println("Service médical non trouvé.");
-            return;
-        }
-        service.getPresentCreature().add(creature);
+    public boolean isDoctorAvailable(Doctor doctor) {
+        if (doctorsAvailability.containsKey(doctor))
+            return doctorsAvailability.get(doctor);
+        return false;
     }
-
-
-    // Retirer une créature d'un service médical
-    public void removeCreatureFromService(Creature creature, MedicalService service) {
-        if (service.getPresentCreature().contains(creature)) {
-            service.getPresentCreature().remove(creature);
-        } else {
-            System.out.println("La créature n'est pas présente dans ce service médical.");
-        }
-    }
-
-
-    public void manageDiseaseProgression(CreatureSickness sickness) {
-        Disease disease = sickness.getDisease().get(0); // On suppose qu'il n'y a qu'une maladie par créature pour simplifier.
-        int currentLevel = sickness.getCurrentLevel(disease);
-        if (currentLevel < disease.getMaxLevel()) {
-            sickness.incrementDiseaseLevel(disease);
-        } else {
-            // La créature meurt
-            deadCreatures.add(sickness.getCreature());
-            System.out.println(sickness.getCreature().getName() + " est morte de la maladie.");
-        }
-    }
-
-
-    // Ajouter une maladie à une créature
-    public void addDiseaseToCreature(Creature creature, Disease disease) {
-        CreatureSickness sickness = getCreatureSickness(creature, creatureSicknesses);
-        if (sickness == null) {
-            sickness = new CreatureSickness(creature);
-            creatureSicknesses.add(sickness);
-        }
-        sickness.addDisease(disease);
-    }
-
-
-    // Propager une maladie à d'autres créatures dans un service
-    public void propagateDiseaseToOtherCreatures(MedicalService service, Disease disease) {
-        for (CreatureSickness sickness : creatureSicknesses) {
-            if (service.getPresentCreature().contains(sickness.getCreature()) && !sickness.getDisease().contains(disease)) {
-                sickness.addDisease(disease);
+    public boolean isOneDoctorAvailable() {
+        for (Map.Entry<Doctor, Boolean> entry : doctorsAvailability.entrySet()) {
+            if (entry.getValue()) {
+                return true;
             }
         }
+        return false;
+    }
+    public boolean healing(CreatureSickness creatureSickness) {
+        if (!doctorsAvailability.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+    public List<Doctor> getDoctors() {
+        return new ArrayList<>(doctorsAvailability.keySet());
     }
 
-
-    // Guérir une créature
-    public void healCreature(Creature creature) {
-        CreatureSickness sickness = getCreatureSickness(creature, creatureSicknesses);
-        if (sickness != null) {
-            sickness.removeDisease(sickness.getDisease().get(0)); // Supposons qu'une seule maladie par créature pour simplifier
-            System.out.println(creature.getName() + " a été guérie.");
-        }
-    }*/
 
 
     // Afficher les actions possibles du joueur
@@ -384,7 +249,7 @@ public class Hospital {
         System.out.println("Actions possibles :");
 
         for (int i = 0; i < 4; i++) {
-            System.out.println((i + 1) + ". " + doctors.get(i).getName());
+            System.out.println((i + 1) + ". " + getDoctors().get(i).getName());
         }
 
         // Options 5 à 8 restent vides
