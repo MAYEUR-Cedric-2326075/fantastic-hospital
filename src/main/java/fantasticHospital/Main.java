@@ -53,7 +53,33 @@ public class Main {
                     System.out.println("Entrer le service medical choisi : ");
                     Scanner scanner = new Scanner(System.in); //le joueur choisi le service
                     int answer = scanner.nextInt();
-                    MedicalService choiceService = hospital.getMedicalServices().get(answer-1);
+                    MedicalService choiceService = null;
+                    switch (answer) {
+                        case 1:
+                            choiceService = hospital.getMedicalServiceElf();
+                            break;
+                        case 2:
+                            choiceService = hospital.getMedicalServiceDwarf();
+                            break;
+                        case 3:
+                            choiceService = hospital.getMedicalServiceOrc();
+                            break;
+                        case 4:
+                            choiceService = hospital.getMedicalServiceBeastman();
+                            break;
+                        case 5:
+                            choiceService = hospital.getMedicalServiceZombie();
+                            break;
+                        case 6:
+                            choiceService = hospital.getMedicalServiceVampire();
+                            break;
+                        case 7:
+                            choiceService = hospital.getMedicalServiceLycanthrope();
+                            break;
+                        case 8:
+                            choiceService = hospital.getMedicalServiceReptilian();
+                            break;
+                    }
                     //afficher le service choisi
                     System.out.println("nom : " + choiceService.getName());//nom du service choisi
                     //affiche tout les patient du service choisi
@@ -97,16 +123,21 @@ public class Main {
 
     public static void showMedicalServices(Hospital hospital) {
         //affiche les services medical
-        for (int i = 0; i < hospital.getMedicalServices().size(); i++) {
-            System.out.println(i+1 + ") " + hospital.getMedicalServices().get(i).getName() + " | nb de patient = " + hospital.getMedicalServices().get(i).getNumberOfPatientNow());
-        }
+            System.out.println("1) " + hospital.getMedicalServiceElf().getName() + " | nb de patient = " + hospital.getMedicalServiceElf().getNumberOfPatientNow());
+            System.out.println("2) " + hospital.getMedicalServiceDwarf().getName() + " | nb de patient = " + hospital.getMedicalServiceDwarf().getNumberOfPatientNow());
+            System.out.println("3) " + hospital.getMedicalServiceOrc().getName() + " | nb de patient = " + hospital.getMedicalServiceOrc().getNumberOfPatientNow());
+            System.out.println("4) " + hospital.getMedicalServiceBeastman().getName() + " | nb de patient = " + hospital.getMedicalServiceBeastman().getNumberOfPatientNow());
+            System.out.println("5) " + hospital.getMedicalServiceZombie().getName() + " | nb de patient = " + hospital.getMedicalServiceZombie().getNumberOfPatientNow());
+            System.out.println("6) " + hospital.getMedicalServiceVampire().getName() + " | nb de patient = " + hospital.getMedicalServiceVampire().getNumberOfPatientNow());
+            System.out.println("7) " + hospital.getMedicalServiceLycanthrope().getName() + " | nb de patient = " + hospital.getMedicalServiceLycanthrope().getNumberOfPatientNow());
+            System.out.println("8) " + hospital.getMedicalServiceReptilian().getName() + " | nb de patient = " + hospital.getMedicalServiceReptilian().getNumberOfPatientNow());
     }
 
 
 
     public static void mainLoop() {
         //début de partie
-        Hospital hospital = new Hospital("hospital1", 8, 100, 100);
+        Hospital hospital = new Hospital("hospital1", 100, 100);
 
         //générer 2 créature malade
         CreatureSickness creature1 = hospital.generateRandomCreature();

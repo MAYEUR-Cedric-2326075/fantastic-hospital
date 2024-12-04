@@ -29,23 +29,93 @@ import java.util.*;
 public class Hospital {
 
     private String name;
-    private int maxMedicalServices;
     private int maxPatients;
     private int maxDeaths;
-    private List<MedicalService> medicalServices;
     private HashMap<Doctor, Boolean> doctorsAvailability;
     private int maxActionPoints;
     private int currentActionPoints;
     private List<Creature> deadCreatures = new ArrayList<>();
     private List<CreatureSickness> creatureSicknesses;
-    public Hospital(String name, int maxMedicalServices, int maxPatients, int maxDeaths) {
+    private MedicalServiceElf medicalServiceElf = new MedicalServiceElf("Service medical Elf");
+    private MedicalServiceDwarf medicalServiceDwarf = new MedicalServiceDwarf("Service medical Dwarf");
+    private MedicalServiceOrcQuarantine medicalServiceOrc = new MedicalServiceOrcQuarantine("Service medical Orc");
+    private MedicalServiceQuarantineBeastman medicalServiceBeastman = new MedicalServiceQuarantineBeastman("Service medical Beastman");
+    private MedicalServiceZombieCryp medicalServiceZombie = new MedicalServiceZombieCryp("Service medical Zombie");
+    private MedicalServiceVampireQuarantine medicalServiceVampire = new MedicalServiceVampireQuarantine("Service medical Vampire");
+    private MedicalServiceLycanthropeQuarantine medicalServiceLycanthrope = new MedicalServiceLycanthropeQuarantine("Service medical Lycanthrope");
+    private MedicalServiceReptilian medicalServiceReptilian = new MedicalServiceReptilian("Service medical Reptilian");
+    public Hospital(String name, int maxPatients, int maxDeaths) {
         this.name = name;
-        this.maxMedicalServices = maxMedicalServices;
         this.maxPatients = maxPatients;
         this.maxDeaths = maxDeaths;
-        this.medicalServices = generateMedicalServicies();
         this.doctorsAvailability = new HashMap<Doctor, Boolean>();
     }
+
+    public MedicalServiceReptilian getMedicalServiceReptilian() {
+        return medicalServiceReptilian;
+    }
+
+    public void setMedicalServiceReptilian(MedicalServiceReptilian medicalServiceReptilian) {
+        this.medicalServiceReptilian = medicalServiceReptilian;
+    }
+
+    public MedicalServiceLycanthropeQuarantine getMedicalServiceLycanthrope() {
+        return medicalServiceLycanthrope;
+    }
+
+    public void setMedicalServiceLycanthrope(MedicalServiceLycanthropeQuarantine medicalServiceLycanthrope) {
+        this.medicalServiceLycanthrope = medicalServiceLycanthrope;
+    }
+
+    public MedicalServiceVampireQuarantine getMedicalServiceVampire() {
+        return medicalServiceVampire;
+    }
+
+    public void setMedicalServiceVampire(MedicalServiceVampireQuarantine medicalServiceVampire) {
+        this.medicalServiceVampire = medicalServiceVampire;
+    }
+
+    public MedicalServiceZombieCryp getMedicalServiceZombie() {
+        return medicalServiceZombie;
+    }
+
+    public void setMedicalServiceZombie(MedicalServiceZombieCryp medicalServiceZombie) {
+        this.medicalServiceZombie = medicalServiceZombie;
+    }
+
+    public MedicalServiceQuarantineBeastman getMedicalServiceBeastman() {
+        return medicalServiceBeastman;
+    }
+
+    public void setMedicalServiceBeastman(MedicalServiceQuarantineBeastman medicalServiceBeastman) {
+        this.medicalServiceBeastman = medicalServiceBeastman;
+    }
+
+    public MedicalServiceOrcQuarantine getMedicalServiceOrc() {
+        return medicalServiceOrc;
+    }
+
+    public void setMedicalServiceOrc(MedicalServiceOrcQuarantine medicalServiceOrc) {
+        this.medicalServiceOrc = medicalServiceOrc;
+    }
+
+    public MedicalServiceDwarf getMedicalServiceDwarf() {
+        return medicalServiceDwarf;
+    }
+
+    public void setMedicalServiceDwarf(MedicalServiceDwarf medicalServiceDwarf) {
+        this.medicalServiceDwarf = medicalServiceDwarf;
+    }
+
+    public MedicalServiceElf getMedicalServiceElf() {
+        return medicalServiceElf;
+    }
+
+    public void setMedicalServiceElf(MedicalServiceElf medicalServiceElf) {
+        this.medicalServiceElf = medicalServiceElf;
+    }
+
+
     public boolean addDoctor(Doctor doctor) {
         if(!doctorsAvailability.containsKey(doctor)) {
             doctorsAvailability.put(doctor, false);
@@ -70,15 +140,6 @@ public class Hospital {
     }
     public void setMaxDeaths(int maxDeaths) {
         this.maxDeaths = maxDeaths;
-    }
-    public int getMaxMedicalServices() {
-        return maxMedicalServices;
-    }
-    public void setMaxMedicalServices(int maxMedicalServices) {
-        this.maxMedicalServices = maxMedicalServices;
-    }
-    public List<MedicalService> getMedicalServices() {
-        return medicalServices;
     }
     /*
     public List<Doctor> getDoctors() {
@@ -120,14 +181,21 @@ public class Hospital {
      *
      **/
 
-    public void waiting() {
-        for (MedicalService<?> service : medicalServices) {
-            service.waiting();
-        }
 
+    public void waiting() {
+        // Appeler la méthode `waiting` pour chaque service médical.
+        medicalServiceElf.waiting();
+        medicalServiceDwarf.waiting();
+        medicalServiceReptilian.waiting();
+        medicalServiceZombie.waiting();
+        medicalServiceBeastman.waiting();
+        medicalServiceLycanthrope.waiting();
+        medicalServiceOrc.waiting();
+        medicalServiceVampire.waiting();
     }
 
 
+/*
     // Afficher les services médicaux
     public void displayMedicalServices() {
         if (medicalServices.isEmpty()) {
@@ -137,7 +205,7 @@ public class Hospital {
                 System.out.println("Service médical : " + service.getName());
             }
         }
-    }
+    }*/
 
 
 
@@ -275,57 +343,31 @@ public class Hospital {
         System.out.println("9. Retour au menu");
     }
 
-
-    private static List<MedicalService> generateMedicalServicies(){
-        List<MedicalService> medicalServices = new ArrayList<>();
-
-        MedicalServiceElf medicalServiceElf = new MedicalServiceElf("Service medical Elf");
-        MedicalServiceDwarf medicalServiceDwarf = new MedicalServiceDwarf("Service medical Dwarf");
-        MedicalServiceOrcQuarantine medicalServiceOrc = new MedicalServiceOrcQuarantine("Service medical Orc");
-        MedicalServiceQuarantineBeastman medicalServiceBeastman = new MedicalServiceQuarantineBeastman("Service medical Beastman");
-        MedicalServiceZombieCryp medicalServiceZombie = new MedicalServiceZombieCryp("Service medical Zombie");
-        MedicalServiceVampireQuarantine medicalServiceVampire = new MedicalServiceVampireQuarantine("Service medical Vampire");
-        MedicalServiceLycanthropeQuarantine medicalServiceLycanthrope = new MedicalServiceLycanthropeQuarantine("Service medical Lycanthrope");
-        MedicalServiceReptilian medicalServiceReptilian = new MedicalServiceReptilian("Service medical Reptilian");
-        medicalServices.add(medicalServiceElf);
-        medicalServices.add(medicalServiceDwarf);
-        medicalServices.add(medicalServiceOrc);
-        medicalServices.add(medicalServiceBeastman);
-        medicalServices.add(medicalServiceZombie);
-        medicalServices.add(medicalServiceVampire);
-        medicalServices.add(medicalServiceLycanthrope);
-        medicalServices.add(medicalServiceReptilian);
-        //exemple pour test
-        //medicalServiceDwarf.addPatient(new DwarfSickness(new Dwarf("Gloin", true, 80.0, 1.4, 140)));
-        //medicalServiceDwarf.addPatient(new DwarfSickness(new Dwarf("Gloin2", true, 85.0, 1.4, 140)));
-        return medicalServices;
-    }
-
     public void addToMedicalServices(CreatureSickness creatureSickness) {
         switch (creatureSickness.getCreature().getRace().getRaceName()) {
             case "Elf":
-                medicalServices.get(0).addPatient((ElfSickness)creatureSickness);
+                medicalServiceElf.addPatient((ElfSickness)creatureSickness);
                 break;
             case "Dwarf":
-                medicalServices.get(1).addPatient((DwarfSickness)creatureSickness);
+                medicalServiceDwarf.addPatient((DwarfSickness)creatureSickness);
                 break;
             case "Reptilian":
-                medicalServices.get(2).addPatient((ReptilianSickness)creatureSickness);
+                medicalServiceReptilian.addPatient((ReptilianSickness)creatureSickness);
                 break;
             case "Zombie":
-                medicalServices.get(3).addPatient((ZombieSickness)creatureSickness);
+                medicalServiceZombie.addPatient((ZombieSickness)creatureSickness);
                 break;
             case "Beastman":
-                medicalServices.get(4).addPatient((BeastmanSicknessContaminator)creatureSickness);
+                medicalServiceBeastman.addPatient((BeastmanSicknessContaminator)creatureSickness);
                 break;
             case "Lycanthrope":
-                medicalServices.get(5).addPatient((LycanthropeSicknessContaminator)creatureSickness);
+                medicalServiceLycanthrope.addPatient((LycanthropeSicknessContaminator)creatureSickness);
                 break;
             case "Orc":
-                medicalServices.get(6).addPatient((OrcSicknessContaminator)creatureSickness);
+                medicalServiceOrc.addPatient((OrcSicknessContaminator)creatureSickness);
                 break;
             case "Vampire":
-                medicalServices.get(7).addPatient((VampireSiknessContaminator)creatureSickness);
+                medicalServiceVampire.addPatient((VampireSiknessContaminator)creatureSickness);
                 break;
             default:
                 System.out.println("Race non reconnue");
