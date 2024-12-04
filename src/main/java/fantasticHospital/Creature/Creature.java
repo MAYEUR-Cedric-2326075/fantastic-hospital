@@ -62,7 +62,7 @@ public abstract class Creature implements  Rager, Perishable, Screamer{
         this.weight = weight;
         this.height = height;
         this.age = age;
-        this.moralityRate = 100;
+        this.moralityRate = 10000;
         this.Alive = true;
         //this.diseasesList = diseasesList;
     }

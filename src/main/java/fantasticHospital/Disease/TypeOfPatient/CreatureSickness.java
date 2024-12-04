@@ -52,7 +52,9 @@ public abstract class CreatureSickness implements Randomizer {
     //methodes
     //rencoie le niveau de la maladie placer en paramètre
     public int getCurrentLevel(Disease disease) {
-        return diseaseCurrentLevel.get(disease);
+        if(diseaseCurrentLevel.containsKey(disease))
+            return diseaseCurrentLevel.get(disease);
+        return 0;
     }
     //modifie le level d'une maladie
     private void setCurrentLevel(Disease disease, int currentLevel) {

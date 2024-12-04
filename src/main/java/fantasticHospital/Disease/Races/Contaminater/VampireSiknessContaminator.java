@@ -16,6 +16,5 @@ public class VampireSiknessContaminator extends CreatureSicknessContaminator imp
     public void waiting() {
         getCreature().waiting();
         getSeeker();
-
     }
 }
