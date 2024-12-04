@@ -28,6 +28,15 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
         }
         return creatures;
     }
+    public int nbOfDead() {
+        int count = 0;
+        for (Patient patient : patients) {
+            if (!patient.getCreature().isAlive()) {
+                count++;
+            }
+        }
+        return count;
+    }
     public  int getNumberOfPatientNow(){
         if(patients!=null)
             return patients.size();

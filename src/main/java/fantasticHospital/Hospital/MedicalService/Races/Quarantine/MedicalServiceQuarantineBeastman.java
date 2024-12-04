@@ -18,6 +18,8 @@ public  class MedicalServiceQuarantineBeastman extends QuarantineMedicalService<
     public void waiting(){
         for(BeastmanSicknessContaminator patient:getPatients()){
             patient.waiting(getNumberOfPatientNow()>1);
+            if(!patient.isHealthy()&&getNumberOfPatientNow()>1)
+                patient.contaminate(getRandomPatient());
         }
     }
 }

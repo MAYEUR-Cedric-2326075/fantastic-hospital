@@ -18,6 +18,8 @@ public  class MedicalServiceVampireQuarantine extends QuarantineMedicalService<V
     public void waiting(){
         for(VampireSiknessContaminator vampireSiknessContaminator:getPatients()){
             vampireSiknessContaminator.waiting();
+            if(!vampireSiknessContaminator.isHealthy()&&getNumberOfPatientNow()>1)
+                vampireSiknessContaminator.contaminate(getRandomPatient());
         }
     }
 }
