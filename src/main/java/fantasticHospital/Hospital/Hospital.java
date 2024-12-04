@@ -195,17 +195,23 @@ public class Hospital {
     }
 
 
-/*
-    // Afficher les services médicaux
-    public void displayMedicalServices() {
-        if (medicalServices.isEmpty()) {
-            System.out.println("Il n'y a pas de services médicaux.");
-        } else {
-            for (MedicalService service : medicalServices) {
-                System.out.println("Service médical : " + service.getName());
+    private boolean cured(CreatureSickness creatureSickness) {
+        if(isOneDoctorAvailable()){
+            getFirstAvailableDoctor().heal(creatureSickness);
+        }
+        return false;
+    }
+    private Doctor getFirstAvailableDoctor() {
+        for (Map.Entry<Doctor, Boolean> entry : doctorsAvailability.entrySet()) {
+            if (entry.getValue()) {
+                return entry.getKey();
             }
         }
-    }*/
+        return null;
+    }
+
+
+
 
 
 

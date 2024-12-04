@@ -4,8 +4,10 @@ import fantasticHospital.Creature.Creature;
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Hospital.MedicalService.Employe.Doctor;
 import fantasticHospital.Tools.Randomizer;
-import java.util.HashSet;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 public abstract class MedicalService<Patient extends CreatureSickness> implements Randomizer {
 
     private String name;
@@ -18,18 +20,27 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
     private static final int budgetWeak = 20000;
 
     private final static String defaultName="unnamedMedicalService";
-    private HashSet<Patient> patients = new HashSet<>();
-    public HashSet<Creature> getCreaturesPresentNow() {
-        HashSet<Creature> creatures = new HashSet<>();
+    private List<Patient> patients=new ArrayList<Patient>();;
+    public List<Creature> getCreaturesPresentNow() {
+        List<Creature> creatures = new ArrayList<>();
         for (Patient patient : patients) {
             creatures.add(patient.getCreature());
         }
         return creatures;
     }
-    public  int getNumberOfPatientNow(){return patients.size();}
-    public int getNumberOfPatientMax(){return MedicalService.maxCreature;}
+    public  int getNumberOfPatientNow(){
+        if(patients!=null)
+            return patients.size();
+        return 0;
+    }
+
+    public int getNumberOfPatientMax(){
+        if(patients!=null)
+            return MedicalService.maxCreature;
+        return 0;
+    }
     public boolean isEmpty(){return patients.isEmpty();}
-    public HashSet<Patient> getPatients(){return patients;}
+    public List<Patient> getPatients(){return patients;}
     public boolean addPatient(Patient creatureSickness){
         return (getNumberOfPatientNow()< getNumberOfPatientMax())&&patients.add(creatureSickness);
     }
@@ -63,6 +74,7 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
     public MedicalService(String name,int budget){
         this.name = name;
         this.budget = budget;
+        patients = new ArrayList<Patient>();
     }
 
     public String getName() {return name;}
@@ -104,6 +116,14 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
         } else {
             return "Acceptable";
         }
+    }
+    public Patient getSpecificPatient(java.util.function.Predicate<Patient> condition) {
+        for (Patient patient : patients) {
+            if (condition.test(patient)) {
+                return patient;
+            }
+        }
+        return null;
     }
 
 

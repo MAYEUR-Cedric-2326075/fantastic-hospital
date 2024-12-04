@@ -43,16 +43,5 @@ public class Doctor implements healer<CreatureSickness> {
         this.age = age;
     }
 
-    public static void examineMedicalService() {
 
-    }
-    public static void healCreaturesInMedicalService() {
-
-    }
-    public static void reviewBudgetOfMedicalService() {
-
-    }
-    public static void transferCreatureToAnotherMedicalService() {
-
-    }
 }
