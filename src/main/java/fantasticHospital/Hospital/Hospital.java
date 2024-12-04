@@ -21,12 +21,13 @@ import fantasticHospital.Hospital.MedicalService.Races.Quarantine.MedicalService
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceDwarf;
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceElf;
 import fantasticHospital.Hospital.MedicalService.Races.Regular.MedicalServiceReptilian;
+import fantasticHospital.Tools.Randomizer;
 
 
 
 import java.util.*;
 
-public class Hospital {
+public class Hospital implements Randomizer {
 
     private String name;
     private int maxPatients;
@@ -49,6 +50,7 @@ public class Hospital {
         this.maxPatients = maxPatients;
         this.maxDeaths = maxDeaths;
         this.doctorsAvailability = new HashMap<Doctor, Boolean>();
+        this.generateAndAddRandomDoctors(generateRandomNumber(1,3));
     }
 
     public MedicalServiceReptilian getMedicalServiceReptilian() {
@@ -192,7 +194,23 @@ public class Hospital {
         medicalServiceLycanthrope.waiting();
         medicalServiceOrc.waiting();
         medicalServiceVampire.waiting();
+
     }
+    public void generateAndAddRandomDoctors(int maxDoctors) {
+        Random random = new Random();
+        int numDoctors = random.nextInt(maxDoctors) + 1;
+
+        for (int i = 0; i < numDoctors; i++) {
+            String doctorName = generateRandomName(generateRandomNumber(3,10)); // Utilisation de Randomizer pour générer un nom
+            Doctor newDoctor = new Doctor(doctorName, generateRandomBoolean(), generateRandomNumber(20,60)); // Exemple : âge entre 30 et 40 ans
+            addDoctor(newDoctor);
+            //System.out.println("Docteur ajouté : " + newDoctor.getName());
+        }
+
+        //System.out.println(numDoctors + " docteurs ont été ajoutés à l'hôpital.");
+    }
+
+
 
 
     public boolean cured(CreatureSickness creatureSickness) {

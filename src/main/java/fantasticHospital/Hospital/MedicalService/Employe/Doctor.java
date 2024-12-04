@@ -2,8 +2,9 @@ package fantasticHospital.Hospital.MedicalService.Employe;
 
 import fantasticHospital.Disease.TypeOfPatient.CreatureSickness;
 import fantasticHospital.Hospital.Behavior.healer;
+import fantasticHospital.Tools.Randomizer;
 
-public class Doctor implements healer<CreatureSickness> {
+public class Doctor implements healer<CreatureSickness> , Randomizer {
 
     private String name;
     private boolean gender;
@@ -41,6 +42,11 @@ public class Doctor implements healer<CreatureSickness> {
 
     public void setAge(int age) {
         this.age = age;
+    }
+    protected Doctor() {
+        this.name = generateRandomName(generateRandomNumber(3, 10));
+        this.gender = generateRandomBoolean();
+        this.age = generateRandomNumber(25, 60);
     }
 
 

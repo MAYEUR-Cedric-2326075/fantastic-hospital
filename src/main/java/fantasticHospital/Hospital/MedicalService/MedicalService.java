@@ -44,7 +44,7 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
     public boolean addPatient(Patient creatureSickness){
         return (getNumberOfPatientNow()< getNumberOfPatientMax())&&patients.add(creatureSickness);
     }
-    public boolean addPatient(HashSet<Patient> creatureSickness){
+    public boolean addPatient(List<Patient> creatureSickness){
         for (Patient patient : creatureSickness) {
             if(!addPatient(patient))
                 return false;
