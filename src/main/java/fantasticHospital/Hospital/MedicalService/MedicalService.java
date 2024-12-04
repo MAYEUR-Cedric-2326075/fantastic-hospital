@@ -10,8 +10,13 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
 
     private String name;
     private int budget;
-    private  static int maxCreature=100;
-    private  static int startingBudjet=100000;
+    private  static  final int maxCreature=100;
+    private static final int startingBudjet=100000;
+    private static final int budgetNonexistent = 200;
+    private static final int budgetMediocre = 1000;
+    private static final int budgetInsufficient = 5000;
+    private static final int budgetWeak = 20000;
+
     private final static String defaultName="unnamedMedicalService";
     private HashSet<Patient> patients = new HashSet<>();
     public HashSet<Creature> getCreaturesPresentNow() {
@@ -84,6 +89,21 @@ public abstract class MedicalService<Patient extends CreatureSickness> implement
             }
         }
         return dead;
+    }
+
+    // Méthode pour obtenir la catégorie du budget
+    public String getBudgetCategory() {
+        if (budget < budgetNonexistent) {
+            return "Inexistant";
+        } else if (budget < budgetMediocre) {
+            return "Médiocre";
+        } else if (budget < budgetInsufficient) {
+            return "Insuffisant";
+        } else if (budget < budgetWeak) {
+            return "Faible";
+        } else {
+            return "Acceptable";
+        }
     }
 
 
