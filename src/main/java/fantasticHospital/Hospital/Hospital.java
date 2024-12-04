@@ -407,18 +407,18 @@ public class Hospital implements Randomizer {
         return  medicalService.removeAndReturnDeceasedPatients();
     }
 */
-    boolean moveDeadZombieToCrypt() {
+    public boolean moveDeadZombieToCrypt() {
         HashSet<ZombieSickness> dead = medicalServiceZombie.removeDeads();
         if(!dead.isEmpty())
             cryptSZombie.addPatient(dead);
         return false;
     }
-    boolean moveDeadVampireToCrypt() {
+    public boolean moveDeadVampireToCrypt() {
         HashSet<VampireSiknessContaminator> dead = medicalServiceVampire.removeDeads();
         if(!dead.isEmpty())
             cryptVampire.addPatient(dead);
         return false;
     }
-    //boolean moveDead
+
 
 }
