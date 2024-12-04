@@ -12,7 +12,6 @@ import static fantasticHospital.Disease.TypeOfPatient.CreatureSickness.randomDis
 
 public class Main {
 
-    static String ANSI_RED = "\u001B[31m";
     static String ANSI_RESET = "\u001B[0m";
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -81,7 +80,7 @@ public class Main {
     public static void actionMenu(Hospital hospital) {
         boolean currentRound= true;
         while (currentRound){
-            System.out.println(ANSI_RED +"\n** Menu d'hopital **" + ANSI_RESET);
+            System.out.println("\u001B[35m\n** Menu d'hopital **" + ANSI_RESET);
             String[] choices = {"Afficher les services medicaux", "Choisir un service medical", "Déplacer mort à la crypte", "Fin du tour"};
             int choice = choiceTerminal(choices);
             switch (choice) {
@@ -146,7 +145,10 @@ public class Main {
                             }
                             int creatureToHeal = scanner.nextInt();
                             //tente de soigner la créature
-                            if (choiceService.isEmpty() && hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
+                            if (choiceService.isEmpty()){
+                                break;
+                            }
+                            if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
                                 System.out.println("La créature à été soigner");
                             }else {
                                 System.out.println("La créature n'a pas pu être soigner");
