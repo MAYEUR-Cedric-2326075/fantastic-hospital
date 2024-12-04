@@ -145,13 +145,15 @@ public class Main {
                             }
                             int creatureToHeal = scanner.nextInt();
                             //tente de soigner la créature
-                            if (choiceService.isEmpty()){
-                                break;
-                            }
-                            if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
-                                System.out.println("La créature à été soigner");
-                            }else {
-                                System.out.println("La créature n'a pas pu être soigner");
+                            try {
+                                if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
+                                    System.out.println("La créature à été soigner");
+                                }else {
+                                    System.out.println("La créature n'a pas pu être soigner");
+                                }
+                                }
+                            catch(Exception e) {
+                                System.out.println(e.getMessage());
                             }
                             break;
                         case 2:
