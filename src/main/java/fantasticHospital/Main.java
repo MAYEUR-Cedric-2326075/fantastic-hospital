@@ -6,10 +6,14 @@ import fantasticHospital.Hospital.MedicalService.MedicalService;
 
 import java.util.Scanner;
 
+
 import static fantasticHospital.Disease.TypeOfPatient.CreatureSickness.randomDisease;
 
 
 public class Main {
+
+    static String ANSI_RED = "\u001B[31m";
+    static String ANSI_RESET = "\u001B[0m";
 
     public static int choiceTerminal(String[] choices) {
         //affiche tout les choix du tableau passer en paramètre
@@ -41,6 +45,7 @@ public class Main {
         creature1.addDiseaseCurrentLevel(randomDisease());
         hospital.addToMedicalServices(creature1);
 
+        //variables de jeux
         int turn = 0;
         int totalDeaths = 0;
         int currentActionPoints = 50;
@@ -53,27 +58,26 @@ public class Main {
             creatureX.addDiseaseCurrentLevel(randomDisease());
             hospital.addToMedicalServices(creatureX);
 
-            System.out.println("\n--- Tour " + turn + " ---");
-
-            //afficher menue action
+            //début d'un tour
+            System.out.println("\u001B[32m\n--- Tour " + turn + " ---" + ANSI_RESET);
+            //afficher nb de point action
             System.out.println("nb de point : " + currentActionPoints);
             //Affiche le menu pour jouer en proposant les action du joueur
             actionMenu(hospital);
 
             //Fin du tour
+            //Contamination des créatures + évolution des maladies
             hospital.waiting();
-            //Contamination des créatures + évolution des maladies + nouvelle creature
-
         }
-
         // fin de partie
-        displayFinalScore(turn);
+        System.out.println("Fin de partie, vous avez survécu " + turn + "tour.");
     }
 
     public static void actionMenu(Hospital hospital) {
         boolean currentRound= true;
-        String[] choices = {"Afficher les services medicaux", "Choisir un service medical", "Fin du tour"};
         while (currentRound){
+            System.out.println(ANSI_RED +"** Menu d'hopital **" + ANSI_RESET);
+            String[] choices = {"Afficher les services medicaux", "Choisir un service medical", "Fin du tour"};
             int choice = choiceTerminal(choices);
             switch (choice) {
                 case 1:
@@ -86,6 +90,7 @@ public class Main {
                     System.out.println("Entrer le service medical choisi : ");
                     Scanner scanner = new Scanner(System.in); //le joueur choisi le service
                     int answer = scanner.nextInt();
+
                     MedicalService choiceService = null;
                     switch (answer) {
                         case 1:
@@ -112,6 +117,9 @@ public class Main {
                         case 8:
                             choiceService = hospital.getMedicalServiceReptilian();
                             break;
+                        default:
+                            System.out.println("Service medical non existant");
+                            break;
                     }
                     //afficher le service choisi
                     System.out.println("Nom du service : " + choiceService.getName());//nom du service choisi
@@ -122,27 +130,27 @@ public class Main {
                     }
 
                     //demande au joueur ce qu'il veux faire dans ce service
+                    System.out.println("\u001B[34m** Menu d'action joueur**" + ANSI_RESET);
                     String[] choices2 = {"soigner une créature", "réviser le budget", "Ne rien faire"};
-                    int choice2 = choiceTerminal(choices);
+                    int choice2 = choiceTerminal(choices2);
                     switch (choice2) {
                         case 1:
                             //soigner une créature
                             System.out.println("Entrer la créature a soigner : ");
-                            /*
                             for (int i=0; i<choiceService.getPatients().size();i++) {
                                 System.out.println(i + ")" + choiceService.getPatients().get(i));
                             }
                             int creatureToHeal = scanner.nextInt();
-                            if (hospital.cured(creatureToHeal)) { //bool on a résussi a soigner la créature
+                            if (hospital.cured((CreatureSickness) choiceService.getPatients().get(creatureToHeal))) { //bool on a résussi a soigner la créature
                                 System.out.println("La créature à été soigner");
                             }else {
                                 System.out.println("La créature n'a pas pu être soigner");
-                            }*/
+                            }
                             // a faire
                             break;
                         case 2:
                             //réviser budget
-                            System.out.println("Entrer le nouveau budget : ");
+                            System.out.println("Entrer le nouveau budget en chiffre : ");
                             answer = scanner.nextInt();
                             choiceService.setBudget(answer);
                             break;
@@ -162,10 +170,6 @@ public class Main {
                     break;
             }
         }
-    }
-
-    public static void displayFinalScore(int score){
-        System.out.println("Fin de partie, vous avez survécu " + score + "tour.");
     }
 
     public static void showMedicalServices(Hospital hospital) {
